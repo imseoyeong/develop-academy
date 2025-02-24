@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html5_ex07</title>
+
+    <style>
+        input {
+            height: 30px;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+        }
+
+        button[type="submit"] {
+            color: #ff4646;
+            background: #fff;
+            border: 1px solid #ff4646;
+            border-radius: 3px;
+            padding: 3px 10px;
+        }
+
+        /* input[name="id"] {
+            color: #00774f;
+        } */
+
+        [name="id"] {
+            color: #00774f;
+        }
+    </style>
+</head>
+
+<body>
+    목차
+    <ol>
+        <li>
+            <a href="./ex01.html">h1~h6 요소</a>
+        </li>
+        <li>
+            <a href="./ex02.html">p, br, blockquote, q, em, hr, strong 요소</a>
+        </li>
+        <li>
+            <a href="./ex03.html">ol, ul 요소</a>
+        </li>
+        <li>
+            <a href="./ex04.html">a 요소</a>
+        </li>
+        <li>
+            <a href="./ex05.html">table 요소</a>
+        </li>
+        <li>
+            <a href="./ex06.html">테이블 모든 요소 적용</a>
+        </li>
+        <li>
+            <a href="./ex07.html">form 요소 - input(text, password)</a>
+        </li>
+        <li>
+            <a href="./ex08.html">form 요소 - input(checkbox, radio)</a>
+        </li>
+        <li>
+            <a href="./ex09.html">form 요소 - select, textarea</a>
+        </li>
+    </ol>
+
+    <hr />
+
+    <h1>html5 공부하기</h1>
+    <h2>chapter07. form 요소 - input(text, password)</h2>
+
+    <form action="" method="">
+        <label for="userid">아이디</label>
+        <input id="userid" type="text" name="id" value="" placeholder="아이디"><br>
+
+        <label for="userpw">패스워드</label>
+        <input id="userpw" type="password" name="pw" value="" placeholder="패스워드"><br>
+
+        <button type="submit">로그인</button>
+        <button type="reset">초기화</button>
+    </form>
+
+    <br><br><br><br>
+
+    <input type="text"><br>
+    <input type="password"><br>
+    <input type="file"><br><br>
+
+    <input type="button" value="전송"><br>
+    <button>전송</button><br>
+
+</body>
+
+</html>

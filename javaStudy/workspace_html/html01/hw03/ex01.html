@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form 연습</title>
+</head>
+
+<body>
+    <form action="" method="">
+        <label for="userid">아이디</label>
+        <input id="userid" type="text" name="id" value="" placeholder="아이디를 입력하세요"><br>
+
+        <label for="userpw">패스워드</label>
+        <input id="userpw" type="password" name="pw" value="" placeholder="패스워드를 입력하세요"><br>
+
+        <label for="username">이름</label>
+        <input id="username" type="text" name="username" value="" placeholder="이름을 입력하세요"><br>
+
+        <label for="profile">프로필 사진</label>
+        <input id="profile" type="file" name="profile" value=""><br>
+
+        <span>주소</span>
+        <input id="postcode" type="text" name="postcode" value="">
+        <button type="button">우편번호찾기</button><br>
+        <input id="address" type="text" name="address" value=""><br>
+
+        <span>이동통신사</span>
+        <select name="tel">
+            <option>선택해주세요</option>
+            <option value="sk">SKT</option>
+            <option value="kt">KT</option>
+            <option value="lg">LGU+</option>
+            <option value="etc" selected>알뜰통신사</option>
+        </select>
+        <br>
+
+        <span>나이</span>
+        <input id="age01" type="radio" name="age" value="age01">
+        <label for="age01">10대</label>
+        
+        <input id="age02" type="radio" name="age" value="age02">
+        <label for="age02">20대</label>
+    
+        <input id="age03" type="radio" name="age" value="age03">
+        <label for="age03">30대</label>
+
+        <input id="age04" type="radio" name="age" value="age04">
+        <label for="age04">40대</label>
+
+        <input id="etc" type="radio" name="age" value="etc">
+        <label for="etc">기타</label>
+        <br>
+
+        <span>취미</span>
+        <input id="book" type="checkbox" name="hobby" value="book" checked/>
+        <label for="book">독서</label>
+    
+        <input id="music" type="checkbox" name="hobby" value="music">
+        <label for="music">음악</label>
+    
+        <input id="trip" type="checkbox" name="hobby" value="trip">
+        <label for="trip">여행</label>
+
+        <input id="movie" type="checkbox" name="hobby" value="movie">
+        <label for="movie">영화</label>
+
+        <input id="coding" type="checkbox" name="hobby" value="coding">
+        <label for="coding">코딩</label>
+
+        <input id="etc" type="checkbox" name="hobby" value="etc">
+        <label for="etc">기타</label>
+        <br>
+
+        <span>자기소개</span>
+        <textarea name="intro"></textarea>
+        <br><br>
+
+        <button type="submit">등록</button>
+        <button type="reset">등록</button>
+    </form>
+    
+</body>
+
+</html>
