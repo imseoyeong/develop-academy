@@ -1,0 +1,111 @@
+html {
+    font-family: "맑은 고딕";
+    font-size: 17px;
+}
+
+h1 {
+    font-family: "궁서";
+    font-size: 30px;
+    letter-spacing: 15px;
+}
+
+h2 {
+    font-size: 25px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+ul li {
+    list-style-type: square;
+}
+
+ol li {
+    list-style: none;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.color-blue {
+    color: #0000FF;
+}
+
+.color-red {
+    color: #FF0000;
+}
+
+.color-green {
+    color: #00FF00;
+}
+
+.font-italic {
+    font-style: italic;
+}
+
+.text-underline {
+    text-decoration: underline;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.history {
+    background-color: #D9D9D9;
+}
+
+.history > p {
+    text-indent: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table > thead {
+    background: #C8EBFA;
+}
+
+table > tbody > tr:hover {
+    background: #EDD3ED;
+}
+
+table > thead > tr > th,
+table > tbody > tr > td {
+    border: 1px solid #aaa;
+}
+
+table > tbody > tr > td > a {
+    text-decoration: none;
+    color: #000;
+}
+
+table > tbody > tr > td > a:visited {
+    color: #000;
+}
+
+table > tbody > tr > td > a:hover {
+    color: #0000FF;
+    text-decoration: underline;
+}
+
+table > tbody > tr > td > a:active {
+    color: #0000FF;
+    text-decoration: underline;
+}
+
+.speed {
+    text-align: right;
+}
+
+.speed::before {
+    content: '약';
+}
+
+.speed::after {
+    content: '(MB/초)';
+}
