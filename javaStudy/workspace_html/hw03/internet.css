@@ -17,11 +17,11 @@ h3 {
     font-size: 20px;
 }
 
-ul li {
+ul > li {
     list-style-type: square;
 }
 
-ol li {
+ol > li {
     list-style: none;
 }
 

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css_ex15</title>
+
+    <style>
+        ul, ol {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        ul.type1 > li {
+            background: url(./img/star.jpg) no-repeat left 28px center;
+            background-size: 12px 12px;
+            padding: 0 30px 0 42px;
+            box-sizing: border-box;
+        }
+
+        ul.type1 > li + li {
+            border-left: 2px solid #666;
+        }
+
+        ul.type2 > li {
+            background: url(./img/star.jpg) no-repeat left 2px center;
+            background-size: 12px 12px;
+            padding: 0 30px 0 16px;
+            box-sizing: border-box;
+            border: 1px solid #666;
+        }
+
+        ul.type2 > li + li {
+            margin-left: 20px;
+        }
+
+        ul.type3 {
+            display: block;
+        }
+
+        ul.type3 > li {
+            width: 70px;
+            float: left;
+            text-align: center;
+            border-right: 2px solid #000;
+        }
+
+        ul.type3 > li:last-child {
+            border: 0;
+        }
+
+        ol.type4 > li {
+            position: relative;
+            padding: 0 30px 0 20px;
+        }
+
+        ol.type4 > li::after {
+            content: '>';
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="type1">
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+        <li>메뉴4</li>
+    </ul>
+
+    <ul class="type2">
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+        <li>메뉴4</li>
+    </ul>
+
+    <ul class="type3">
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+        <li>메뉴4</li>
+    </ul>
+
+    <br>
+
+    <ol class="type4">
+        <li>홈</li>
+        <li>게시판</li>
+        <li>일반게시판</li>
+        <li>리스트</li>
+    </ol>
+</body>
+
+</html>
