@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css_ex18</title>
+
+    <link rel="stylesheet" href="./css/board.css">
+</head>
+
+<body>
+    <div class="inner">
+        <!-- h1 사이트명, h2 고객센터 가정 -->
+        <h3>일반게시판</h3>
+    
+        <ol class="progress">
+            <li>홈</li>
+            <li>게시판</li>
+            <li>일반게시판</li>
+        </ol>
+
+        <form action="" method="">
+            <div class="form-group">
+                <span class="list-title">게시판선택</span>
+                <select class="custom-input" name="board-ca">
+                    <option>선택해주세요</option>
+                    <option value="board1">게시판1</option>
+                    <option value="board2">게시판2</option>
+                    <option value="board3">게시판3</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="list-title" for="subject">제목</label>
+                <input class="custom-input wd-full" id="subject" type="text" name="subject" value="" placeholder="제목을 입력해주세요"><br>
+            </div>
+
+            <div class="form-group">
+                <label class="list-title" for="pw">비밀번호</label>
+                <input class="custom-input" id="pw" type="password" name="pw" value="" placeholder="패스워드를 입력하세요"><br>
+            </div>
+        
+            <div class="form-group">
+                <span class="list-title">공개범위</span>
+                <ul class="check-list">
+                    <li>
+                        <input id="disclosure1" type="radio" name="disclosure" value="disclosure1">
+                        <label for="disclosure1">본인</label>
+                    </li>
+                    <li>
+                        <input id="disclosure2" type="radio" name="disclosure" value="disclosure2">
+                        <label for="disclosure2">로그인회원</label>
+                    </li>
+                    <li>
+                        <input id="disclosure3" type="radio" name="disclosure" value="disclosure3">
+                        <label for="disclosure3">친구</label>
+                    </li>
+                    <li>
+                        <input id="disclosure4" type="radio" name="disclosure" value="disclosure4" checked/>
+                        <label for="disclosure4">전체</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="form-group">
+                <span class="list-title">허용범위</span>
+                <ul class="check-list">
+                    <li>
+                        <input id="tolerance1" type="checkbox" name="tolerance" value="tolerance1" checked/>
+                        <label for="tolerance1">댓글허용</label>
+                    </li>
+                    <li>
+                        <input id="tolerance2" type="checkbox" name="tolerance" value="tolerance2">
+                        <label for="tolerance2">답글허용</label>
+                    </li>
+                    <li>
+                        <input id="tolerance3" type="checkbox" name="tolerance" value="tolerance3">
+                        <label for="tolerance3">좋아요허용</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="form-group">
+                <textarea name="content"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label class="list-title" for="file">첨부파일</label>
+                <input id="file" type="file" name="file" value="">
+            </div>
+        
+            <div class="btn-wrap">
+                <button type="submit">등록</button>
+                <button type="reset">초기화</button>
+            </div>
+        </form>
+    </div>
+    <!-- //inner -->
+</body>
+
+</html>

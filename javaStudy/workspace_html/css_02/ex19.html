@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css_ex19</title>
+
+    <link rel="stylesheet" href="./css/board2.css">
+</head>
+
+<body>
+    <div class="inner">
+        <h3>회원가입</h3>
+    
+        <ol class="progress">
+            <li>홈</li>
+            <li>유저</li>
+            <li>회원가입</li>
+        </ol>
+
+        <form action="" method="">
+            <div class="form-group">
+                <label class="list-title" for="userid">아이디</label>
+                <input class="custom-input" id="userid" type="text" name="userid" value="" placeholder="아이디를 입력하세요"><br>
+            </div>
+
+            <div class="form-group">
+                <label class="list-title" for="userpw">패스워드</label>
+                <input class="custom-input" id="userpw" type="password" name="userpw" value="" placeholder="패스워드를 입력하세요"><br>
+            </div>
+
+            <div class="form-group">
+                <label class="list-title" for="username">이름</label>
+                <input class="custom-input" id="username" type="text" name="username" value="" placeholder="이름을 입력하세요"><br>
+            </div>
+
+            <div class="form-group">
+                <label class="list-title" for="profile">프로필사진</label>
+                <input id="profile" type="file" name="profile" value="">
+            </div>
+
+            <div class="form-group align-start">
+                <span class="list-title">주소</span>
+                <div class="address-group">
+                    <div>
+                        <input class="custom-input" id="postcode" type="text" name="postcode" value="12345">
+                        <button class="btn" type="button">우편번호찾기</button>
+                    </div>
+                    <input class="custom-input wd-full" id="address" type="text" name="address" value="서울 서초구 강남대로 405 통영빌딩 8층">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <span class="list-title">이동통신사</span>
+                <select class="custom-input" name="tel">
+                    <option>선택해주세요</option>
+                    <option value="sk">SKT</option>
+                    <option value="kt">KT</option>
+                    <option value="lg">LGU+</option>
+                    <option value="etc">알뜰통신사</option>
+                </select>
+            </div>
+        
+            <div class="form-group">
+                <span class="list-title">나이</span>
+                <ul class="check-list">
+                    <li>
+                        <input id="age01" type="radio" name="age" value="age01" checked>
+                        <label for="age01">10대</label>
+                    </li>
+                    <li>
+                        <input id="age02" type="radio" name="age" value="age02">
+                        <label for="age02">20대</label>
+                    </li>
+                    <li>
+                        <input id="age03" type="radio" name="age" value="age03">
+                        <label for="age03">30대</label>
+                    </li>
+                    <li>
+                        <input id="age04" type="radio" name="age" value="age04">
+                        <label for="age04">40대</label>
+                    </li>
+                    <li>
+                        <input id="etc" type="radio" name="age" value="etc">
+                        <label for="etc">기타</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="form-group">
+                <span class="list-title">혈액형</span>
+                <ul class="check-list">
+                    <li>
+                        <input id="blood01" type="radio" name="blood" value="blood01" checked>
+                        <label for="blood01">A형</label>
+                    </li>
+                    <li>
+                        <input id="blood02" type="radio" name="blood" value="blood02">
+                        <label for="blood02">B형</label>
+                    </li>
+                    <li>
+                        <input id="blood03" type="radio" name="blood" value="blood03">
+                        <label for="blood03">O형</label>
+                    </li>
+                    <li>
+                        <input id="blood04" type="radio" name="blood" value="blood04">
+                        <label for="blood04">AB형</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="form-group">
+                <span class="list-title">취미</span>
+                <ul class="check-list">
+                    <li>
+                        <input id="book" type="checkbox" name="hobby" value="book" checked/>
+                        <label for="book">독서</label>
+                    </li>
+                    <li>
+                        <input id="music" type="checkbox" name="hobby" value="music">
+                        <label for="music">음악</label>
+                    </li>
+                    <li>
+                        <input id="trip" type="checkbox" name="hobby" value="trip">
+                        <label for="trip">여행</label>
+                    </li>
+                    <li>
+                        <input id="movie" type="checkbox" name="hobby" value="movie">
+                        <label for="movie">영화</label>
+                    </li>
+                    <li>
+                        <input id="coding" type="checkbox" name="hobby" value="coding">
+                        <label for="coding">코딩</label>
+                    </li>
+                    <li>
+                        <input id="etc" type="checkbox" name="hobby" value="etc">
+                        <label for="etc">기타</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="form-group align-start">
+                <label class="list-title" for="subject">자기소개</label>
+                <textarea name="content"></textarea>
+            </div>
+        
+            <div class="btn-wrap">
+                <button class="btn btn-blue" type="submit">등록</button>
+                <button class="btn btn-blue" type="reset">초기화</button>
+            </div>
+        </form>
+    </div>
+    <!-- //inner -->
+</body>
+
+</html>

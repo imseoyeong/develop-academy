@@ -55,16 +55,21 @@
             border: 0;
         }
 
-        ol.type4 > li {
+        /* ol.type4 > li {
             position: relative;
             padding: 0 30px 0 20px;
         }
 
-        ol.type4 > li::after {
+        ol.type4 > li:not(:last-child)::after {
             content: '>';
             position: absolute;
             right: 0;
             top: 0;
+        } */
+
+        ol.type4 > li:not(:last-child)::after {
+            content: '>';
+            padding: 0 20px;
         }
     </style>
 </head>

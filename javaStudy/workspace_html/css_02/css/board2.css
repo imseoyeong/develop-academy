@@ -1,0 +1,148 @@
+@charset "UTF-8";
+
+/* 공통 */
+body, div, ul, ol, li, dl, dt,
+h1, h2, h3, h4, h5, h6
+form, fieldset, legend, input, select, button,
+table, th, td, tr, textarea,
+p, span {
+    margin: 0;
+    padding: 0;
+}
+
+input,
+select,
+textarea {
+  outline: none;
+  font-size: inherit;
+  font-size: 15px;
+}
+
+button {
+    outline: none;
+    font-size: inherit;
+}
+
+ul, ol {
+    list-style: none;
+    padding: 0;
+}
+
+
+/* ex19 */
+body {
+    background: #e8e8e8;
+    font-size: 12px;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.inner {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    margin-top: 30px;
+    background: #fff;
+    border-radius: 3px;
+}
+
+.btn {
+    width: 120px;
+    height: 30px;
+    border-radius: 5px;
+    font-weight: 600;
+    background: #bbe5f7;
+    border: 1px solid #9dbfce;
+    color: #4f6269;
+}
+
+.progress {
+    display: flex;
+    align-items: center;
+    margin: 10px 0 25px;
+}
+
+.progress > li:not(:last-child)::after {
+    content: '>';
+    padding: 0 4px;
+}
+
+.form-group {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.form-group:last-child {
+    border-bottom: 0;
+}
+
+.form-group.align-start {
+    align-items: flex-start;
+}
+
+.form-group .list-title {
+    width: 120px;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.form-group textarea {
+    width: 100%;
+    height: 120px;
+    border-radius: 5px;
+    border: 1px solid #bbb;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.form-group .custom-input {
+    width: 200px;
+    height: 30px;
+    padding: 0 8px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #bbb;
+}
+
+.form-group .custom-input.wd-full {
+    width: 100%;
+}
+
+.form-group .check-list {
+    display: flex;
+    gap: 10px;
+}
+
+.form-group .check-list > li {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.form-group .check-list label {
+    font-size: 15px;
+}
+
+.form-group .address-group {
+    width: 100%;
+}
+
+.form-group .address-group >  * + * {
+    margin-top: 5px;
+}
+
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding-top: 15px;
+    border-top: 1px solid #ccc;
+}
