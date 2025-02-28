@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../../assets/favicon.ico" />
+    <title>ImSeoyeong : 회원가입</title>
+
+    <link rel="stylesheet" href="../../assets/css/reset.css" />
+    <link rel="stylesheet" href="../../assets/css/layout.css" />
+    <link rel="stylesheet" href="../../assets/css/user.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <div class="header-wrap">
+          <a class="logo" href="../main/index.html">
+            <h1>ImSeoyeong</h1>
+          </a>
+          <div class="btn-wrap">
+            <a href="../user/login.html">로그인</a>
+            <a href="../user/signup.html">회원가입</a>
+          </div>
+        </div>
+        <nav>
+          <ul class="gnb">
+            <li>
+              <a href="javascript:;">입사지원서</a>
+            </li>
+            <li>
+              <a href="../board/view_board.html">게시판</a>
+            </li>
+            <li>
+              <a href="../gallery/view_gallery_board.html">갤러리</a>
+            </li>
+            <li>
+              <a href="../guestbook/regular_guestbook.html">방명록</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section id="user" class="signup inner">
+      <div class="content-wrap">
+        <aside class="side-bar">
+          <h2>회원</h2>
+          <ul class="list">
+            <li>
+              <a href="../user/user_info.html">회원정보</a>
+            </li>
+            <li>
+              <a href="../user/login.html">로그인</a>
+            </li>
+            <li>
+              <a href="../user/signup.html">회원가입</a>
+            </li>
+          </ul>
+        </aside>
+
+        <div class="content">
+          <div class="page-title">
+            <h3>회원가입</h3>
+            <ol class="progress">
+              <li>홈</li>
+              <li>회원</li>
+              <li>회원가입</li>
+            </ol>
+          </div>
+          <!-- //page-title -->
+
+          <form class="signup-form user-form" action="" method="">
+            <div class="form-inner">
+              <div class="input-group">
+                <label class="input-title" for="userid">아이디</label>
+                <input class="custom-input" id="userid" type="text" name="userid" value="" placeholder="아이디를 입력하세요" />
+                <button class="btn" type="button">중복체크</button>
+              </div>
+              <div class="input-group">
+                <label class="input-title" for="userpw">비밀번호</label>
+                <input class="custom-input" id="userpw" type="password" name="userpw" value="" placeholder="비밀번호를 입력하세요" /><br />
+              </div>
+              <div class="input-group">
+                <label class="input-title" for="username">이름</label>
+                <input class="custom-input" id="username" type="text" name="username" value="" placeholder="이름을 입력하세요" /><br />
+              </div>
+              <div class="input-group">
+                <span class="input-title">성별</span>
+                <ul class="check-list">
+                  <li>
+                    <input id="male" type="radio" name="sex" value="male" checked />
+                    <label for="male">남</label>
+                  </li>
+                  <li>
+                    <input id="female" type="radio" name="sex" value="female" />
+                    <label for="female">여</label>
+                  </li>
+                </ul>
+              </div>
+              <div class="input-group">
+                <span class="input-title">약관동의</span>
+                <ul class="check-list">
+                  <li>
+                    <input id="agree" type="checkbox" name="agree" />
+                    <label for="agree">서비스 약관에 동의합니다.</label>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="btn-wrap justify-center">
+                <button class="btn" type="submit">회원가입</button>
+              </div>
+            </div>
+            <!-- //form-inner -->
+          </form>
+        </div>
+        <!-- //content -->
+      </div>
+      <!-- //content-wrap -->
+    </section>
+
+    <footer>
+      <div class="inner">
+        <p class="copyright">Copyright ©2025 임서영. All right reserved</p>
+      </div>
+    </footer>
+  </body>
+</html>

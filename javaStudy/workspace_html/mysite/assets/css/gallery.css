@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+/* view_gallery_board : 갤러리 리스트 */
+#gallery.view .gallery-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+#gallery.view .gallery-list > li {
+    width: calc((100% - 15px) / 4);
+    border: 1px solid #ccc;
+    padding: 5px;
+    cursor: pointer;
+}
+
+#gallery.view .gallery-list .thumbnail {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+#gallery.view .gallery-list .writer {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 0;
+}

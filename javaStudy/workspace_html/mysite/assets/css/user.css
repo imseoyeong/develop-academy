@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+/* 
+signup : 회원 > 회원가입
+login : 회원 > 로그인
+user_info : 회원 > 회원정보 
+*/
+#user .user-form {
+    width: 600px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+#user .user-form .form-inner {
+    width: 350px;
+    margin: 0 auto;
+}
+
+#user .user-form .input-title {
+    width: 60px;
+    text-align: right;
+    margin-right: 20px;
+}
+
+#user .user-form .btn-wrap {
+    margin-top: 40px;
+}

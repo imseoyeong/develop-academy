@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/* index : 메인 */
+#main {
+    display: flex;
+    gap: 40px;
+}
+
+#main .main-img {
+    width: 300px;
+    height: fit-content;
+    flex-shrink: 0;
+}
+
+#main .intro-txt {
+    font-size: 16px;
+    color: #444;
+}
+
+#main .go-guestbook {
+    display: inline-block;
+    margin-top: 40px;
+}
