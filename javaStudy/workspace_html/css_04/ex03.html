@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Position_ex03</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      
+      body {
+        padding: 50px;
+      }
+
+      .wrap {
+        width: 1000px;;
+        border: 1px solid #000;
+        margin: 0 auto;
+        /* position: relative; */
+      }
+
+      .box-red {
+        width: 300px;
+        height: 100px;
+        background: #f8a1a4;
+      }
+
+      .box-green {
+        width: 400px;
+        height: 100px;
+        background: #8fe49d;
+        position: absolute;
+        top: 30px;
+        left: 30px;
+      }
+
+      .box-blue {
+        width: 500px;
+        height: 100px;
+        background: #60c5f1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <div class="box-red">빨간상자</div>
+      <hr>
+      <div class="box-green">초록상자</div>
+      <hr>
+      <div class="box-blue">파란상자</div>
+    </div>
+  </body>
+</html>

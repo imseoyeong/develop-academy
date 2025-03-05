@@ -1,0 +1,41 @@
+#프로필등록 명령어
+git config --global user.name    -->name 확인
+git config --global user.email    -->email 확인
+
+git config --global user.name "name"    -->name 등록
+git config --global user.email  "email"  -->email 등록
+
+#깃허브 repository  -->레파지토리주소
+--------------------------------------------------------------------
+#프로젝트 폴더 이동 한후
+#로컬 최초세팅할때
+git init  -->초기화
+git add 파일명 --> stage area  담는다   git add .   git add -A
+git commit -m "과제1"   -->버전이 만들어짐
+
+git branch -M main -->브런치 명 변경
+git remote add origin  레파지토리주소  -->github의 저장소(Repository) 연결
+git push -u origin main -->  push   업로드
+
+
+#버전을 만들때
+git status  -->변화된 내용 확인
+git add 파일명 --> stage area  담는다   git add .   git add -A
+git commit -m "기능추가"   -->버전이 만들어짐
+git push -u origin main -->  push 업로드
+
+
+#깃허브에 있는 프로젝트를 최초로 받을때
+-cmd  창에서 프로젝트 디렉토리로 이동 후   workspace-sql
+git clone 레파지토리주소
+
+
+#깃허브-->로컬로 받을때
+git pull 레파지토리주소
+
+
+-------
+#dos 명령어
+cd 디렉토리명    -->디렉토리이동
+cls                     -->화면청소
+
