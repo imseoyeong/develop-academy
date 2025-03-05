@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+/* view_board : 일반게시판 리스트 */
+#board.view .board-list thead {
+  border-top: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
+  background: #ddd;
+}
+
+#board.view .board-list tbody tr {
+  border-bottom: 1px solid #ccc;
+}
+
+#board.view .board-list tr th {
+  padding: 7px;
+}
+
+#board.view .board-list tr td {
+  padding: 7px;
+  text-align: center;
+}
+
+#board.view .board-list tr td.text-left {
+  text-align: left;
+}
+
+#board.view .btn-wrap {
+  margin-top: 15px;
+}
+
+#board.view .btn {
+  width: 80px;
+}

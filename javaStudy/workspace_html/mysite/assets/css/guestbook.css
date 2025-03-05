@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+/* regular_guestbook : 일반방명록 */
+#guestbook.regular .guestbook-form {
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+#guestbook.regular .guestbook-form table tr td {
+  padding: 7px;
+  border: 1px solid #ccc;
+}
+
+#guestbook.regular .guestbook-form table tr td.btn-td {
+  text-align: center;
+}
+
+#guestbook.regular .guestbook-list-wrap {
+  margin-top: 30px;
+}
+
+#guestbook.regular .guestbook-list + .guestbook-list {
+  margin-top: 12px;
+}
+
+#guestbook.regular .guestbook-list tr td {
+  padding: 7px;
+  border: 1px solid #ccc;
+} 

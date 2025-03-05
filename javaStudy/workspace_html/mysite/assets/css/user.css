@@ -27,3 +27,7 @@ user_info : 회원 > 회원정보
 #user .user-form .btn-wrap {
     margin-top: 40px;
 }
+
+#user .user-form .input-group + .input-group {
+  margin-top: 20px;
+}

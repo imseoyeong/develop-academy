@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="../../assets/css/reset.css" />
     <link rel="stylesheet" href="../../assets/css/layout.css" />
-    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/guestbook.css" />
   </head>
 
   <body>
@@ -66,6 +66,92 @@
             </ol>
           </div>
           <!-- //page-title -->
+
+          <form class="guestbook-form" action="" method="">
+            <table class="wd-full">
+              <colgroup>
+                <col style="width: 100px">
+                <col>
+                <col style="width: 100px;">
+                <col>
+              </colgroup>
+              
+              <tbody>
+                <tr>
+                  <td>
+                    <label class="input-title" for="username">이름</label>
+                  </td>
+                  <td>
+                    <input class="custom-input wd-full" id="username" type="text" name="username" value="" />
+                  </td>
+                  <td>
+                    <label class="input-title" for="writepw">패스워드</label>
+                  </td>
+                  <td>
+                    <input class="custom-input wd-full" id="writepw" type="password" name="writepw" value="" />
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="4">
+                    <textarea name="content" rows="7"></textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="btn-td" colspan="4">
+                    <button class="btn" type="submit">등록</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+          <!-- //guestbook-form -->
+
+          <div class="guestbook-list-wrap">
+            <table class="guestbook-list wd-full">
+              <colgroup>
+                <col style="width: 120px">
+                <col>
+                <col>
+                <col style="width: 100px;">
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td>123456</td>
+                  <td>홍길동</td>
+                  <td>2025-01-01 00:00:00</td>
+                  <td>
+                    <button type="button">[삭제]</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="4">방명록 글입니다.</td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="guestbook-list wd-full">
+              <colgroup>
+                <col style="width: 120px">
+                <col>
+                <col>
+                <col style="width: 100px;">
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td>123456</td>
+                  <td>홍길동</td>
+                  <td>2025-01-01 00:00:00</td>
+                  <td>
+                    <button type="button">[삭제]</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="4">방명록 글입니다.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- //guestbook-list-wrap -->
+           
         </div>
         <!-- //content -->
       </div>

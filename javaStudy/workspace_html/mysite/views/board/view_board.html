@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="../../assets/css/reset.css" />
     <link rel="stylesheet" href="../../assets/css/layout.css" />
-    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/board.css" />
   </head>
 
   <body>
@@ -42,7 +42,7 @@
       </div>
     </header>
 
-    <section id="user" class="signup inner">
+    <section id="board" class="view inner">
       <div class="content-wrap">
         <aside class="side-bar">
           <h2>게시판</h2>
@@ -77,6 +77,127 @@
             </form>
           </search>
           <!-- //검색 -->
+
+          <table class="board-list wd-full mt-10">
+            <thead>
+              <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>글쓴이</th>
+                <th>조회수</th>
+                <th>작성일</th>
+                <th>관리</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>123</td>
+                <td class="text-left">게시판 게시글입니다.</td>
+                <td>홍길동</td>
+                <td>200</td>
+                <td>2025-01-01</td>
+                <td>
+                  <button type="button">[삭제]</button>
+                </td>
+              </tr>
+              <tr>
+                <td>123</td>
+                <td class="text-left">게시판 게시글입니다.</td>
+                <td>홍길동</td>
+                <td>200</td>
+                <td>2025-01-01</td>
+                <td>
+                  <button type="button">[삭제]</button>
+                </td>
+              </tr>
+              <tr>
+                <td>123</td>
+                <td class="text-left">게시판 게시글입니다.</td>
+                <td>홍길동</td>
+                <td>200</td>
+                <td>2025-01-01</td>
+                <td>
+                  <button type="button">[삭제]</button>
+                </td>
+              </tr>
+              <tr>
+                <td>123</td>
+                <td class="text-left">게시판 게시글입니다.</td>
+                <td>홍길동</td>
+                <td>200</td>
+                <td>2025-01-01</td>
+                <td>
+                  <button type="button">[삭제]</button>
+                </td>
+              </tr>
+              <tr>
+                <td>123</td>
+                <td class="text-left">게시판 게시글입니다.</td>
+                <td>홍길동</td>
+                <td>200</td>
+                <td>2025-01-01</td>
+                <td>
+                  <button type="button">[삭제]</button>
+                </td>
+              </tr>
+              <tr>
+                <td>123</td>
+                <td class="text-left">게시판 게시글입니다.</td>
+                <td>홍길동</td>
+                <td>200</td>
+                <td>2025-01-01</td>
+                <td>
+                  <button type="button">[삭제]</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- //board-list -->
+
+          <ul class="pagination">
+            <li>
+              <button type="button">◀</button>
+            </li>
+            <li>
+              <button type="button">1</button>
+            </li>
+            <li>
+              <button type="button">2</button>
+            </li>
+            <li>
+              <button type="button">3</button>
+            </li>
+            <li>
+              <button type="button">4</button>
+            </li>
+            <li class="on">
+              <button type="button">5</button>
+            </li>
+            <li>
+              <button type="button">6</button>
+            </li>
+            <li>
+              <button type="button">7</button>
+            </li>
+            <li>
+              <button type="button">8</button>
+            </li>
+            <li>
+              <button type="button">9</button>
+            </li>
+            <li>
+              <button type="button">10</button>
+            </li>
+            <li>
+              <button type="button">▶</button>
+            </li>
+          </ul>
+          <!-- //pagination -->
+
+          <div class="btn-wrap justify-end">
+            <a class="btn" href="../board/write_board.html">글쓰기</a>
+          </div>
         </div>
         <!-- //content -->
       </div>
