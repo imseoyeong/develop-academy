@@ -12,8 +12,8 @@
   border: 1px solid #ccc;
 }
 
-#guestbook.regular .guestbook-form table tr td.btn-td {
-  text-align: center;
+#guestbook.regular .guestbook-form table tr td.btn-td .btn {
+  margin: 0 auto;
 }
 
 #guestbook.regular .guestbook-list-wrap {
