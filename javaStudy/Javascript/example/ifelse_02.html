@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript : ifelse_02</title>
+</head>
+<body>
+  <script>
+    // ex1)
+    // let score = prompt("점수를 입력하세요");
+    // let score = parseInt(prompt("점수를 입력하세요"));
+    // if (score >= 60 && score <= 100) {
+    //   document.write("합격입니다.");
+    // } else {
+    //   document.write("불합격입니다.");
+    // }
+
+    // ex2)
+    // let name = prompt("이름을 입력하세요");
+    // let age = parseInt(prompt("나이를 입력하세요"));
+    // if (age >= 20) {
+    //   document.write(name + "님은 성인입니다.");
+    // } else {
+    //   document.write(name + "님은 미성년입니다.");
+    // }
+
+    //ex3) - ex2랑 결과값 같음
+    let name = prompt("이름을 입력하세요");
+    let age = parseInt(prompt("나이를 입력하세요"));
+    let adult = null;
+    if (age >= 20) {
+      adult = "성인"
+    } else {
+      adult = "미성년"
+    }
+    document.write(name + "님은 " + adult + "입니다.");
+
+  </script>
+</body>
+</html>

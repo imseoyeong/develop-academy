@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript : if_01</title>
+</head>
+<body>
+  <script>
+    //prompt - 문자를 입력할 수 있는 창이 뜸
+    // let rain = prompt("비가 오나요? (예/아니오)");
+    // if(rain==="예") {
+    //   document.write("우산을 든다. <hr>");
+    // }
+    // document.write("출근을 한다. <hr>");
+
+
+    // console.log 사용 - 아무것도 입력하지 않았을 시 false로 인식. 근데 위엗도 똑같은데?
+    // let rain = prompt("비가 오나요? (예/아니오)");
+    // console.log(rain)
+    // if(rain) {
+    //   document.write("우산을 든다. <hr>");
+    // }
+    // document.write("출근을 한다. <hr>");
+
+
+    // confirm - 확인/취소로만 창이 뜸
+    let rain = confirm("비가 오나요? (예/아니오)"); 
+    console.log(rain)
+    if(rain) {
+      document.write("우산을 든다. <hr>");
+    }
+    document.write("출근을 한다. <hr>");
+
+  </script>
+</body>
+</html>

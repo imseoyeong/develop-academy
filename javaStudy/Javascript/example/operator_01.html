@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript : operator_01</title>
+</head>
+<body>
+  <script>
+    // 산술 연산자 사용 예제
+    let num = 0;
+    num++;
+    document.write("num++ = " + num + "<hr>");
+    num = 2 * 3;
+    document.write("2 * 3 = " + num + "<hr>");
+    num = 2 ** 3;
+    document.write("2 ** 3 = " + num + "<hr>");
+    num = 7 / 3;
+    document.write("7 / 3 = " + num + "<hr>");
+    num = 7 % 3;
+    document.write("7 % 3 = " + num + "<hr>" + "<br><br>");
+
+    console.log("7 % 3 = " + num); //console.log -> 디버깅용, 화면에 미노출
+
+
+    // 비교 연산자 예제
+    let jud;
+    jud = 2 < 3;
+    document.write("2 < 3: " + jud + "<hr>"); //결과값: true
+    jud = 2 > 3;
+    document.write("2 > 3: " + jud + "<hr>"); //결과값: false
+    jud = 1 == true;
+    document.write("1 == true: " + jud + "<hr>"); //결과값: true
+    jud = 0 === false;
+    document.write("1 == true: " + jud + "<hr>" + "<br><br>"); //결과값: false
+
+
+    // 논리 연산자 예제
+    document.write("true && true: " + (true && true) + "<hr>"); //결과값: true
+    document.write("false && true: " + (false && true) + "<hr>"); //결과값: false
+    document.write("false || true: " + (false || true) + "<hr>"); //결과값: true
+    document.write("false || false: " + (false || false) + "<hr>"); //결과값: false
+    document.write("!true: " + !true + "<hr>"); //결과값: false
+    document.write("!false: " + !false + "<hr>" + "<br><br>"); //결과값: true
+
+
+    let score=65;
+    document.write("합격: " + (score >= 60) + "<hr>"); //결과값: true / 60이상이면 합격
+    document.write("합격: " + (score >= 60 && score <= 100)); //결과값: true / 60이상이고 100점 이하여야 합격
+  </script>
+  
+</body>
+</html>
