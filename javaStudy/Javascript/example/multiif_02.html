@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript : multiif_02</title>
+  </head>
+  <body>
+    <script>
+      let age = parseInt(prompt("나이를 입력하세요."));
+      let gender = prompt("성별을 입력하세요. (남/여)");
+
+      if(age < 0) {
+        document.write("올바른 나이를 입력해주세요. <br>");
+      } else {
+          if (age >= 20) {
+            document.write("성인입니다. <br>");
+            if (gender === "남") {
+              document.write("남자사우나는 오른쪽입니다. <br>");
+            } else if (gender === "여") {
+              document.write("여자사우나는 왼쪽입니다. <br>");
+            } else {
+              document.write("올바른 성별을 입력해주세요.")
+            }
+          } else {
+            document.write("미성년자입니다. <br>");
+          }
+        }
+
+      //나이가 0살보다 많은지 확인. 
+      //그게 아니라면 먼저 성인인지를 확인. 그게 아니라면 미성년자다. 선언
+      //성인이라면 -> 남자는 남자사우나 안내. 여자는 여자 사우나 안내. 둘 다 아니면 올바른 성별 입력 안내.
+      //그 외에는 미성년자입니다 안내.
+    </script>
+  </body>
+</html>

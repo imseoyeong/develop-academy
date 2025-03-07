@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript : multiif_01</title>
+  </head>
+  <body>
+    <script>
+      // ex01
+      // let coupon = parseInt(prompt("쿠폰 개수를 입력하시오"));
+      // document.write("쿠폰: " + coupon + "장<hr>");
+      // if (coupon >= 20) {
+      //   document.write("여행용 가방");
+      // } else if (coupon >= 10) {
+      //   document.write("다이어리");
+      // } else {
+      //   document.write("커피 한 잔");
+      // }
+
+      
+      // ex02
+      // let score = parseInt(prompt("점수를 입력하세요:(0~100)"));
+      // document.write("등급: ");
+      // if (score >= 90) {
+      //   document.write("A등급입니다.");
+      // } else if (score >= 80) {
+      //   document.write("B등급입니다");
+      // } else if (score >= 70) {
+      //   document.write("C등급입니다");
+      // } else if (score >= 60) {
+      //   document.write("D등급입니다");
+      // } else {
+      //   document.write("F등급입니다.")
+      // }
+
+
+      // 위 코드를 좀 더 정확하게
+      // let score = parseInt(prompt("점수를 입력하세요:(0~100)"));
+      // document.write("등급: ");
+      // if (score >= 90 && score <= 100) {
+      //   document.write("A등급입니다.");
+      // } else if (score >= 80 && score <= 89) {
+      //   document.write("B등급입니다");
+      // } else if (score >= 70 && score <= 79) {
+      //   document.write("C등급입니다");
+      // } else if (score >= 60 && score <= 69) {
+      //   document.write("D등급입니다");
+      // } else if (score >= 0 && score <= 59) {
+      //   document.write("F등급입니다.")
+      // } else {
+      //   document.write("잘못입력했습니다.");
+      // }
+
+
+      // 다중 if문
+      let score = parseInt(prompt("점수를 입력하세요:(0~100)"));
+      if (score < 0 || score > 100) {
+        document.write("잘못입력했습니다.");
+      } else {
+          if (score >= 60) {
+            document.write("합격입니다.<br>");
+            if (score >= 90 && score <= 100) {
+              document.write("A등급입니다.");
+            } else if (score >= 80 && score <= 89) {
+              document.write("B등급입니다");
+            } else if (score >= 70 && score <= 79) {
+              document.write("C등급입니다");
+            } else {
+              document.write("D등급입니다");
+            }
+          } else {
+            document.write("불합격입니다.");
+          }
+        }
+    </script>
+  </body>
+</html>

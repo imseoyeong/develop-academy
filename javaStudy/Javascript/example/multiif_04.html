@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript : multiif_04</title>
+</head>
+<body>
+  <script>
+    // [문제의 조건]
+    // 구매금액 50000원 이상이면 10% 할인
+    // 구매금액 30000원 이상이면 5% 할인
+    // vip면 5% 추가 할인
+    // 할인율 노출
+
+
+    // #1
+    // -------------------------------------------------------------------
+
+    // let buyPrice = parseInt(prompt("구매금액을 입력하세요."));
+    // let vip = prompt("vip입니까?(예/아니오)");
+
+    // if (buyPrice < 30000 || !(vip === "예" || vip === "아니오")) {
+    //   document.write("할인되지 않습니다.");
+    // } else {
+    //     if (buyPrice >= 50000) {
+    //       document.write("50000원 이상 할인이 적용되었습니다. <br>");
+    //       buyPrice = buyPrice * 0.9;
+    //     } else if (buyPrice >= 30000) {
+    //       document.write("30000원 이상 할인이 적용되었습니다. <br>");
+    //       buyPrice = buyPrice * 0.95;
+    //     }
+
+    //     if (vip === "예") {
+    //       document.write("vip 할인이 적용되었습니다. <br>");
+    //       buyPrice = buyPrice * 0.95;
+    //     }
+
+    //     document.write("💰최종 구매금액: " + buyPrice + "원");
+    // }
+
+    // -------------------------------------------------------------------
+    // [error]
+    // 1. 30000원 미만이고 vip라면 할인이 되어야 하는데 할인되지 않습니다. 문구 노출
+    // 2. 할인율 미노출
+
+
+
+
+
+    // #2
+    // -------------------------------------------------------------------
+
+    // let buyPrice = parseInt(prompt("구매금액을 입력하세요."));
+    // let vip = prompt("vip입니까?(예/아니오)");
+
+    // if (buyPrice >= 50000) {
+    //   document.write("10% 할인이 적용되었습니다. <br>");
+    //   buyPrice = buyPrice * 0.9;
+    // } else if (buyPrice >= 30000) {
+    //   document.write("5% 할인이 적용되었습니다. <br>");
+    //   buyPrice = buyPrice * 0.95;
+    // }
+
+    // if (vip === "예") {
+    //   document.write("vip 할인 5%가 적용되었습니다. <br>");
+    //   buyPrice = buyPrice * 0.95;
+    // }
+
+    // document.write("<br>💰최종 구매금액: " + buyPrice + "원");
+
+    // -------------------------------------------------------------------
+    // [과정]
+    // 1. 구매금액이 얼마인지 답변 받는다.
+    // 2. vip인지 답변 받는다.
+    // 3. 가격대가 얼마인지 확인한다.
+    // 4. vip인지 확인한다.
+    // 5. 최종 구매금액을 알려준다.
+
+
+    // [error]
+    // 1. 할인율 미노출
+
+
+
+
+
+    // #3
+    // -------------------------------------------------------------------
+
+    let buyPrice = parseInt(prompt("구매금액을 입력하세요."));
+    let vip = prompt("Vip 회원입니까?(예/아니오)");
+
+    let discount = 0;
+
+    if (buyPrice >= 50000) {
+      document.write("10% 할인이 되었습니다.<br>");
+      discount = discount + 0.1;
+    } else if (buyPrice >= 30000) {
+      document.write("5% 할인이 되었습니다.<br>");
+      discount = discount + 0.05;
+    }
+
+    if (vip === "예") {
+      document.write("Vip 5% 할인이 되었습니다.<br>");
+      discount = discount + 0.05;
+    }
+
+    // buyPrice = buyPrice * (1 - discount); // 아래의 let finalPrice와 같음.
+    let finalPrice = buyPrice * (1 - discount); //할인 된 최종 가격
+    
+    document.write("<br>💰최종 결제금액: " + finalPrice + "원<br>" + "할인율: " + parseInt(discount * 100) + "%");
+
+    // -------------------------------------------------------------------
+    // [과정]
+    // 1. 구매금액이 얼마인지 답변 받는다.
+    // 2. vip인지 답변 받는다.
+    // 3. 5만원 이상이면 10프로 할인
+    // 4. 3만원 이상이면 5프로 할인
+    // 5. vip라면 5프로 할인
+    // 6. 최종 결제금액을 구한다.
+    // 7. 최종 결제금액과 할인율 노출
+
+    
+    // [noti]
+    // - (discount * 100) + "%"); 만 적으면 할인율이 소수점까지 보이기 때문에 앞에 parseInt를 넣어주어 정수로 바꾸면 소수점은 잘리게 된다. 또 discount에 *100을 한 것은 딱 떨어지는 퍼센트율을 보여주기 위함이다.
+  </script>
+</body>
+</html>

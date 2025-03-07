@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+
+      // 티켓 기본값: 20000
+      // 어린이 할인: 50%
+      // 노인 할인: 30%
+      // 멤버쉽 할인: 10%
+      let age = parseInt(prompt("나이를 입력하세요."));
+      let isMember = prompt("멤버쉽입니까?(예/아니오)");
+
+      let price = 20000;
+      
+      //나이가 0보다 작고 멤버쉽이 예 이거나 아니오가 아닌 경우,  !관해서는..... ^^... 이해를 못했음
+      if (age < 0 || !(isMember === "예" || isMember === "아니오")) {
+        document.write("입력값이 잘못되었습니다.")
+      } else {
+          if (age <= 13) {
+            document.write("어린이 할인이 되었습니다. <br>");
+            price = price * 0.5; //50% 할인
+          } else if (age >= 60) {
+            document.write("노인 할인이 되었습니다. <br>");
+            price = price * 0.7; //30% 할인
+          }
+
+          if (isMember === "예") {
+            document.write("멤버쉽 할인이 되었습니다. <br>");
+            price = price * 0.9; //10% 할인
+          }
+
+          document.write("💰최종 입장료: " + price + "원");
+      }
+
+      
+      // 1. 기본 입장료를 우선 넣어놓는다
+      // 2. 나이가 13살 이하냐 물어본다. 
+      // 3. 13살 이하면 50% 할인된다.
+      // 4. 멤버쉽인지 물어본다.
+      // 5. 잘못된 입력값에 대한 코드.
+  </script>
+</body>
+</html>

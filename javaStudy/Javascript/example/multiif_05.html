@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript : multiif_05</title>
+  </head>
+  <body>
+    <script>
+      // [문제의 조건]
+      // 통장에 10만원 있다.
+      // 인출할 금액 입력.
+      // 5만원 이상은 큰 금액을 인출하셨습니다. 돈 아끼세요.
+      // 5만원 미만은 적은 금액을 인출하셨습니다.
+      // 10만원보다 많은 금액을 인출하면 잔액이 부족합니다.
+      // 남은 잔액 노출
+
+
+      // #1
+      // -------------------------------------------------------------------
+
+      // let account = 100000;
+      // let withdraw = parseInt(prompt("인출할 금액을 입력하세요."));
+
+      // if (withdraw < 0) {
+      //   document.write("금액 입력이 잘못되었습니다.");
+      // } else {
+      //   if (account < withdraw) {
+      //     document.write("잔액이 부족합니다.<br>");
+      //   } else {
+      //     if (withdraw >= 50000) {
+      //       document.write("큰 금액을 인출하셨습니다. 돈 아끼세요.<br>");
+      //     } else if (withdraw < 50000) {
+      //       document.write("적은 금액을 인출하셨습니다.<br>");
+      //     }
+
+      //     account = account - withdraw;
+
+      //     document.write("<br>💰남은 잔액: " + account + "원<br>");
+      //   }
+      // }
+
+      // -------------------------------------------------------------------
+      // [과정]
+      // 1. 10만원 통장 선언.
+      // 2. 인출할 금액이 얼마인지 답변 받는다.
+      // 3. 5만원 이상이면 큰 금액 인출 문구 노출
+      // 4. 5만원 미만이면 적은 금액 인출 문구 노출
+      // 5. 10만원 이상 인출 시 잔액 부족 문구 노출
+      // 6. 남은 잔액 출력
+
+
+      // [error]
+      // 1. 인출하는 금액이 10만원보다 많으면 잔액이 - 됨.
+      // 2. 인출하는 금액이 0원보다 적으면 잔액이 + 됨.
+
+
+
+
+
+      // #2
+      // -------------------------------------------------------------------
+
+      let account = 100000;
+      let withdraw = parseInt(prompt("인출할 금액을 입력하세요."));
+
+      if (withdraw < 0) {
+        document.write("금액 입력이 잘못되었습니다.");
+      } else {
+        if (withdraw > account) {
+          document.write("잔액이 부족합니다.");
+        } else {
+          if (withdraw >= 50000) {
+            document.write("큰 금액을 인출하셨습니다. 돈 아끼세요.<br>");
+          } else {
+            document.write("적은 금액을 인출하셨습니다.<br>");
+          }
+
+          account = account - withdraw;
+          document.write("<br>💰남은 잔액: " + account + "원<br>");
+        }        
+      }
+
+
+      // -------------------------------------------------------------------
+      // [noti]
+      // - 0원보다 적은 금액을 애초에 막으려면 제일 위에 막아두고 시작 : (withdraw < 0)
+    </script>
+  </body>
+</html>
