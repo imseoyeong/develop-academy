@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript : 250308_for_01</title>
+</head>
+<body>
+  <script>
+    // [문제의 조건]
+    // 
+
+    // #1
+    // -------------------------------------------------------------------
+
+      let sum = 0;
+      let num = parseInt(prompt("숫자를 입력하세요."));
+      let lastNum = 0;
+
+      for (let i=1; i<=num; i++) {
+        if (i%3===0 || i%5===0) {
+          lastNum = i;
+        } 
+      }
+
+      for (let i=1; i<=num; i++) {
+        if (i%3===0 || i%5===0) {
+          document.write(i);
+          if (i !== lastNum) {
+            document.write("+");
+          }
+          sum = sum+i; //총 합
+        } 
+      }
+
+      document.write("=" + sum);
+    
+    // -------------------------------------------------------------------
+    // [과정]
+    // 1. sum 초기화 
+    // 2. 숫자 입력 받기
+
+
+    // [error]
+    // 1. 내용
+
+
+    // [noti]
+    // - 
+
+
+
+
+    
+    // #2
+    // -------------------------------------------------------------------
+
+    
+
+    // -------------------------------------------------------------------
+  </script>
+</body>
+</html>
