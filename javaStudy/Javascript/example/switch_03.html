@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript : switch_03</title>
+</head>
+<body>
+  <script>
+    // #1
+    // -------------------------------------------------------------------
+
+    // let score = parseInt(prompt("점수를 입력하세요:(0~100)"));
+
+    // if (score < 0 || score > 100) {
+    //   document.write("점수를 잘못입력했습니다.");
+    // } else {
+    //   score = Math.floor(score/10);
+      
+    //   switch (score) {
+    //     case 10:
+    //     case 9:
+    //       document.write("A등급입니다.");
+    //       break;
+    //     case 8:
+    //       document.write("B등급입니다.");
+    //       break;
+    //     case 7:
+    //       document.write("C등급입니다.");
+    //       break;
+    //     case 6:
+    //       document.write("D등급입니다.");
+    //       break;
+    //     default:
+    //       document.write("불합격입니다.");
+    //   }
+    //   } 
+
+    // -------------------------------------------------------------------
+    // [noti]
+    // - 잘못 입력값을 우선 선언하고 switch문을 넣어야 0보다 크고 100보다 작은 값만 출력 가능.
+
+
+
+
+
+    // #2
+    // -------------------------------------------------------------------
+
+    // let score = parseInt(prompt("점수를 입력하세요:(0~100)"));
+
+    // if (score < 0 || score > 100) {
+    //   document.write("점수를 잘못입력했습니다.");
+    // } else {
+    //     if (score >= 60) {
+    //       document.write("합격입니다.<br>");
+    //       let num = Math.floor(score/10);
+
+    //       switch (num) {
+    //         case 10:
+    //         case 9:
+    //           document.write("A등급입니다.");
+    //           break;
+    //         case 8:
+    //           document.write("B등급입니다.");
+    //           break;
+    //         case 7:
+    //           document.write("C등급입니다.");
+    //           break;
+    //         case 6:
+    //           document.write("D등급입니다.");
+    //       }
+    //     } else {
+    //       document.write("불합격입니다.");
+    //     }
+    //   } 
+      
+    // -------------------------------------------------------------------
+    // [noti]
+    // - #1보다 좀 더 정확한 코드.
+    
+
+
+
+
+    // #3
+    // -------------------------------------------------------------------
+
+    let score = parseInt(prompt("점수를 입력하세요:(0~100)"));
+
+    if (score > 100) {
+      document.write("점수를 잘못입력했습니다.");
+    } else {
+        let num = Math.floor(score/10);
+
+        switch (num) {
+          case 10:
+          case 9:
+            document.write("합격입니다.<br>");
+            document.write("A등급입니다.");
+            break;
+          case 8:
+            document.write("합격입니다.<br>");
+            document.write("B등급입니다.");
+            break;
+          case 7:
+            document.write("합격입니다.<br>");
+            document.write("C등급입니다.");
+            break;
+          case 6:
+            document.write("합격입니다.<br>");
+            document.write("D등급입니다.");
+            break;
+          default:
+            document.write("불합격입니다.");
+        }
+      } 
+      
+    // -------------------------------------------------------------------
+    // [noti]
+    // - #2보다 좀 더 정확한 코드.
+  </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript : multiif_06</title>
+  </head>
+  <body>
+    <script>
+      // [문제의 조건]
+      // 연산자를 선택하세요.(덧셈/뺄셈/곱셈/나눗셈)
+      // 연산 번호를 잘못 선택 시 잘못선택했습니다. 출력
+      // 첫번째 숫자를 입력하세요.
+      // 두번째 숫자를 입력하세요.
+      // 연산의 결과 출력
+
+      // #1
+      // -------------------------------------------------------------------
+
+      // let calc = prompt("연산자를 선택하세요.(덧셈/뺄셈/곱셈/나눗셈)");
+      // let num1 = parseInt(prompt("첫번째 숫자를 입력하세요."));
+      // let num2 = parseInt(prompt("두번째 숫자를 입력하세요."));
+
+      // if (calc === "덧셈") {
+      //   document.write("연산의 결과: " + num1 + "+" + num2 + "=" + (num1 + num2));
+      // } else if (calc === "뺄셈") {
+      //   document.write("연산의 결과: " + num1 + "-" + num2 + "=" + (num1 - num2));
+      // } else if (calc === "곱셈") {
+      //   document.write("연산의 결과: " + num1 + "*" + num2 + "=" + (num1 * num2));
+      // } else if (calc === "나눗셈") {
+      //   document.write("연산의 결과: " + num1 + "/" + num2 + "=" + (num1 / num2));
+      // } else {
+      //   document.write("잘못선택했습니다.");
+      // }
+
+      // -------------------------------------------------------------------
+      // [과정]
+      // 1. 내용
+
+      // [error]
+      // 1. 연산자를 잘못 선택했을 때도 숫자 입력칸이 뜸.
+
+      // [noti]
+      // - 내용
+
+      // #2
+      // -------------------------------------------------------------------
+
+      // let calc = prompt("연산자를 선택하세요.(덧셈/뺄셈/곱셈/나눗셈)");
+
+      // if (calc !== "덧셈" && calc !== "뺄셈" && calc !== "곱셈" && calc !== "나눗셈") {
+      //   document.write("잘못선택했습니다.");
+      // } else {
+      //   let num1 = parseInt(prompt("첫번째 숫자를 입력하세요."));
+      //   let num2 = parseInt(prompt("두번째 숫자를 입력하세요."));
+
+      //   if (calc === "덧셈") {
+      //     document.write("연산의 결과: " + num1 + "+" + num2 + "=" + (num1 + num2));
+      //   } else if (calc === "뺄셈") {
+      //     document.write("연산의 결과: " + num1 + "-" + num2 + "=" + (num1 - num2));
+      //   } else if (calc === "곱셈") {
+      //     document.write("연산의 결과: " + num1 + "*" + num2 + "=" + (num1 * num2));
+      //   } else if (calc === "나눗셈") {
+      //     document.write("연산의 결과: " + num1 + "/" + num2 + "=" + (num1 / num2));
+      //   }
+      // }
+
+      // -------------------------------------------------------------------
+
+      // #3
+      // -------------------------------------------------------------------
+
+      let calc = parseInt(prompt("연산자를 선택하세요.(1.덧셈/2.뺄셈/3.곱셈/4.나눗셈)"));
+
+      if (calc < 1 || calc > 4) {
+        document.write("잘못선택했습니다.");
+      } else {
+        let num1 = parseInt(prompt("첫번째 숫자를 입력하세요."));
+        let num2 = parseInt(prompt("두번째 숫자를 입력하세요."));
+				let result = 0;
+
+        if (calc === 1) {
+					result = num1 + num2
+        } else if (calc === 2) {
+					result = num1 - num2
+        } else if (calc === 3) {
+					result = num1 * num2
+        } else {
+					result = num1 / num2
+        }
+				document.write("연산의 결과: " + result);
+      }
+
+      // -------------------------------------------------------------------
+      // [noti]
+      // - && : calc가 1보다 작으면서 4보다 클 때 잘못선택했습니다 출력
+      // - || : calc가 1보다 작거나 4보다 클 때 잘못선택했습니다 출력
+    </script>
+  </body>
+</html>

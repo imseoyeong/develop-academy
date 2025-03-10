@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript : while_01</title>
+</head>
+<body>
+  <script>
+    // [1~10까지의 총 합 구하기]
+
+
+    // #1
+    // -------------------------------------------------------------------
+
+    // let number = 0;
+    // let sum = 0;
+
+    // while (number < 10) { //number가 10보다 작을동안
+    //   number++; //number = number + 1; 와 같음
+    //   sum = sum + number; // 1+2+3+4+5+6+7+8+9+10
+    // }
+
+    // document.write("1~10까지의 합계: " + sum + "<br>");
+
+
+    // -------------------------------------------------------------------
+    // [noti]
+    // - let number; 로 하면 undefinded이라서 증가가 불가능함.
+
+
+
+
+    
+    // #2
+    // -------------------------------------------------------------------
+
+    // let number = 1;
+    // let sum = 0;
+
+    // while (number <= 10) { 
+    //   sum = sum + number;
+    //   number++; 
+    // }
+
+    // document.write("1~10까지의 합계: " + sum + "<br>");
+
+    // -------------------------------------------------------------------
+    // [noti]
+    // - sum이 number++보다 앞에 선언이 되면 let number가 0이 아닌 1로 시작하고 number < 10가 아닌 number <= 10
+
+
+
+
+    
+    // #3 : 1~100까지의 홀수, 짝수의 합계
+    // -------------------------------------------------------------------
+
+    // let number = 0;
+    // let evenSum = number%2 === 0;
+    // let oddSum = number%2 === 1;
+
+    // while (number < 100) { 
+    //   number++; 
+    //   evenSum = evenSum + number;
+    //   oddSum = oddSum + number;
+    // }
+
+    // document.write("1~100까지의 짝수의합계: " + evenSum + "<br>");
+    // document.write("1~100까지의 홀수의합계: " + oddSum);
+
+
+    let number = 0;
+    let evenSum = 0;
+    let oddSum = 0;
+
+    while (number < 100) { 
+      number++; 
+
+      if (number%2 === 0) {
+        evenSum = evenSum + number;
+      } else {
+        oddSum = oddSum + number;
+      }
+    }
+
+    document.write("1~100까지의 짝수의합계: " + evenSum + "<br>");
+    document.write("1~100까지의 홀수의합계: " + oddSum);
+
+    // -------------------------------------------------------------------
+    // [noti]
+    // - 
+  </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript : multiif_07</title>
+</head>
+<body>
+  <script>
+    // [문제의 조건]
+    // 아이디, 비밀번호 변수에 저장
+    // 아이디 입력
+    // 비밀번호 입력
+    // 아이디 틀릴 시 아이디가 틀렸습니다.
+    // 비밀번호 틀릴 시 비밀번호 틀렸습니다.
+    // 둘 다 맞으면 로그인에 성공했습니다.
+
+
+    // #1
+    // -------------------------------------------------------------------
+     
+    let userId = "ttolong";
+    let userPw = "1234";
+
+    let inputId = prompt("아이디를 입력하세요.");
+    let inputPw = prompt("비밀번호를 입력하세요.");
+
+    if (inputId === userId && inputPw === userPw) {
+      document.write("로그인에 성공했습니다.");
+    } else {
+      if (inputId !== userId && inputPw !== userPw) {
+        document.write("아이디와 비밀번호가 틀렸습니다.");
+      } else if (inputId !== userId) {
+        document.write("아이디가 틀렸습니다.");
+      } else {
+        document.write("비밀번호가 틀렸습니다.");
+      }
+    }
+
+    // -------------------------------------------------------------------
+    // [과정]
+    // 1. 내용
+
+
+    // [error]
+    // 1. 내용
+
+
+    // [noti]
+    // - 내용
+
+
+
+
+    
+    // #2
+    // -------------------------------------------------------------------
+
+    // let userId = "ttolong";
+    // let userPw = "1234";
+
+    // let inputId = prompt("아이디를 입력하세요.");
+    // let inputPw = prompt("비밀번호를 입력하세요.");
+
+    // if (inputId === userId) {
+    //   if (inputPw === userPw) {
+    //     document.write("로그인에 성공했습니다.");
+    //   } else {
+    //     document.write("비밀번호가 틀렸습니다.");
+    //   }
+    // } else {
+    //   document.write("아이디가 틀렸습니다.");
+    // }
+
+    // -------------------------------------------------------------------
+  </script>
+</body>
+</html>

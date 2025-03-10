@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript : 250310_while_01</title>
+</head>
+<body>
+  <script>
+    // [문제의 조건]
+    // 사용자로부터 숫자를 입력받아, 그 숫자만큼 별을 출력
+    // 사용자가 입력한 숫자만큼 별이 한개씩 늘어나야 함. 
+
+
+    // #1
+    // -------------------------------------------------------------------
+
+    let star = "*";
+    let num = parseInt(prompt("숫자를 입력하세요"));
+    
+    while (i < num) {
+      i++;
+      star = star + i;
+      document.write(star);
+    }
+
+    document.write("<br>");
+
+//아직 못풀었삼
+
+    // -------------------------------------------------------------------
+    // [noti]
+    // - let number; 로 하면 undefinded이라서 증가가 불가능함.
+  </script>
+</body>
+</html>
