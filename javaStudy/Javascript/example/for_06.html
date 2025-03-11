@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript : for_06</title>
+  </head>
+  <body>
+    <script>
+        // [문제의 조건]
+        // 2부터 100까지 소수의 개수 출력
+        // 소수? 1과 자기 자신 이외의 숫자로 나누어 지지 않는 수 
+
+
+        // #1 
+        // -------------------------------------------------------------------
+
+        let count = 0; //소수의 개수 저장 변수
+
+        for (let i=2; i<=100; i++) {
+            let isPrime = 1; //true(1)로 우선 설정
+
+            for (let j=2; j<i; j++) {
+                if (i%j === 0) { //만약 i가 j로 나누어 떨어지면 약수가 하나 더 있다는 뜻.
+                    isPrime = 0; //소수가 아니므로 false(0)으로 변경.
+                }
+            }
+            
+            count = count + isPrime; //isPrime이 1이면 소수니깐 count + 1, 0이면 소수가 아니니 count가 올라가지 않음. 
+        }
+
+        document.write("2~100 사이의 소수는 몇 개~?: " + count + "개");
+
+        // -------------------------------------------------------------------
+        // [코드 요약]
+        // 1. isPrime을 1(true)로 설정해놓고
+        // 2. 2부터 i-1까지 나누어지는지 검사. j<i 부분이 i-1까지 나누어보는 부분.
+        // 3. 한 번이라도 나누어 떨어지면 isPrime=0 즉 false가 되면 소수가 아닌 것이다!!!
+        // 4. 그리고나서 isPrime이 1(true)라면 count가 증가 (소수 개수를 카운트)
+
+
+        // [noti]
+        // - ㅠㅠ......알겠는데 모르겄노..........
+    </script>
+  </body>
+</html>

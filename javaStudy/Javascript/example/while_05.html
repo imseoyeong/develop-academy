@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript : while_05</title>
+  </head>
+  <body>
+    <script> 
+        // [문제의 조건]
+        // 비밀번호를 입력하세요.
+        // 비밀번호 설정 후 입력 후 맞으면 로그인에 성공했습니다.
+        // 잘못 입력 시 비밀번호를 입력하세요 문구 재생성
+        // 3회 이상 실패 시 접근 차단 문구 출력
+        
+        
+        // #1
+        // -------------------------------------------------------------------
+
+        let count = 0;
+        const userPw = "1111";
+
+        while (true) {
+            let inputPw = prompt("비밀번호를 입력하세요.");
+            count++;
+
+            if (inputPw === userPw) {
+                document.write("로그인에 성공했습니다.");
+                break;
+            }
+
+            if (count === 3) {
+                document.write("3회 실패! 접근이 차단되었습니다.");
+                break;
+            }
+        }
+
+        // ------------------------------------------------------------------- 
+        // [과정]
+        // 1. 비밀번호 입력 prompt 출력
+        // 2. 카운트를 세준다. 
+        // 3. 입력받은 비밀번호가 내 비밀번호랑 맞느냐 물어보고, 맞으면 break로 밖으로 나간다. (반복하지 않는다.)
+        // 4. 세 번 반복했을 때 접속 차단 후 break 써서 밖으로 나간다.
+        
+        
+        // [noti]
+        // - 흠.......if를 처음에 쓰는 것이 아니고 애초에 모든 과정 자체가 반복이 되어야 해서 처음부터 while문을 사용해야 한다. 
+    </script>
+  </body>
+</html>

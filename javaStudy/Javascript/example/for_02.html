@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript : for_02</title>
+
+    <style>
+        img {
+            width: 100px;
+        }
+    </style>
+  </head>
+  <body>
+    <script>
+        // [while_01.html -> for문으로 바꿔보기]
+
+
+        // #1 
+        // -------------------------------------------------------------------
+
+        let evenSum = 0;
+        let oddSum = 0;
+
+        for (let i = 0; i <= 100; i++) {
+            if (i%2 === 0) {
+                evenSum = evenSum + i;
+                document.write(i + " "); //짝수 나타내기
+            } else {
+                oddSum = oddSum + i;
+            }
+        }
+
+        document.write("<br>1~100까지의 짝수의합계: " + evenSum + "<br>");
+        document.write("1~100까지의 홀수의합계: " + oddSum);
+
+        // -------------------------------------------------------------------
+    </script>
+  </body>
+</html>

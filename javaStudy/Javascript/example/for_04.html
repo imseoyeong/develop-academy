@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript : for_04</title>
+  </head>
+  <body>
+    <script>
+        // [다중 반복문으로 구구단 출력]
+
+
+        // #1 
+        // -------------------------------------------------------------------
+
+        for (let dan = 2; dan < 10; dan++) {
+            document.write(dan + "단: ");
+            
+            for (let num = 1; num < 10; num++) {
+                document.write(dan + "X" + num + "=" + dan * num + " "); //2X1=2 출력
+            }
+
+            document.write("<hr>");
+        }
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 바깥쪽 for문은 구구단의 단 / 안쪽 for문은 각 단에서 곱하는 수 (1~9)
+
+
+
+
+
+        // #2 숫자 순차적으로 늘리기
+        // -------------------------------------------------------------------
+
+        document.write("<br><br><br><br> <h1>숫자 순차적으로 늘리기</h1>");
+
+        for (let i=1; i<=5; i++) {
+            for (let j=1; j<=i; j++) {
+                document.write(j + " ");
+            }
+            document.write("<br>");
+        }
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 바깥쪽 for문의 반복 횟수 5번. 왜냐면 5줄이니깐!
+        // - 한 줄에 표시되는게 안쪽 for문. ex) 첫번재 줄- 숫자 1개 / 두번째 줄- 숫자 2개....
+
+        // - 안쪽 for는 자기 할 일이 끝나서 다시 1로 돌아감. (초기화 된다.)
+        // - 안쪽 for문의 내용이 화면에 출력된다고 생각하면 편하다.
+
+
+
+
+        // #3 숫자 순차적으로 줄이기
+        // -------------------------------------------------------------------
+
+        document.write("<br><br> <h1>숫자 순차적으로 줄이기</h1>");
+
+        //i를 바꾸는 방법
+        for (let i=5; i>=1; i--) {
+            for (let j=1; j<=i; j++) {
+                document.write("*" + " ");
+            }
+            document.write("<br>");
+        }
+
+
+        //j를 바꾸는 방법1
+        for (let i=1; i<=5; i++) {
+            for (let j=1; j<=(6-i); j++) {
+                document.write("*" + " ");
+            }
+            document.write("<br>");
+        }
+
+
+        //j를 바꾸는 방법2
+        for (let i=1; i<=5; i++) {
+            for (let j=5; j>=i; j--) {
+                document.write("*" + " ");
+            }
+            document.write("<br>");
+        }
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 
+    </script>
+  </body>
+</html>

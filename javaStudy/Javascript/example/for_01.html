@@ -3,40 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Javascript : 파일명</title>
+    <title>Javascript : for_01</title>
+
+    <style>
+        img {
+            width: 100px;
+        }
+    </style>
   </head>
   <body>
     <script>
-        // [문제의 조건]
-        // 문제의 내용 적기
+        // [while과 for 비교]
 
 
-        // #1
+        // #1 while문
         // -------------------------------------------------------------------
 
-        let number = 0;
-        let text = parseInt(prompt("내용"));
+        document.write("<h1>while</h1>")
 
-        document.write("타이틀: " + number);
+        let i = 1;
+        while (i < 5) {
+            document.write("<img src='../img/sample01.png'>");
+            i++;
+        }
 
         // -------------------------------------------------------------------
-        // [과정]
-        // 1. 내용
-
-
-        // [error]
-        // 1. 내용
-
-        
-        // [noti]
-        // - 내용
 
 
 
 
         
-        // #2
+        // #2 for문
         // -------------------------------------------------------------------
+
+        document.write("<br><br> <h1>for</h1>")
+        
+        for (let k = 1; k < 5; k++) {
+            document.write("<img src='../img/sample01.png'>");
+        }
 
         // -------------------------------------------------------------------
     </script>

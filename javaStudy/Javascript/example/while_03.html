@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript : while_03</title>
+</head>
+<body>
+  <script>
+    // [문제]
+    // 숫자를 입력하세요. 5번 반복
+    // 내가 입력한 숫자들의 합계 출력
+
+
+    // #1
+    // -------------------------------------------------------------------
+
+    // let cnt = 0;
+    // let sum = 0;
+    
+    // while (cnt < 5) { 
+    //   cnt++;
+    //   let inputNum = parseInt(prompt(cnt + "번째 숫자를 입력하세요."));
+    //   sum = sum + inputNum;
+    // }
+
+    // document.write("입력받은 숫자의 합계: " + sum);
+
+
+    // -------------------------------------------------------------------
+    // [noti]
+    // - 처음에 prompt를 5개 적었었는데 그렇게 하면 안 되고 이 과정 자체를 5번 반복한다.... 라고 사고를 해야한다..ㅎㅎㅎ...
+
+
+
+
+
+    // [문제]
+    // 몇 개의 숫자를 입력하시겠습니까?
+    // 그 숫자만큼 반복
+    // 내가 입력한 숫자들의 합계 출력
+
+
+    // #2
+    // -------------------------------------------------------------------
+
+    let cnt = 0;
+    let sum = 0;
+    let numCount = parseInt(prompt("몇 개의 숫자를 입력하시겠습니까?"));
+
+    while (cnt < numCount) {
+      cnt++;
+      let inputNum = parseInt(prompt(cnt + "번째 숫자를 입력하세요."));
+      sum = sum + inputNum;
+    }
+
+    document.write("입력받은 숫자의 합계: " + sum);
+
+    // -------------------------------------------------------------------
+  </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript : for_05</title>
+  </head>
+  <body>
+    <script>
+        // [문제의 조건]
+        // 10~30까지의 약수 구하기
+        // 10: 2 5
+        // 11: 
+        // 12: 2 3 4 6
+        // 13:
+        // 14: 2 7
+        // 15: 3 5
+        // .. 30까지
+
+
+        // #1 
+        // -------------------------------------------------------------------
+
+        // for (let i=10; i<=30; i++) {
+        //     document.write(i + "의 약수: ");
+
+        //     for (let j=2; j<i; j++) {
+        //         if (i%j === 0) {
+        //             document.write(j + " ");
+        //         }
+        //     }
+        //     document.write("<br><br>");
+        // }
+
+        // 쓸데없는 나누기를 하지 않아도 된다.
+        for (let i=10; i<=30; i++) {
+            document.write(i + "의 약수: ");
+
+            for (let j=2; j<=(i/2); j++) {
+                if (i%j === 0) {
+                    document.write(j + " ");
+                }
+            }
+            document.write("<br><br>");
+        }
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 10부터 시작이니깐 i=10이 되어야 한다.
+        // - (i%j === 0): 약수 구하는 공식: i가 j로 나누어 떨어지면 약수
+        // - (let j=1; j<=i; j++) 로 하면 1과 자기 자신도 나오기 때문에 (let j=2; j<i; j++) 로 짠다.
+        // - j<=(i/2): 반절을 나눠서 쓸데없는 나누기를 하지 않아도 된다. 최적화 하는 거라고 생각하면 됨. ex) 30은 15 이상으로 나눌 일이 없으니깐!!!! 이해했냐..
+        
+    </script>
+  </body>
+</html>

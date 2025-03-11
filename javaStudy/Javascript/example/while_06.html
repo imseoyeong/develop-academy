@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript : while_06</title>
+  </head>
+  <body>
+    <script> 
+        // [문제의 조건]
+        // 
+        
+        
+        // #1
+        // -------------------------------------------------------------------
+
+        while (true) {
+            let score = parseInt(prompt("점수를 입력하세요.(0~100)"));
+            
+            if(score < 0 || score > 100) {
+                confirm("0~100 사이의 점수를 입력해 주세요.");
+                continue;
+            }
+
+            if(score >= 60) {
+                document.write("합격입니다.");
+                break;
+            } else {
+                document.write("불합격입니다.");
+            }
+
+            break;
+        }
+
+        // ------------------------------------------------------------------- 
+        // [noti]
+        // - while (true) : 꼭 무한반복이라기 보다, 몇 번 반복할 지 모르고 상황에 따라 나갈거다. 라고 이해하면 된다. 
+        // - 점수 입력한 값이 (score < 0 || score > 100) 조건에 해당되지 않으면 continue가 속해있는 반복문의 처음으로 가서 다시 입력하게 한다. (반복)
+    </script>
+  </body>
+</html>

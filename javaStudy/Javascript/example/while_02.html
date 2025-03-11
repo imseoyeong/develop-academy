@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript : while_02</title>
+</head>
+<body>
+  <script>
+    // [문제]
+    // 1~100까지 수 중에 3의 배수가 몇 개일까?
+
+
+    // #1
+    // -------------------------------------------------------------------
+
+    // let number = 1;
+    // let count = 0;
+    
+    // while (number <= 100) { 
+    //   if (number%3 === 0) {
+    //     count++;
+    //     document.write(number + " <br>");
+
+    //   } 
+    //   number++;
+    // }
+
+    // document.write("3의 배수의 개수: " + count);
+
+
+    // -------------------------------------------------------------------
+    // [noti]
+    // - if 안에 있는 값은 3의 배수일 때만 증가하므로, 3의 배수가 아닐 경우 갇혀버리게 된다. 그래서 number는 if 밖으로 빼서 항상 증가하여 무한 루프를 방지 시켜야 함.
+    // - count는 3의 배수를 만날 때만 증가하도록 if문 안에 넣는다. 
+
+
+
+
+    
+    // #2
+    // -------------------------------------------------------------------
+
+    let number = 0;
+    let count = 0;
+    let sum = 0;
+
+    while (number < 100) {
+      number++;
+
+      if (number%3 === 0) {
+        count++;
+        sum = sum + number;
+        document.write(number + " ");
+      }
+    }
+
+    document.write("<br>3의 배수의 개수: " + count);
+    document.write("<br>3의 배수의 합계: " + sum);
+
+
+
+    // -------------------------------------------------------------------
+    // [noti]
+    // - #1과 달라진 점 : nuber의 초기값, number++의 위치, number < 100 / number <= 100 
+  </script>
+</body>
+</html>
