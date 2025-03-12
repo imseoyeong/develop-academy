@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript : function_05</title>
+  </head>
+  <body>
+    <script>
+        // [multiif_03.html -> 함수로 바꾸기]
+
+
+        // #1
+        // -------------------------------------------------------------------
+
+        // function discount(age, isMember) {
+        //     let price = 20000;
+
+        //     if (age <= 13) {
+        //         document.write("어린이 할인이 되었습니다. <br>");
+        //         price = price * 0.5;
+        //     }
+
+        //     if (age >= 60) {
+        //         document.write("노인 할인이 되었습니다. <br>");
+        //         price = price * 0.7;
+        //     }
+            
+        //     if (isMember === "예") { 
+        //         document.write("멤버쉽 할인이 되었습니다. <br>");
+        //         price = price * 0.9; 
+        //     } 
+
+        //     return price;
+        // }
+
+        // let age = parseInt(prompt("나이를 입력하세요."));
+        // let isMember = prompt("멤버쉽입니까?(예/아니오)");
+
+        // if (age < 0 || !(isMember === "예" || isMember === "아니오")) {
+        //     document.write("입력값이 잘못되었습니다.");
+        // } else {
+        //     let totalPrice = discount(age, isMember);
+        //     document.write("💰최종 입장료: " + totalPrice + "원");
+        // }
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 
+
+
+
+
+        
+        // #2
+        // -------------------------------------------------------------------
+
+        function discount(age, isMember) {
+            let price = 20000;
+
+            if (age <= 13) {
+                document.write("어린이 할인이 되었습니다. <br>");
+                price = price * 0.5;
+            }
+
+            if (age >= 60) {
+                document.write("노인 할인이 되었습니다. <br>");
+                price = price * 0.7;
+            }
+            
+            if (isMember === "예") { 
+                document.write("멤버쉽 할인이 되었습니다. <br>");
+                price = price * 0.9; 
+            } 
+
+            return price;
+        }
+
+        while (true) {
+            let age = parseInt(prompt("나이를 입력하세요."));
+            let isMember = prompt("멤버쉽입니까?(예/아니오)");
+
+            if (age < 0 || !(isMember === "예" || isMember === "아니오")) {
+                confirm("입력값이 잘못되었습니다.");
+                continue;
+            }
+
+            let totalPrice = discount(age, isMember);
+            document.write("💰최종 입장료: " + totalPrice + "원");
+            break;
+        }
+   
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 
+    </script>
+  </body>
+</html>

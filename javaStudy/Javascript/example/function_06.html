@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript : function_06</title>
+  </head>
+  <body>
+    <script>
+        // [multiif_08.html -> 함수로 바꾸기]
+
+
+        // #1
+        // -------------------------------------------------------------------
+
+        function calcFee(distance, hour) {
+            let baseFee = 3000;
+            let perKmFee = 0;
+
+            if(distance <= 10) {
+                perKmFee = 500;
+            } else {
+                perKmFee = 700;
+            }
+
+            let totalFee = baseFee + (distance * perKmFee);
+
+            if (hour>=22 || hour<=6) { 
+                totalFee = totalFee * 1.2;
+            }
+
+            return totalFee;
+        }
+
+        while (true) {
+            let distance = parseInt(prompt("이동거리를 입력하세요.(km)"));
+            let hour = parseInt(prompt("현재 시간을 입력하세요.(0~23시)"));
+
+            if (distance < 1 || hour < 0 || hour > 23) {
+                confirm("입력값이 잘못되었습니다.");
+                continue;
+            }
+
+            let totalPrice = calcFee(distance, hour);
+            document.write("🚕최종 택시 요금: " + totalPrice + "원");
+            break;
+        }
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 
+    </script>
+  </body>
+</html>
