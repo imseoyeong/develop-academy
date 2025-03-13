@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript : eventhandler_03</title>
+  </head>
+  <body>
+    <script>
+        // [전역변수와 지역변수 차이 알아보기]
+
+        // #1
+        // -------------------------------------------------------------------
+
+        let gb = "전역";
+
+        function test() {
+            let lo = "지역";
+            document.write("함수 안 gb = " + gb + "<hr>");
+            document.write("함수 안 lo = " + lo + "<hr>");
+        }
+
+        test();        
+        document.write("함수 바깥 gb = " + gb + "<hr>");
+        document.write("함수 바깥 lo = " + lo + "<hr>");
+
+        // -------------------------------------------------------------------
+        // [과정]
+        // 1. 내용
+
+        // [noti]
+        // - 함수 안에서 lo가 만들어졌기 때문에 (함수 바깥 lo)는 함수 밖에서는 실행이 되지 않는다. 
+    </script>
+  </body>
+</html>

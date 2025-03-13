@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript : function_07</title>
+  </head>
+  <body>
+    <script>
+        // [multiif_06.html -> 함수로 바꾸기]
+
+
+        // #1
+        // -------------------------------------------------------------------
+
+        function calc(inputCalc, num1, num2) {
+            let result = 0;
+
+            if (inputCalc === 1) {
+                result = num1 + num2
+            } else if (inputCalc === 2) {
+                result = num1 - num2
+            } else if (inputCalc === 3) {
+                result = num1 * num2
+            } else {
+                result = num1 / num2
+            }
+
+            return result;
+        }
+        
+        while (true) {
+            let inputCalc = parseInt(prompt("연산자를 선택하세요.(1.덧셈/2.뺄셈/3.곱셈/4.나눗셈)"));
+
+            if (inputCalc < 1 || inputCalc > 4) {
+                confirm("잘못선택했습니다.");
+                continue;
+            }
+
+            let num1 = parseInt(prompt("첫번째 숫자를 입력하세요."));
+            let num2 = parseInt(prompt("두번째 숫자를 입력하세요."));
+
+            let calcResult = calc(inputCalc, num1, num2); //함수의 매개변수랑 순서가 같아야 한다.
+            document.write("연산의 결과: " + calcResult);
+            break;
+        }
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 
+    </script>
+  </body>
+</html>

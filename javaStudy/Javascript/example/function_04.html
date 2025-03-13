@@ -54,6 +54,47 @@
         // #2
         // -------------------------------------------------------------------
 
+        // function getGrade(score) {
+        //     let num = Math.floor(score/10);
+
+        //     switch (num) {
+        //     case 10:
+        //     case 9:
+        //         return "A등급입니다.";
+        //     case 8:
+        //         return "B등급입니다.";
+        //     case 7:
+        //         return "C등급입니다.";
+        //     case 6:
+        //         return "D등급입니다.";
+        //     }
+        // }
+    
+        // let score = parseInt(prompt("점수를 입력하세요:(0~100)"));
+
+        // if (score < 0 || score > 100) {
+        //     document.write("점수를 잘못입력했습니다.");
+        // } else {
+        //     if (score >= 60) {
+        //         document.write("합격입니다.<br>");
+        //         let grade = getGrade(score);
+        //         document.write(grade);
+        //     } else {
+        //         document.write("불합격입니다.");
+        //     }
+        // }
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 
+        
+
+
+
+        
+        // #3
+        // -------------------------------------------------------------------
+
         function getGrade(score) {
             let num = Math.floor(score/10);
 
@@ -69,12 +110,16 @@
                 return "D등급입니다.";
             }
         }
-    
-        let score = parseInt(prompt("점수를 입력하세요:(0~100)"));
 
-        if (score < 0 || score > 100) {
-            document.write("점수를 잘못입력했습니다.");
-        } else {
+
+        while (true) {
+            let score = parseInt(prompt("점수를 입력하세요:(0~100)"));
+
+            if (score < 0 || score > 100) {
+                confirm("점수를 잘못입력했습니다.");
+                continue;
+            }  
+
             if (score >= 60) {
                 document.write("합격입니다.<br>");
                 let grade = getGrade(score);
@@ -82,11 +127,11 @@
             } else {
                 document.write("불합격입니다.");
             }
-        }
+
+            break;
+        }  
 
         // -------------------------------------------------------------------
-        // [noti]
-        // - 
     </script>
   </body>
 </html>
