@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript : string_04</title>
+
+    <style>
+      textarea {
+        width: 500px;
+        height: 100px;
+        resize: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>단어 첫 글자 대문자로 변환</h1>
+
+      <textarea id="content" placeholder="문장을 입력하세요."></textarea><br />
+      <button type="button" onclick="upperString()">변환</button>
+
+      <h2>결과:</h2>
+      <p id="result"></p>
+    </div>
+
+    <script>
+        // [문제의 조건]
+        // 공백을 기준으로 단어 첫 글자 대문자로 변환
+
+
+        // #1
+        // -------------------------------------------------------------------
+
+        // function upperString() {
+        //     const text = document.getElementById("content").value;
+
+        //     let result = text.split(" ");
+
+        //     for (i = 0; i < result.length; i++) {
+        //      result[i] = result[i].charAt(0).toUpperCase() + result[i].slice(1);
+        //     }
+
+        //     const resultStr = document.getElementById("result");
+        //     resultStr.innerText = result.join(" ");
+        // }
+
+        // -------------------------------------------------------------------
+        // [과정]
+        // 1.
+
+        // [noti]
+        // -
+
+
+
+
+
+        // #2
+        // -------------------------------------------------------------------
+
+        // function upperString() {
+        // const text = document.getElementById("content").value;
+
+        // let splitArr = text.split(" "); //쪼개는 기준이 빈 칸 -> ["aaa", "bbb", "ccc"]
+
+        // for (i = 0; i < splitArr.length; i++) {
+        //     splitArr[i] = splitArr[i].charAt(0).toUpperCase() + splitArr[i].slice(1);
+        //     // 0번째 문자열을 대문자로 변환 + 나머지 0번빼고 1번부터 끝까지는 그대로 가져온다. "Aaa"
+        //     // 그리고 이렇게 만든 것을 splitArr[i]로 다시 덮어씌운다. 아니면 새 배열 만들어서 넣어도 된다.
+        // }
+
+        // const resultStr = document.getElementById("result");
+        // resultStr.innerText = splitArr.join(" "); //splitArr만 넣으면 배열이라 콤마가 찍힌다. -> join으로 합친 후 빈 칸을 넣어준다.
+        // }
+
+        // -------------------------------------------------------------------
+        // [과정]
+        // 1. 내용
+
+        // [error]
+        // 1. 내용
+
+        // [noti]
+        // - 내용
+
+
+
+
+
+        // #3
+        // -------------------------------------------------------------------
+
+        function upperString() {
+            const text = document.getElementById("content").value;
+
+            let splitArr = text.split(" ");
+
+            // for (let word of splitArr) {
+            //     splitArr.push(word.charAt(0).toUpperCase() + word.slice(1));
+            // }
+
+            const joinStr = text.split(" ")
+                                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                                .join(" ");
+
+            const resultStr = document.getElementById("result");
+            resultStr.innerText = joinStr;
+        }
+
+        // -------------------------------------------------------------------
+    </script>
+  </body>
+</html>

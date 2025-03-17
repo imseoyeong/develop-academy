@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript : string_02</title>
+
+    <style>
+        textarea {
+            width: 500px;
+            height: 100px;
+            resize: none;
+        }
+    </style>
+  </head>
+  <body>
+
+    <div>
+        <h1>문자열에서 단어 찾기</h1>
+
+        <textarea id="content" placeholder="문장을 입력하세요."></textarea><br>
+        
+        <input id="findinput" type="text" placeholder="찾을 단어를 입력하세요.">
+        <button type="button" onclick="wordCount()">단어 카운트</button>
+
+        <h2>결과</h2>
+        <p>단어 출현 횟수: <span id="result"></span></p>
+    </div>
+
+    <script>
+        // [문제의 조건]
+        // textarea에 입력한 문장 중에서 찾는 단어가 몇 개 있는지 카운트. 
+
+
+        // #1
+        // -------------------------------------------------------------------
+
+        function wordCount() {
+            const content = document.getElementById("content").value.toLowerCase(); 
+            const findinput = document.getElementById("findinput").value.toLowerCase();  
+
+            const parts = content.split(findinput); 
+            const count = parts.length - 1;
+
+            const result =  document.getElementById("result");
+            result.innerText = count;
+        }
+     
+        // -------------------------------------------------------------------
+        // [과정]
+        // 1. 입력된 텍스트 영역에서 값을 가져오고, 모두 소문자로 변환
+        // 2. 검색할 단어를 가져오고, 모두 소문자로 변환
+        // 3. 입력된 텍스트를 검색어(findinput) 기준으로 분할하여 배열로 만듦
+        // 4. 분할된 배열의 개수에서 1을 빼면 검색어가 등장한 횟수가 됨
+        // 5. 결과를 화면에 표시 (result 요소의 텍스트 변경)
+
+        
+        // [noti]
+        // - 
+    </script>
+  </body>
+</html>

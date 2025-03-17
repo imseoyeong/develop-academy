@@ -151,57 +151,57 @@
         // #6
         // -------------------------------------------------------------------
 
-        // let scoreArr = [];
+        let scoreArr = [];
 
-        // for (let i=0; i<10; i++) {
-        //     let score = Math.floor(Math.random() * 101);
-        //     scoreArr.push(score);
-        // }
+        for (let i=0; i<10; i++) {
+            let score = Math.floor(Math.random() * 101);
+            scoreArr.push(score);
+        }
 
-        // document.write(scoreArr + "<hr>");
-        // // 랜덤 점수 출력 end
-
-
-        // let mapArr = scoreArr.map((e) => {
-        //     if (e >= 60) {
-        //         return "합격";
-        //     } else {
-        //         return "불합격";
-        //     }
-        // });
-
-        // for (let i=0; i<scoreArr.length; i++) {
-        //     document.write("점수: " + scoreArr[i] + " 결과: " + mapArr[i] + "<br>");
-        // }
-        // // 점수 및 결과 출력 end
+        document.write(scoreArr + "<hr>");
+        // 랜덤 점수 출력 end
 
 
-        // let filterArr = scoreArr.filter((e) => e>=60);
-        // document.write("<hr>60점 이상: " + filterArr);
-        // // 60점 이상 출력 end
+        let mapArr = scoreArr.map((e) => {
+            if (e >= 60) {
+                return "합격";
+            } else {
+                return "불합격";
+            }
+        });
+
+        for (let i=0; i<scoreArr.length; i++) {
+            document.write("점수: " + scoreArr[i] + " 결과: " + mapArr[i] + "<br>");
+        }
+        // 점수 및 결과 출력 end
 
 
-        // let gradeArr = filterArr.map((e) => {
-        //     let result = Math.floor(e/10);
+        let filterArr = scoreArr.filter((e) => e>=60);
+        document.write("<hr>60점 이상: " + filterArr);
+        // 60점 이상 출력 end
 
-        //     switch (result) {
-        //     case 10:
-        //     case 9:
-        //         return " A등급";
-        //         break;
-        //     case 8:
-        //         return " B등급";
-        //         break;
-        //     case 7:
-        //         return " C등급";
-        //         break;
-        //     case 6:
-        //         return " D등급";
-        //     }
-        // });
 
-        // document.write("<br>등급: " + gradeArr);
-        // // 등급 출력 end
+        let gradeArr = filterArr.map((e) => {
+            let result = Math.floor(e/10);
+
+            switch (result) {
+            case 10:
+            case 9:
+                return " A등급";
+                break;
+            case 8:
+                return " B등급";
+                break;
+            case 7:
+                return " C등급";
+                break;
+            case 6:
+                return " D등급";
+            }
+        });
+
+        document.write("<br>등급: " + gradeArr);
+        // 등급 출력 end
 
         // -------------------------------------------------------------------
         // [noti]
@@ -215,15 +215,16 @@
 
         // #7
         // -------------------------------------------------------------------
+        document.write("<br><br><br><br>sort 예제<br>");
 
-        let scoreArr = [];
+        let scoreArr2 = [];
 
         for (let i=0; i<10; i++) {
             let score = Math.floor(Math.random() * 101);
-            scoreArr.push(score);
+            scoreArr2.push(score);
         }
 
-        let sortArr = scoreArr.sort((a,b) => a-b);
+        let sortArr = scoreArr2.sort((a,b) => a-b);
         document.write(sortArr);
 
         // -------------------------------------------------------------------

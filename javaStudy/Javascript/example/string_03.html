@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript : string_03</title>
+  </head>
+  <body>
+    
+    <div>
+        <h1>문자열 뒤집기</h1>
+
+        <input id="wordInput" type="text" placeholder="문자열을 입력하세요.">
+        <button type="button" onclick="reverseString()">뒤집기</button>
+
+        <h2>결과:</h2>
+        <p id="result"></p>
+    </div>
+    
+    <script>
+        // [문제의 조건]
+        // 사용자가 입력한 문자열을 가져와, 뒤집어서, 화면에 출력
+
+
+        // #1
+        // -------------------------------------------------------------------
+
+        // function reverseString() {
+        //     const text = document.getElementById("wordInput").value; // 입력창에서 사용자가 입력한 문자열 가져오기
+
+        //     let result = ""; //결과를 저장할 빈 문자열
+
+        //     for (let i=(text.length-1); i>=0; i--) {
+        //         result = result + text[i]; //문자열을 거꾸로 하나씩 추가
+        //     }
+
+        //     const resultStr = document.getElementById("result"); // 결과를 표시할 HTML 요소 가져오기
+        //     resultStr.innerText = result;// 뒤집힌 문자열을 화면에 표시
+        // }
+
+        // -------------------------------------------------------------------
+        // [과정]
+        // 1. 
+
+        
+        // [noti]
+
+
+
+
+        
+        // #2
+        // -------------------------------------------------------------------
+
+        function reverseString() {
+            const text = document.getElementById("wordInput").value; 
+
+            // 기존의 for문 코드를 이렇게 한 줄로 변경 가능.
+            let result = text.split("").reverse().join("");
+            // ex) abcde -> ["e", "d", "c", "b", "a"] 하지만 우리가 원하는 것은 다 붙여져 있는 문자열. 그래서 join을 사용. -> "edcba"
+
+            const resultStr = document.getElementById("result");
+            resultStr.innerText = result;
+        }
+
+        // -------------------------------------------------------------------
+        // [과정]
+        // 1. 내용
+
+
+        // [error]
+        // 1. 내용
+
+        
+        // [noti]
+        // - 내용
+    </script>
+  </body>
+</html>

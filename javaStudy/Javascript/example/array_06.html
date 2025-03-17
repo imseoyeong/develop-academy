@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript : array_06</title>
+  </head>
+  <body>
+    <script>
+        // [String 객체]
+
+
+        // #1 String 객체 메서드
+        // -------------------------------------------------------------------
+
+        const s1 = new String("Web ");
+        const s2 = "Programming";
+        document.write(`s1 = "${s1}"<br>`);
+        document.write(`s2 = "${s2}"<hr>`);
+
+        document.write(`s1.charAt(0) : ${s1.charAt(0)}<hr>`);
+        document.write(`s1.concat(s2) : ${s1.concat(s2)}<hr>`);
+        document.write(`s2.indexOf("i") : ${s2.indexOf("i")}<hr>`);
+        document.write(`s2.replace("m", "M") : ${s2.replace("m", "M")}<hr>`);
+        document.write(`s2.search("i") : ${s2.search("i")}<hr>`);
+        document.write(`s2.split("a") : ${s2.split("a")}<hr>`);
+        document.write(`s2.substr(0, 4) : ${s2.substr(0, 4)}<hr>`);
+        document.write(`s2.substring(3, 7) : ${s2.substring(3, 7)}<hr>`);
+        document.write(`s2.slice(3, -1) : ${s2.slice(3, -1)}<hr>`);
+        document.write(`s2.toLowerCase() : ${s2.toLowerCase()}<hr>`);
+        document.write(`s2.toUpperCase() : ${s2.toUpperCase()}<hr>`);
+        document.write(`s1.trim() : +${s1.trim()}+`);
+
+        // -------------------------------------------------------------------
+
+
+
+
+        
+        // #2 String 객체 메서드
+        // -------------------------------------------------------------------
+
+        document.write("<br><br><br><br>");
+
+        arr1 = s2.split("a");
+        arr2 = s2.split("");
+        arr3 = s2.split("a", 1);
+        document.write(`s2.split("a") : ${arr1} <br>`);
+        document.write(`s2.split("") : ${arr2} <br>`);
+        document.write(`s2.split("a", 1) : ${arr3} <br>`);
+
+        // -------------------------------------------------------------------
+        
+
+
+
+        
+        // #3 문자열 회전시키기
+        // -------------------------------------------------------------------
+
+        document.write("<br><br><br><br>문자열 회전시키기<br><br>");
+        let text = new String("Programming");
+        let firstChar;
+
+        for (let i=0; i<=text.length; i++) {
+            document.write(text + "<hr>");
+            firstChar = text[0];
+            text = text.slice(1) + firstChar;
+        }
+
+        // -------------------------------------------------------------------
+               
+
+
+
+        
+        // #4 for-of로 색 이름과 같은 색상의 문자 만들기
+        // -------------------------------------------------------------------
+
+        document.write("<br><br><br><br>for-of로 색 이름과 같은 색상의 문자 만들기<br>");
+
+        const colorArray = ["red", "aqua", "gray", "purple", "orange"];
+
+        for (let color of colorArray) {
+            document.write("<h1 style='color: " + color + "'>" + color + "</h1>");
+        }
+
+        // -------------------------------------------------------------------
+
+
+
+
+        
+        // #5
+        // -------------------------------------------------------------------
+
+
+        // -------------------------------------------------------------------
+    </script>
+  </body>
+</html>
