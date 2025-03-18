@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript : 250317</title>
+  </head>
+  <body>
+    <div>
+        <h1>단어 갯수 찾아내기</h1>
+
+        <textarea id="content"></textarea>
+
+        <input id="wordInput" type="text">
+        <button type="button" onclick="wordCount();">찾기</button>
+
+        <h2>결과</h2>
+        <p>단어 갯수는? <span id="result"></span></p>
+
+    </div>
+    <script>
+        // [문제의 조건]
+        // 
+
+
+        // #1
+        // -------------------------------------------------------------------
+
+        function wordCount() {
+            const input = document.getElementById("content").value.toLowerCase();
+            const word = document.getElementById("wordInput").value.toLowerCase();
+            const output = document.getElementById("result");
+
+            let splitArr = input.split(word);
+            output.innerText = splitArr.length - 1;
+        } 
+
+            
+
+        // -------------------------------------------------------------------
+        // [과정]
+        // 1. 내용
+
+
+        // [error]
+        // 1. 내용
+
+        
+        // [noti]
+        // - 내용
+
+
+
+
+        
+        // #2
+        // -------------------------------------------------------------------
+
+        // -------------------------------------------------------------------
+    </script>
+  </body>
+</html>
