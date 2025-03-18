@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript : customObject_03</title>
+</head>
+<body>
+    <script>
+        // [사용자 정의 객체]
+        
+
+        // #1
+        // -------------------------------------------------------------------
+
+        const shoppingCart = {
+            items: [],
+            addItem(item) {
+                this.items.push(item);
+                console.log(`${item} added to cart`);
+            },
+            removeItem(item) {
+                this.items = this.items.filter((e) => e !== item); //e가 item이랑 같지 않으면 걸러내라.
+                console.log(`${item} remove to cart`);
+            },
+            listItems() {
+                document.write(this.items + "<br>");
+            },
+        };
+
+        shoppingCart.addItem("검정자켓");
+        shoppingCart.addItem("빨간치마");
+        shoppingCart.addItem("모자");
+        shoppingCart.listItems();
+        shoppingCart.removeItem("빨간치마");
+        shoppingCart.listItems();
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 
+
+
+
+
+
+        // #2
+        // -------------------------------------------------------------------
+
+        const backAccount = {
+            owner: "I.S.Y",
+            balance: 10000,
+            accountNumber: "1234-56789-01234",
+
+            deposit(amount) {
+                this.balance = this.balance + amount;
+                console.log(`${amount} 입금`);
+            },
+            withdraw(amount) {
+                if (this.balance < amount) {
+                    document.write("잔액이 부족합니다.");
+                } else {
+                    this.balance = this.balance - amount;
+                    console.log(`${amount} 출금`);
+                }
+            },
+            displayBalance() {
+                document.write(`${this.owner}님의 잔액은 ${this.balance}입니다.<br>`);
+            },
+        };
+
+        backAccount.displayBalance();
+        backAccount.deposit(20000);
+        backAccount.withdraw(10000);
+        backAccount.displayBalance();
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 
+
+
+
+
+        
+        // ##
+        // -------------------------------------------------------------------
+
+        // let arr = [10, 20, 40, 50];
+        // arr.splice(2, 0, 30); //2번에 있는 한개의 데이터를 30으로 바꾸자
+        // document.write(arr);
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 중간 어디다가 삽입을 하고 싶으면 splice 사용
+    </script>
+</body>
+</html>

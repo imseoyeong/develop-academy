@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript : date_01</title>
+</head>
+<body>
+    <script>
+        // [Date 시스템 날짜 출력하기]
+
+        // #1
+        // -------------------------------------------------------------------
+
+        let today = new Date();
+        const day = "일월화수목금토";
+
+        document.write(today + "<hr>");
+        document.write(today.toLocaleString() + "<hr>");
+        document.write(today.getFullYear() + "년<hr>");
+        document.write(today.getMonth() + 1 + "월<hr>");
+        document.write(today.getDate() + "일<hr>");
+        document.write(day[today.getDay()] + "요일<hr>");
+        document.write(today.getHours() + "시<hr>");
+        document.write(today.getMinutes() + "분<hr>");
+        document.write(today.getSeconds() + "초");
+
+        // -------------------------------------------------------------------
+    </script>
+</body>
+</html>

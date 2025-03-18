@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript : string_05</title>
+
+    <style>
+        #todoList {
+            list-style: none;
+            padding: 0;
+        }
+
+        #todoList > li {
+            background: #ebf4ff;
+            border: 1px solid #eee;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>할 일 목록</h1>
+  
+        <input id="todoInput" type="text" placeholder="할 일을 추가해주세요.">
+        <button type="button" onclick="addTodo()">추가</button>
+  
+        <ul id="todoList">
+            <li id="todo1"></li>
+            <li id="todo2"></li>
+            <li id="todo3"></li>
+            <li id="todo4"></li>
+            <li id="todo5"></li>
+        </ul>
+    </div>
+
+    <script>
+        // [문제의 조건]
+        // 할 일을 추가하면 아래에 내용이 뜬다.
+        // 5개까지 추가하면 alert로 더 이상 추가할 수 없다는 문구 출력.
+
+
+        // #1
+        // -------------------------------------------------------------------
+
+        // let count = 1;
+        // let todoList = [];
+
+        // function addTodo() {
+        //     if (count > 5) {
+        //         alert("5개까지만 입력할 수 있습니다.");
+        //     } else {
+        //         const todo = document.getElementById("todoInput").value;
+        //         todoList.push(todo);
+        //         const todoItem = document.getElementById("todo" + count);
+        //         todoItem.innerText = todo;
+        //         count++;
+        //     }
+        // }
+
+        // -------------------------------------------------------------------
+        // [과정]
+        // 1. 입력할 수 있는 갯수와 li의 아이디명을 위한 count 변수 선언
+        // 2. 입력한 값을 넣을 빈 배열 선언
+        // 3. 함수 생성 
+        // 4. 5개까지만 입력할 수 있는 alert 창 출력
+        // 5. 내가 입력한 값 -> input value를 들고온다. (todo)
+        // 6. 내가 입력한 값이 노출될 li를 가져온다. (todoItem)
+        // 7. 입력한 값을 빈 배열(todoList)에 넣는다.
+        // 8. todo를 todoItem에 넣는다.
+        // 9. 카운트 증가시킨다. 5개까지.
+
+
+        // [error]
+        // 1. 입력 필드 초기화가 없음.
+
+
+        // [noti]
+        // - let count: 전역변수로 만들어놔야 한다. 함수 안에서 지역변수로 사라지지 않아야 하기 때문에. 
+        // - todo에는 input의 값(문자열)이 저장되는 것이여서 value는 todo 변수에 저장됨.
+
+
+
+
+        
+        // #2
+        // -------------------------------------------------------------------
+
+        let count = 1;
+        let todoList = [];
+
+        function addTodo() {
+            if (count > 5) {
+                alert("5개까지만 입력할 수 있습니다.");
+            } else {
+                const todo = document.getElementById("todoInput");
+                todoList.push(todo);
+                const todoItem = document.getElementById("todo" + count);
+                todoItem.innerText = todo.value;
+                todo.value = "";
+                count++;
+            }
+        }
+        
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 객체의 속성 value의 위치를 옮기고 value를 빈 텍스트로 두면 입력 시 value가 새로 비워지게 된다.
+        // - 문자열만 배열에 저장하고 입력창 
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript : customObject_01</title>
+</head>
+<body>
+    <script>
+        // [사용자 정의 객체]
+        
+
+        // #1
+        // -------------------------------------------------------------------
+
+        let person = {
+            name: "Imseoyeong",
+            age: 29,
+            intro: function() {
+                document.write("My name: " + this.name + ", age: " + this.age + "<br>");
+            }
+        };
+
+        person.intro();
+        person.age = 27;
+        person.intro();
+        person.name = "seoyeong";
+        person.intro();
+        person.job = "student";
+        person.intro = function() {
+            document.write("My name: " + this.name + ", age: " + this.age + ", job: " + this.job + "<br>");
+        };
+        person.intro();
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 속성: 속성값, 속성: 속성값,
+        // - 속성: 함수는 메서드
+    </script>
+</body>
+</html>

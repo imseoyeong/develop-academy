@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>단어 첫글자 대문자로 변환</h1>
+    <input type="text" id="wordInput" placeholder="문자열을 입력하세요" />
+    <button onclick="capitalizedWords()">변환</button>
+    <h3>결과</h3>
+    <p id="result"></p>
+
+    <script>
+      function capitalizedWords() {
+        const text = document.getElementById("wordInput").value; //"aaa bbb ccc"
+        const splitArr = text.split(" "); // ["aaa", "bbb", "ccc"]
+        let newArr = []; //["Aaa", "Bbb", "Ccc"]
+        // for(let i=0; i<splitArr.length; i++){
+        //     newArr[i] = splitArr[i].charAt(0).toUpperCase() + splitArr[i].slice(1)//"Aaa"
+        // }
+
+        // for(let word of splitArr){
+        //     newArr.push(word.charAt(0).toUpperCase() + word.slice(1));
+        // }
+
+        const joinStr = text.split(" ")
+                            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                            .join(" ");
+
+        const resultStr = document.getElementById("result");
+        // resultStr.innerText = newArr.join(" ");
+        resultStr.innerText = joinStr;
+      }
+    </script>
+  </body>
+</html>

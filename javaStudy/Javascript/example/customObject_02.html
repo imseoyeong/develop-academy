@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript : customObject_02</title>
+</head>
+<body>
+    <script>
+        // [사용자 정의 객체]
+        
+
+        // #1
+        // -------------------------------------------------------------------
+
+        const car = {
+            brand: "Tesla",
+            model: "Model 3",
+            year: 2022,
+            start() {
+                document.write(`${this.brand} ${this.model} is starting...<br><br>`);
+            },
+        };
+
+        car.start();
+
+        // -------------------------------------------------------------------
+
+
+
+        // #2
+        // -------------------------------------------------------------------
+
+        const book = {
+            title: "JavaScript..",
+            author: "홍길동",
+            pages: 350,
+            publisher: "한빛미디어",
+            read() {
+                document.write(`Reading ${this.title} by ${this.author}.<br><br>`);
+            }
+        };
+
+        book.read();
+
+        // -------------------------------------------------------------------
+        
+
+
+        // #3
+        // -------------------------------------------------------------------
+
+        const calc = {
+            add(a, b) {
+                return a + b;
+            },
+            subtract(a, b) {
+                return a - b;
+            },
+            multiply(a, b) {
+                return a * b;
+            },
+            divide(a, b) {
+                return a / b;
+            }
+        };
+
+        document.write(calc.add(10, 20) + "<br>");
+        document.write(calc.subtract(10, 20) + "<br>");
+        document.write(calc.multiply(10, 20) + "<br>");
+        document.write(calc.divide(10, 20) + "<br>");
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript : date_02</title>
+</head>
+<body>
+
+    <div>
+        <h1>궁금한 날짜를 입력하세요:</h1>
+  
+        <input id="year" type="number" placeholder="년">
+        <input id="month" type="number" placeholder="월">
+        <input id="day" type="number" placeholder="일">
+        <button onclick="calcDays()">계산</button><hr>
+  
+        <p id="today"></p>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        // [날짜 계산기]
+        
+
+        // #1
+        // -------------------------------------------------------------------
+
+        function calcDays() {  
+            // 입력된 연, 월, 일을 가져와 숫자로 변환
+            const year = parseInt(document.getElementById("year").value);
+            const month = parseInt(document.getElementById("month").value);
+            const day = parseInt(document.getElementById("day").value);
+            
+            const today = new Date();// 현재 날짜 가져오기
+            const inputDate = new Date(year, month - 1, day);// 입력된 날짜를 Date 객체로 생성 (월은 0부터 시작하므로 -1 해줌)
+            const timeDiff = today - inputDate;// 현재 날짜와 입력 날짜의 차이 (밀리초 단위)
+            const dayDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));// 밀리초를 일(day) 단위로 변환
+
+            // 현재 날짜를 화면에 표시
+            document.getElementById("today").innerHTML = `${today.toLocaleString()}`;
+
+            if (dayDiff >= 0) {
+                document.getElementById("result").innerHTML = `${dayDiff}일 전`; // 입력 날짜가 오늘 이전이면 "n일 전"으로 표시
+            } else {
+                document.getElementById("result").innerHTML = `${-dayDiff}일 남았음`; // 입력 날짜가 미래이면 "n일 남았음"으로 표시
+            }
+        }
+
+        // -------------------------------------------------------------------
+        // [과정]
+        // 1. 내용
+
+
+        // [error]
+        // 1. 내용
+
+        
+        // [noti]
+        // - 내용
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript : customObject_04</title>
+</head>
+<body>
+    <script>
+        // [문제]
+        // 성적 처리할 때 쓰는 객체_내 맴대로..
+        
+
+        // #1
+        // -------------------------------------------------------------------
+
+        const student = {
+            name: "imseoyeong",
+            number: 20162722,
+            score: 80,
+            grade: [],
+
+            getGrade(score) {
+           
+            },
+
+            // getGrade(result) {
+            //     let num = Math.floor(result/10);
+
+            //     switch (num) {
+            //     case 10:
+            //     case 9:
+            //         return "A";
+            //     case 8:
+            //         return "B";
+            //     case 7:
+            //         return "C";
+            //     case 6:
+            //         return "D";
+            //     }
+
+            //     this.grade.push();
+            // },
+            result() {
+                document.write(`${this.number} ${this.name}님의 점수는 ${this.score}점 ${this.grade}등급 입니다.<br>`);
+            }
+        }
+
+        student.getGrade();
+        student.result();
+
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 
+    </script>
+</body>
+</html>
