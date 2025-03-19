@@ -96,9 +96,9 @@
                 alert("5개까지만 입력할 수 있습니다.");
             } else {
                 const todo = document.getElementById("todoInput");
-                todoList.push(todo);
                 const todoItem = document.getElementById("todo" + count);
                 todoItem.innerText = todo.value;
+                todoList.push(todo.value);
                 todo.value = "";
                 count++;
             }

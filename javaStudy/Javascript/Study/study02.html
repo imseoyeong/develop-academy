@@ -3,39 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Javascript : 250317</title>
+    <title>Javascript : 250319</title>
   </head>
   <body>
-    <div>
-      <h1>첫번째 글자만 대문자</h1>
-
-      <textarea id="content"></textarea>
-      <button type="button" onclick="upperText();">변환</button>
-
-      <h2>결과</h2>
-      <p id="result"></p>
-    </div>
     <script>
       // [문제의 조건]
-      //
+      // 주어진 이름 목록이 있을 때, 각 이름의 길이를 구하는 프로그램 작성
 
       // #1
       // -------------------------------------------------------------------
-            
-      
+    
+      const names = ["Alice", "Bob", "Charlie", "David"];
+      const nameLengths = names.map(name => name.length);
+
+      document.write(nameLengths);
+
+
       // -------------------------------------------------------------------
-      // [과정]
-      // 1. 내용
-
-      // [error]
-      // 1. 내용
-
       // [noti]
       // - 내용
+
+
 
       // #2
       // -------------------------------------------------------------------
 
+    //   const names = ["Alice", "Bob", "Charlie", "David"];
+    //   const nameLengths = [];
+
+    //   for (i = 0 ; i < names.length ; i++) {
+    //     nameLengths.push(names[i].length);
+    //   }
+
+    //   document.write(nameLengths);
+    
       // -------------------------------------------------------------------
     </script>
   </body>

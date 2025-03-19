@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript : dom_01</title>
+</head>
+<body>
+    <!-- [요소 여러 개에 접근하기] -->
+    <div>
+        <h2>요소 여러 개에 접근하기</h2>
+        <p>p & No class</p>
+        <p class="elm">p class="elm" 1</p>
+        <p class="elm">p class="elm" 2</p>
+        <hr>
+    </div>
+
+    <script>
+        // #1
+        // -------------------------------------------------------------------
+
+        const elms = document.getElementsByClassName("elm");
+        for (let i = 0 ; i < elms.length ; i++) {
+            document.write(`ByclassName: elms[${i}] = ${elms[i].innerHTML}<br>`);
+        }
+
+        document.write("<hr>");
+
+        const tags = document.getElementsByTagName("p");
+        for (let i = 0 ; i < tags.length ; i++) {
+            document.write(`ByTagName P: tags[${i}] = ${tags[i].innerHTML}<br>`);
+        }
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 내용
+    </script>
+
+
+
+
+
+    <!-- [태그 선택자로 요소에 접근하기] -->
+    <br><br><br><br>
+    <div>
+        <h2>태그 선택자로 요소에 접근하기</h2>
+        <p class="elm2">p class="elm" 1</p>
+        <p class="elm2">p class="elm" 2</p>
+        <p>p & No class 1</p>
+        <p id="ide">p id="ide"</p>
+        <hr>
+    </div>
+
+    <script>
+        // #1
+        // -------------------------------------------------------------------
+
+        const dots = document.querySelectorAll(".elm2");
+        for (let i = 0 ; i < dots.length ; i++) {
+            document.write(`dots[${i}] = ${dots[i].innerHTML}<br>`);
+        }
+
+        document.write("<hr>");
+
+        const hash = document.querySelectorAll("#ide");
+        for (let i = 0 ; i < hash.length ; i++) {
+            document.write(`hash[${i}] = ${hash[i].innerHTML}<br>`);
+        }
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 내용
+    </script>
+</body>
+</html>

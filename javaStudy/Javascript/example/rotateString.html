@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript : rotateString</title>
+
+    <link rel="stylesheet" href="./css/style_js.css">
+
+    <style>
+        body {
+            text-align: center;
+        }
+
+        #container {
+            width: 100%;
+            height: 110px;
+        }
+
+        #rotate {
+            display: none;
+            font-size: 40px;
+            color: blue;
+        }
+
+        #container:hover > #rotate {
+            display: inline-block;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1 id="rotate">Programming</h1>
+    </div>
+
+    <script>
+        // [문자열 회전시키기]
+
+
+        // #1
+        // -------------------------------------------------------------------
+
+        const rotate = document.getElementById("rotate");
+
+        function rotateString() {
+            // const text = rotate.textContent;
+            const text = rotate.innerText;
+            console.log(text);
+            const firstChar = text[0];
+            const rotatedText = text.slice(1) + firstChar;
+            rotate.textContent = rotatedText;
+        };
+
+        setInterval(rotateString, 500);
+
+        // -------------------------------------------------------------------   
+        // [noti]
+        // - 내용
+    </script>
+</body>
+</html>

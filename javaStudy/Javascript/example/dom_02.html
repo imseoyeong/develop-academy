@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript : dom_02</title>
+
+    <style>
+        textarea {
+            width: 400px;
+            height: 120px;
+            resize: none;
+            border: 2px solid #c3dce7;
+            border-radius: 15px;
+            outline: none;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- [input 태그의 값 읽기] -->
+
+    <h2>input 태그의 값 읽기</h2>
+    <form name="myform">
+        사용자ID <input type="text" name="userId"><br>
+        패스워드 <input type="password" name="userPw"><br>
+        <button onclick="getInput()" type="submit">login</button>
+    </form>
+
+    <script>
+        // #1
+        // -------------------------------------------------------------------
+
+        function getInput() {
+            const id = document.myform.userId;
+            const pw = document.myform.userPw;
+
+            if (pw.value.length <= 4) {
+                alert(`${id.value}님 패스워드를 변경하세요.`);
+            } else {
+                alert(`${id.value}님 환영합니다.`);
+            }
+        }
+
+        // -------------------------------------------------------------------
+    </script>
+
+
+
+
+
+    <!-- [textarea에서 값 읽기] -->
+     
+    <br><br><br><br>
+    <h2>textarea에서 값 읽기</h2>
+    <form>
+        <textarea id="textInput"></textarea><br>
+        <button onclick="getTextarea()" type="button">Get Text</button>
+        <hr>
+        <p id="result"></p>
+    </form>
+
+    <script>
+        // #1
+        // -------------------------------------------------------------------
+
+        function getTextarea() {
+            const st = document.getElementById("textInput").value;
+            document.getElementById("result").innerText = st;
+        }
+
+        // -------------------------------------------------------------------
+    </script>
+    
+
+
+
+
+    <!-- [체크박스에서 값 읽기] -->
+     
+    <br><br><br><br>
+    <h2>체크박스에서 값 읽기</h2>
+    <form>
+        <input id="myCheckbox" type="checkbox">
+        <label for="myCheckbox">다음 단계 진행 확인!</label><br>
+        <button onclick="getCheckbox()" type="button">process</button>
+        <hr>
+        <p id="result2"></p>
+    </form>
+
+    <script>
+        // #1
+        // -------------------------------------------------------------------
+
+        function getCheckbox() {
+            if (document.getElementById("myCheckbox").checked == true) {
+                document.getElementById("result2").innerText = "작업을 진행하겠습니다.";
+            } else {
+                document.getElementById("result2").innerText = "사용자의 요구로 중단!";
+            }
+        }
+
+        // -------------------------------------------------------------------
+    </script>
+      
+
+
+
+
+    <!-- [체크박스에서 값 여러 개 읽기] -->
+     
+    <br><br><br><br>
+    <h2>체크박스에서 값 여러 개 읽기</h2>
+    <form>
+        <ul>
+            <li>
+                <input type="checkbox" id="myAdd1" name="myAdd" value="1500" onclick="getCheckbox2('myAdd1')" checked>
+                <label for="myAdd1">추가채소 1500원</label>
+            </li>
+            <li>
+                <input type="checkbox" id="myAdd2" name="myAdd" value="1000" onclick="getCheckbox2('myAdd2')">
+                <label for="myAdd2">추가음료 1000원</label>
+            </li>
+            <li>
+                <input type="checkbox" id="myAdd3" name="myAdd" value="500" onclick="getCheckbox2('myAdd3')">
+                <label for="myAdd3">추가피클 500원</label>
+            </li>
+        </ul>
+        <!-- <button onclick="getCheckbox2()" type="button">add</button> -->
+        <hr>
+        <p id="result3">추가금액: 0원</p>
+        <button onclick="getReset()" type="button">reset</button>
+        <!-- <button onclick="getReset()" type="reset">reset</button> -->
+    </form>
+
+    <script>
+        // #1
+        // -------------------------------------------------------------------
+
+        // **체크박스 onclick에 아이디명을 넣지 않았을 때
+        // function getCheckbox2() {
+        //     let sum = 0;
+        //     const adds = document.getElementsByName("myAdd");
+
+        //     for (let item of adds) {
+        //         if (item.checked) {
+        //             sum += parseInt(item.value);
+        //         }
+        //     }
+        //     document.getElementById("result3").innerText = `추가금액: ${sum}원`;
+
+        //     // for (let i = 0 ; i < adds.length ; i++) {
+        //     //     if (adds[i].checked) {
+        //     //         sum += parseInt(adds[i].value);
+        //     //     }
+        //     //     document.getElementById("result3").innerText = `추가금액: ${sum}원`;
+        //     // }
+        // }
+
+
+        // **체크박스 onclick에 아이디명을 넣고 처음부터 항목이 checked가 되어있을 때
+        let sum = 0;
+        const items = document.getElementsByName("myAdd");
+        for (let item of items) {
+            if (item.checked) {
+                sum += parseInt(item.value);
+            }
+        }
+        document.getElementById("result3").innerText = `추가금액: ${sum}원`;
+        // checked가 되어있을 때 처음부터 추가금액이 입력되어 있음.
+
+
+        function getCheckbox2(id) {
+            const item = document.getElementById(id);
+
+            if (item.checked) {
+                sum += parseInt(item.value);
+            } else {
+                sum -= parseInt(item.value);
+            }
+
+            document.getElementById("result3").innerText = `추가금액: ${sum}원`;
+        }
+
+        // 리셋버튼 눌렀을 때
+        function getReset() {
+            sum = 0;
+            // const items = document.getElementsByName("myAdd"); //위에 전역변수가 있어서 선언 안 해도 됨.
+
+            for (let item of items) {
+                item.checked = false;
+            }
+
+            document.getElementById("result3").innerText = `추가금액: 0원`;
+        }
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 체크박스에 onclick="getCheckbox2('myAdd3')" id명을 넣은 이유 : 아니면 금액 계산할때 전체를 계속 계산해야해서
+    </script>
+     
+
+
+
+
+    <!-- [라디오 버튼에서 값 읽기] -->
+     
+    <br><br><br><br>
+    <h2>라디오 버튼에서 값 읽기</h2>
+    <form>
+        <ul>
+            <li>
+                <input type="radio" id="red" name="color" value="red">
+                <label for="red">RED</label>
+            </li>
+            <li>
+                <input type="radio" id="green" name="color" value="green">
+                <label for="green">GREEN</label>
+            </li>
+            <li>
+                <input type="radio" id="blue" name="color" value="blue">
+                <label for="blue">BLUE</label>
+            </li>
+        </ul>
+        <button onclick="getRadio()" type="button">choice</button>
+        <hr>
+        <h3 id="result4"></h3>
+    </form>
+
+    <script>
+        // #1
+        // -------------------------------------------------------------------
+
+        function getRadio() {
+            const choice = document.querySelectorAll("[type='radio']");
+            for (let i = 0 ; i < choice.length ; i++) {
+                if (choice[i].checked) {
+                    document.getElementById("result4").innerText = `${choice[i].value}`;
+                    break;
+                }
+            }
+        }
+
+        // -------------------------------------------------------------------
+    </script>
+       
+
+
+
+
+    <!-- [드롭박스에서 값 읽기] -->
+     
+    <br><br><br><br>
+    <h2>드롭박스에서 값 읽기</h2>
+    <form>
+        <p>키우고 싶은 동물은</p>
+        <select id="myOption">
+            <option value="dog">개</option>
+            <option value="cat">고양이</option>
+            <option value="duck">오리</option>
+            <option value="koala">코알라</option>
+        </select>
+        <button onclick="getSelect()" type="button">클릭</button>
+        <hr>
+        <h3 id="result5"></h3>
+    </form>
+
+    <script>
+        // #1
+        // -------------------------------------------------------------------
+
+        function getSelect() {
+            const index = document.getElementById("myOption").selectedIndex;
+            const st2 = document.getElementById("myOption").options[index].value;
+            document.getElementById("result5").innerHTML = st2;
+        }
+
+        // -------------------------------------------------------------------
+    </script>
+</body>
+</html>

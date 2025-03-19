@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript : toggleImage</title>
+
+    <link rel="stylesheet" href="./css/style_js.css">
+
+    <style>
+        body {
+            text-align: center;
+        }
+
+        img {
+            display: block;
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img id="image" src="../img/sample01.png" alt="">
+        <button onclick="changeImg()" type="button">Change</button>
+    </div>
+
+    <script>
+        // [속성 변경하기]
+
+
+        // #1
+        // -------------------------------------------------------------------
+
+        // let toggle = 1;
+
+        // function changeImg() {
+        //     if (++toggle % 2 ==0) {
+        //         document.getElementById("image").src = "../img/otter2.png";
+        //     } else {
+        //         document.getElementById("image").src = "../img/sample01.png";
+        //     }
+        // }
+
+        // -------------------------------------------------------------------   
+        // [noti]
+        // - 내용
+
+
+
+        // #2
+        // -------------------------------------------------------------------
+
+        let toggle = true;
+
+        function changeImg() {
+            if (toggle) {
+                document.getElementById("image").src = "../img/otter2.png";
+            } else {
+                document.getElementById("image").src = "../img/sample01.png";
+            }
+
+            toggle = !toggle;
+        }
+
+        // -------------------------------------------------------------------   
+        // [noti]
+        // - toggle true로 변경 코드
+    </script>
+</body>
+</html>
