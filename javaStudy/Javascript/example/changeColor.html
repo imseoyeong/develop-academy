@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript : changeColor - 250320</title>
+</head>
+<body>
+
+    <div id="box" style="width: 300px; height: 300px; margin: 0 auto;"></div>
+
+    <script>
+        // [스타일 변경하기]
+
+
+        // #1
+        // -------------------------------------------------------------------
+
+        const letters = "0123456789ABCDEF"; //16진수 문자열
+        let color = "#"; //색상 값 저장 변수
+        let count = 1; //실행 횟수 세는 변수
+        let intervalID = setInterval(changeColor, 250); //0.25초마다 changeColor를 실행
+
+        function changeColor() {
+            if (++count > 50) {
+                clearInterval(intervalID); //카운트가 51이 되면 intervalID를 중지
+            }
+
+            for (let k = 0; k < 6; k++) { //6자리 색상 코드 생성을 위한 코드
+                color += letters[Math.floor(Math.random() * 16)]; //0~15 사이의 랜덤한 문자 선택
+            }
+
+            document.getElementById("box").style.backgroundColor = color; //배경색 랜덤 적용
+            document.getElementById("box").style.borderRadius = `${count}%`; //border-radius 적용
+            color = "#"; //다음 색상 생성을 위해 다시 #으로 초기화
+        }
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 색상이 랜덤으로 바뀌면서 border-radius가 50%까지 증가.
+    </script>
+</body>
+</html>

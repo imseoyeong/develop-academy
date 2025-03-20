@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript : eventlistener_03 - 250320</title>
+
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        #followMouse {
+            width: 120px;
+            transition: transform 0.7s linear; /* 이미지가 마우스를 따라가는 속도 (0.7초 동안 애니메이션 효과) */
+        }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <img id="followMouse" src="../img/sample01.png" alt="">
+    </div>
+
+    <script>
+        // [이벤트 객체와 매개변수]
+        // 마우스를 움직이면 이미지가 마우스를 따라간다.
+
+
+        // #1
+        // -------------------------------------------------------------------
+
+        let image = document.getElementById("followMouse");
+        document.onmousemove = updateImage; //마우스를 움직일 때마다 updateImage 함수가 실행되도록 설정
+
+        function updateImage(event) {
+            const X = event.clientX; //마우스가 현재 화면에서 가리키고 있는 X좌표 값
+            const Y = event.clientY; //마우스가 현재 화면에서 가리키고 있는 Y좌표 값
+            image.style.transform = `translate(${X}px, ${Y}px)`; //translate(X, Y): 이미지를 해당 좌표로 이동시킴
+        }
+        
+        // -------------------------------------------------------------------
+        // [noti]
+        // - updateImage(event): 여기에 있는 event 중요. event 객체는 내가 정한 매개변수가 아니고 원래 자동으로 제공되는 객체인데 event를 사용해야 마우스를 움직일 때 발생하는 이벤트에 대한 정보를 가져올 수 있다.
+    </script>
+</body>
+</html>

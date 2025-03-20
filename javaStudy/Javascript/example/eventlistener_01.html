@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript : eventlistener_01 - 250320</title>
+
+    <style>
+        body {
+            text-align: center;
+        }
+
+        #rotateImg {
+            transition: transform 1s;
+            width: 300px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <h2>이미지를 클릭해보세요</h2>
+        <img id="rotateImg" src="../img/sample01.png" alt="" onclick="rotate()">
+    </div>
+
+    <script>
+        // [이벤트 리스너 사용하기]
+        // 이미지 클릭 시 회전
+
+
+        // #1
+        // -------------------------------------------------------------------
+
+        let deg = 0;
+        let image = document.getElementById("rotateImg");
+
+        function rotate() {
+            deg += 360;
+            image.style.transform = "rotate(" + deg + "deg)";
+        }
+
+        // -------------------------------------------------------------------
+
+
+
+        
+
+        // #2 객체에 직접 이벤트 추가하기
+        // -------------------------------------------------------------------
+
+        // let deg = 0;
+        // let image = document.getElementById("rotateImg");
+        // image.onclick = rotate; //이미지 태그에 onclick을 안 주고 이렇게 작성도 가능
+
+        // function rotate() {
+        //     deg += 360;
+        //     image.style.transform = "rotate(" + deg + "deg)";
+        // }
+
+        // -------------------------------------------------------------------
+        
+
+
+        
+
+        // #3 객체에 직접 이벤트 추가하기
+        // -------------------------------------------------------------------
+
+        // let deg = 0;
+        // let image = document.getElementById("rotateImg");
+        // image.onclick = () => { //화살표 함수
+        //     deg += 360;
+        //     image.style.transform = "rotate(" + deg + "deg)";
+        // }
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - #2와 같이 객체에 직접 이벤트 추가는 동일하지만 rotate 함수를 따로 작성하지 않고 바로 화살표 함수로도 가능
+    </script>
+</body>
+</html>

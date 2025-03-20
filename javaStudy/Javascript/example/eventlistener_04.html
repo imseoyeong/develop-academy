@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript : eventlistener_04 - 250320</title>
+</head>
+<body>
+    
+    <form id="agreeFrom" name="agreeFromName">
+        <div>
+            <label for="name">이름: </label>
+            <input id="name" type="text" placeholder="이름을 입력해 주세요">
+        </div>
+        <div>
+            <input id="agreeCheck" type="checkbox">
+            <label for="agreeCheck">약관에 동의합니다.</label>
+        </div>
+
+        <button id="submitBtn" type="submit">제출</button>
+
+        <hr>
+
+        <div>
+            <p id="nameResult"></p>
+            <p id="agreeResult"></p>
+        </div>
+    </form>
+
+    <script>
+        // [문제의 조건]
+        // 이름 입력을 하고 약관 동의 여부 후 제출 버튼을 누르면 결과가 나타난다.
+
+
+        // #1 내 코드
+        // -------------------------------------------------------------------
+
+        // agreeFrom.addEventListener("submit", function() {
+        //     event.preventDefault(); //기본 폼 제출 동작(페이지 새로고침) 방지
+
+        //     const name = document.getElementById("name").value;
+        //     const agree = document.getElementById("agreeCheck");
+            
+        //     document.getElementById("nameResult").innerText = `이름: ${name}`; //입력된 이름 화면 출력
+
+        //     //체크박스 상태에 따라 약관 동의 여부 화면에 출력
+        //     if (agree.checked) {
+        //         document.getElementById("agreeResult").innerText = "약관 동의: 동의함";
+        //     } else {
+        //         document.getElementById("agreeResult").innerText = "약관 동의: 동의하지 않음";
+        //     }
+        // });
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - agreeFrom.addEventListener: agreeFrom이라는 변수 선언을 하지 않아도 form은 id명으로 바로 선언할 수 있다.
+        //  ㄴ 만약에 id명 말고 name명으로 가져오고 싶으면 document.forms["agreeFormName"] 이라고 적으면 된다. 
+
+        
+
+        
+
+        // #2 선생님 코드
+        // -------------------------------------------------------------------
+
+        document.getElementById("agreeFrom").addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById("name").value;
+            // const name = document.agreeFromName.name.value; 
+            // const name = e.target.name.value; //위 두 개의 코드 모두 동일
+
+            // const agree = document.getElementById("agreeCheck").checked;
+            // const agree = document.agreeFromName.agreeCheck.checked;
+            const agree = e.target.agreeCheck.checked; //위 두 개의 코드 모두 동일
+
+            document.getElementById("nameResult").innerText = "이름: " + name;
+            document.getElementById("agreeResult").innerText = "약관 동의: " + ( agree ? "동의함" : "동의하지 않음"); //내 코드에서 if로 한 부분을 3항 연산자로 작성
+        });
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript : createElement_01 - 250320</title>
+
+    <link rel="stylesheet" href="./css/style_js.css">
+</head>
+<body>
+
+    <div>
+        <h3 id="target">사이트 추가하기</h3>
+        <button onclick="addNode('https://naver.com')">add</button>
+    </div>
+
+    <script>
+        // [노드 추가하기]
+
+
+        // #1
+        // -------------------------------------------------------------------
+
+        function addNode(t) {
+            let node = document.createElement("a"); //a 태그를 생성
+            node.href = t; //a태그의 href 속성을 t값으로 설정 (위 코드에선 https://naver.com)
+            node.innerHTML = `<hr>${t}`; 
+            document.getElementById("target").appendChild(node); //id가 target인 요소(h3)에 a태그를 추가 
+        }
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - createElement("tag"): tag 노드를 생성
+        // - appendChild(): 부모 노드에 ()를 추가
+
+
+
+
+        
+        // #2
+        // -------------------------------------------------------------------
+
+        function addNode(t) {
+            let node1 = document.createElement("hr"); //hr 태그를 생성
+            let node2 = document.createElement("a"); //a 태그를 생성
+
+            node2.href = t;
+            node2.innerText = t;
+
+            document.body.appendChild(node1);
+            document.body.appendChild(node2);
+        }
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - body는 getElementById 쓰지 않고 바로 body 써도 됨.
+    </script>
+</body>
+</html>

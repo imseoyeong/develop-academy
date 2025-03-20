@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript : createElement_02 - 250320</title>
+
+    <link rel="stylesheet" href="./css/style_js.css">
+</head>
+<body>
+
+    <div>
+        <div id="target">
+            <p id="p1">첫 번째 노드</p>
+            <p id="p2">두 번째 노드</p>
+            <p id="p3">세 번째 노드</p>
+        </div>
+
+        <button onclick="removeNode()">노드 지우기</button>
+    </div>
+
+    <script>
+        // [노드 삭제하기]
+
+
+        // #1
+        // -------------------------------------------------------------------
+
+        let num = 1;
+
+        function removeNode() {
+            const parent = document.getElementById("target");
+            const child = document.getElementById(`p${num}`);
+
+            parent.removeChild(child); // id="target" 에서 p${num} 를 삭제
+            num++; // 지우기 버튼 누를 때 마다 삭제
+        }
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - removeChild(): 부모 노드에서 ()를 삭제
+    </script>
+</body>
+</html>
