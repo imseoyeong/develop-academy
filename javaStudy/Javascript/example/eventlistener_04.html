@@ -7,7 +7,7 @@
 </head>
 <body>
     
-    <form id="agreeFrom" name="agreeFromName">
+    <form id="agreeForm" name="agreeFormName">
         <div>
             <label for="name">이름: </label>
             <input id="name" type="text" placeholder="이름을 입력해 주세요">
@@ -35,7 +35,7 @@
         // #1 내 코드
         // -------------------------------------------------------------------
 
-        // agreeFrom.addEventListener("submit", function() {
+        // agreeForm.addEventListener("submit", function() {
         //     event.preventDefault(); //기본 폼 제출 동작(페이지 새로고침) 방지
 
         //     const name = document.getElementById("name").value;
@@ -53,25 +53,25 @@
 
         // -------------------------------------------------------------------
         // [noti]
-        // - agreeFrom.addEventListener: agreeFrom이라는 변수 선언을 하지 않아도 form은 id명으로 바로 선언할 수 있다.
+        // - agreeForm.addEventListener: agreeForm이라는 변수 선언을 하지 않아도 form은 id명으로 바로 선언할 수 있다.
         //  ㄴ 만약에 id명 말고 name명으로 가져오고 싶으면 document.forms["agreeFormName"] 이라고 적으면 된다. 
 
-        
+
 
         
 
         // #2 선생님 코드
         // -------------------------------------------------------------------
 
-        document.getElementById("agreeFrom").addEventListener("submit", (e) => {
+        document.getElementById("agreeForm").addEventListener("submit", (e) => {
             e.preventDefault();
 
             const name = document.getElementById("name").value;
-            // const name = document.agreeFromName.name.value; 
+            // const name = document.agreeFormName.name.value; 
             // const name = e.target.name.value; //위 두 개의 코드 모두 동일
 
             // const agree = document.getElementById("agreeCheck").checked;
-            // const agree = document.agreeFromName.agreeCheck.checked;
+            // const agree = document.agreeFormName.agreeCheck.checked;
             const agree = e.target.agreeCheck.checked; //위 두 개의 코드 모두 동일
 
             document.getElementById("nameResult").innerText = "이름: " + name;
