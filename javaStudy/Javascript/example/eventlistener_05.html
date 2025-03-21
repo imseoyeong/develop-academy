@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript : eventlistener_05 - 250321</title>
+</head>
+<body>
+    
+    <form id="loginForm" name="loginFormName">
+        <h2>로그인</h2>
+        <div>
+            <label for="userId">아이디: </label>
+            <input id="userId" type="text" placeholder="이름을 입력해 주세요">
+        </div>
+        <div>
+            <label for="userPw">비밀번호: </label>
+            <input id="userPw" type="password" placeholder="비밀번호를 입력해 주세요">
+        </div>
+
+        <button id="loginBtn" type="submit">로그인</button>
+    </form>
+
+    <script>
+        // [문제의 조건]
+        // 아이디 잘못 입력 시 아이디가 존재하지 않습니다.
+        // 비밀번호 잘못 입력 시 비밀번호가 일치하지 않습니다.
+        // 로그인성공! 환영합니다. ~~님
+        // 지금 프로그램에서 몇 사람의 계정 정보를 가지고 있고, 그 정보를 바탕으로 결과 출력.
+
+
+        // #1 내 코드
+        // -------------------------------------------------------------------
+
+        const account = [
+            {id: "n0u0n40", pw: "1111"},
+            {id: "admin", pw: "1111"},
+            {id: "fearless40", pw: "1111"},
+            {id: "ttolong40", pw: "1111"},
+        ];
+        
+        loginForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const id = e.target.userId.value;
+            const pw = e.target.userPw.value;
+
+            let find = false;
+
+            // for (i = 0; i < account.length; i++) {
+            //     if (account[i].id === id) {
+            //         find = true;
+            //         if (account[i].pw === pw) {
+            //             alert(`✅로그인 성공! 환영합니다. ${id}님`);
+            //         } else {
+            //             alert("❌비밀번호가 일치하지 않습니다.");
+            //         }
+            //         break;
+            //     }
+            // }
+
+            //위 for문 let of로 변경
+            for (let userInfo of account) {
+                if (userInfo.id === id) {
+                    find = true;
+                    if (userInfo.pw === pw) {
+                        alert(`✅로그인 성공! 환영합니다. ${id}님`);
+                    } else {
+                        alert("❌비밀번호가 일치하지 않습니다.");
+                    }
+                    break;
+                }
+            }
+
+            if (!find) {
+                alert("❗아이디가 존재하지 않습니다.");
+            }
+        });
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 아이디를 찾는 과정 전에 아이디 검사 변수를 우선 선언. => if (userInfo.id === id)전에 let find = false 선언
+        // - 아이디를 찾는 과정에서 find = true가 된다. 아이디를 찾았으니깐!
+        // - if (!find): 근데 아이디를 다 찾고 for문을 나와서 find가 false가 되면 아이디를 찾지 못한 것이니깐 아이디 존재하지않음 alert 출력.
+        
+        
+
+
+                
+        // #2 forEach문, find 메서드 활용
+        // -------------------------------------------------------------------
+
+        // const account = [
+        //     {id: "n0u0n40", pw: "1111"},
+        //     {id: "admin", pw: "1111"},
+        //     {id: "fearless40", pw: "1111"},
+        //     {id: "ttolong40", pw: "1111"},
+        // ];
+        
+        // loginForm.addEventListener("submit", (e) => {
+        //     e.preventDefault();
+
+        //     const id = e.target.userId.value;
+        //     const pw = e.target.userPw.value;
+
+        //     // let user = null; //객체를 넣어놓을 변수
+        //     // account.forEach((userInfo) => {
+        //     //     if (userInfo.id === id) {
+        //     //         user = userInfo;
+        //     //     }
+        //     // });
+
+        //     let user = account.find((userInfo) => userInfo.id === id); //위의 forEach문 find 메서드 사용해 한 줄로 표현 가능.
+
+        //     if (!user) {
+        //         alert("❗아이디가 존재하지 않습니다.");
+        //         return; //없는 아이디라는게 확인이 되어서 종료
+        //     }
+
+        //     // 여기까지 왔다는 것은 유저에 객체가 들어있다는 것
+        //     if (user.pw === pw) {
+        //         alert("✅로그인 성공! 환영합니다." + user.id + "님");
+        //     } else {
+        //         alert("❌비밀번호가 일치하지 않습니다.");
+        //     }
+        // });
+
+        // -------------------------------------------------------------------
+        // [noti]
+        // - forEach: for와 map의 중간 정도라고 생각하면 된다. account.forEach(() => {});
+        // - map이나 filter는 무조건 return 값이 있어야 한다. forEach는 return을 하지 않음.
+        // - forEach는 함수라서 break가 없음. 
+        // - 필터는 하나씩 가져와서 거를건지 말걸지 확인. 맵은 요소 한개씩 가져와서 변화시켜서 새 배열을 만듦. forEach는 하나씩 들고오는건 똑같은데 리턴 노필요. 던져서 하나 작업하고 끝.
+    </script>
+</body>
+</html>

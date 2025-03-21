@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript : inputEvent_01 - 250321</title>
+</head>
+<body>
+
+    <div>
+        <h2>선수 목록</h2>
+        <input id="input" type="text" placeholder="이름을 입력해 주세요.">
+        <ul id="playerList" class="player-list"></ul>
+    </div>
+
+    <script>
+        // [문제의 조건]
+
+
+        // #1
+        // -------------------------------------------------------------------
+
+        const players = [
+            { name: "박승욱", position: "유격수" },
+            { name: "전준우", position: "좌익수" },
+            { name: "윤동희", position: "우익수" },
+            { name: "황성빈", position: "중견수" },
+            { name: "손호영", position: "3루수" },
+            { name: "나승엽", position: "1루수" },
+            { name: "고승민", position: "2루수" },
+            { name: "반즈", position: "투수" },
+            { name: "손성빈", position: "포수" }
+        ];
+
+        document.getElementById("input").addEventListener("input", () => {
+            const nameInput = document.getElementById("input").value;
+
+            const filterArr = players.filter((player) => player.name.includes(nameInput));
+            document.getElementById("playerList").innerHTML = "";
+
+            for (let nameInput of filterArr) {
+                let li = document.createElement("li");
+                li.innerText = nameInput.name + "(" + nameInput.position + ")";
+                document.getElementById("playerList").appendChild(li);
+            }
+
+            // filterArr.forEach((nameInput) => {
+            //     let li = document.createElement("li");
+            //     li.innerText = nameInput.name + "(" + nameInput.position + ")";
+            //     document.getElementById("playerList").appendChild(li);
+            // });
+        });
+
+        // -------------------------------------------------------------------
+        // [과정]
+        // 1. 
+
+
+        // [noti]
+        // let names = "박승욱 전준우 윤동희 황성빈 손호영 나승엽 고승민 반즈 손성빈";
+        // const nameArr = names.split(" ");
+        // const filterArr = nameArr.filter((player) => player.includes("영"));
+        // console.log(filterArr)
+
+
+
+
+
+        // #2 
+        // -------------------------------------------------------------------
+
+ 
+        // -------------------------------------------------------------------
+    </script>
+</body>
+</html>
