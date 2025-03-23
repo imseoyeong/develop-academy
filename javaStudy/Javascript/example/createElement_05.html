@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript : createElement_05 - 250323</title>
+
+    <style>
+        body {
+            text-align: center;
+        }
+
+        #lottoList {
+            padding-left: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 30px;
+        }
+
+        #lottoList > li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ffe030;
+            font-size: 18px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="lottoListForm">
+        <h2>로또 번호 생성기</h2>
+        <button type="submit">로또 번호 생성</button>
+        <ul id="lottoList"></ul>
+    </form>
+
+    <script>
+        // [로또 번호 생성기]
+
+
+        // #1
+        // -------------------------------------------------------------------
+
+        lottoListForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const numbers = [];
+
+            document.getElementById("lottoList").innerHTML = ""; //로또 생성 버튼을 눌렀을 때 계속 생성되는게 아니고 새로고침되어야 하기 때문에 빈 문자를 넣어준다. 
+
+            while (numbers.length < 6) { //for문으로 했을 시에는 중복 번호가 있을 때 6개의 숫자가 생기는게 아니고 6번만 반복돼서 숫자가 적게 나올 수도 있다. 그래서 while문 활용
+                let num = Math.floor(Math.random() * 45) + 1;
+
+                if (!numbers.includes(num)) { //numbers 배열에 num이 있는지 확인해라!
+                    numbers.push(num); //그리고 num을 numbers에 넣는다.
+                }
+            }
+
+            for (let i = 0; i < numbers.length; i++) {
+                let lottoNumItem = document.createElement("li");
+                lottoNumItem.innerText = numbers[i];
+                document.getElementById("lottoList").appendChild(lottoNumItem);
+            }
+        });
+    
+        // -------------------------------------------------------------------
+        // [과정]
+        // 1. 6개의 랜덤 번호 생성
+        // 2. 그 랜덤 번호를 li에 넣는다.
+    </script>
+</body>
+</html>

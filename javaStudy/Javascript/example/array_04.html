@@ -7,234 +7,202 @@
   </head>
   <body>
     <script>
-        // [문제의 조건]
-        // 0~100 범위의 정수 난수를 10개를 구해서 배열에 넣는다.
+      // [문제의 조건]
+      // 0~100 범위의 정수 난수를 10개를 구해서 배열에 넣는다.
 
+      // #1
+      // -------------------------------------------------------------------
 
-        // #1
-        // -------------------------------------------------------------------
+      // let arr = [];
+      // let index = 0;
 
-        // let arr = [];
-        // let index = 0;
+      // for (let i=0; i<arr.length; i++) {
+      //     if (i>=0 && i<=100) {
+      //         let random = parseInt(Math.random());
+      //         document.write(arr[i]);
+      //     }
+      // }
 
-        // for (let i=0; i<arr.length; i++) {
-        //     if (i>=0 && i<=100) {
-        //         let random = parseInt(Math.random());
-        //         document.write(arr[i]);
-        //     }
-        // }
+      // -------------------------------------------------------------------
+      // [noti]
+      // - 모르겠삼 ㅠ
 
-        // -------------------------------------------------------------------
-        // [noti]
-        // - 모르겠삼 ㅠ
+      // #2
+      // -------------------------------------------------------------------
 
+      // let scoreArr = [];
 
+      // for (let i=0; i<10; i++) {
+      //     let score = Math.floor(Math.() * 101);
+      //     scoreArr.push(score);
+      // }
 
+      // document.write(scoreArr + "<br>");
 
-        
-        // #2
-        // -------------------------------------------------------------------
+      // -------------------------------------------------------------------
+      // [과정]
+      // 1. 스코어 변수 선언
+      // 2. 10번 반복
+      // 3. 랜덤으로 번호 만들기 변수 선언
+      // 4. 푸쉬 메서드 선언. 맨 뒤에 늘어나야 하니깐!
 
-        // let scoreArr = [];
+      // [noti]
+      // -
 
-        // for (let i=0; i<10; i++) {
-        //     let score = Math.floor(Math.random() * 101);
-        //     scoreArr.push(score);
-        // }
+      // [map 이용해서 합격 불합격 재배열]
 
-        // document.write(scoreArr + "<br>");
- 
+      // #3
+      // -------------------------------------------------------------------
 
-        // -------------------------------------------------------------------
-        // [과정]
-        // 1. 스코어 변수 선언
-        // 2. 10번 반복
-        // 3. 랜덤으로 번호 만들기 변수 선언
-        // 4. 푸쉬 메서드 선언. 맨 뒤에 늘어나야 하니깐!
+      // let scoreArr = [];
+      // let scoreMapArr = [];
 
+      // for (let i=0; i<10; i++) {
+      //     let score = Math.floor(Math.random() * 101);
+      //     scoreArr.push(score);
 
-        // [noti]
-        // - 
+      //     if (scoreArr[i]>=60) {
+      //         scoreMapArr[i] = " " + scoreArr[i] + ": 합격"; //scoreMapArr.push("합격"); 으로 대체 가능
+      //     } else {
+      //         scoreMapArr[i] = " " + scoreArr[i] + ": 불합격"; //scoreMapArr.push("불합격"); 으로 대체 가능
+      //     }
+      // }
 
+      // document.write(scoreMapArr + "<br>");
 
+      // -------------------------------------------------------------------
+      // [noti]
+      // - 출력은 되는데 map을 사용하지 않았음. 바본가 ㅠ
 
+      // #4
+      // -------------------------------------------------------------------
 
-        
-        // [map 이용해서 합격 불합격 재배열]
+      // let scoreArr = [];
 
-        // #3
-        // -------------------------------------------------------------------
+      // for (let i=0; i<10; i++) {
+      //     let score = Math.floor(Math.random() * 101);
+      //     scoreArr.push(score);
+      // }
+      // document.write(scoreArr + "<br>");
 
-        // let scoreArr = [];
-        // let scoreMapArr = [];
+      // let mapArr = scoreArr.map((e) => {
+      //     if (e >= 60) {
+      //         return "합격";
+      //     } else {
+      //         return "불합격";
+      //     }
+      // });
 
-        // for (let i=0; i<10; i++) {
-        //     let score = Math.floor(Math.random() * 101);
-        //     scoreArr.push(score);
-            
-        //     if (scoreArr[i]>=60) {
-        //         scoreMapArr[i] = " " + scoreArr[i] + ": 합격"; //scoreMapArr.push("합격"); 으로 대체 가능
-        //     } else {
-        //         scoreMapArr[i] = " " + scoreArr[i] + ": 불합격"; //scoreMapArr.push("불합격"); 으로 대체 가능
-        //     } 
-        // }
+      // document.write(mapArr);
 
-        // document.write(scoreMapArr + "<br>");
+      // -------------------------------------------------------------------
+      // [noti]
+      // - map은 순회하는 기능을 가지고 있다. 반복문이 아니더라도 scoreArr가 가진 수만큼 순회함.
+      // - map은 자바에도 있으니... 알아두면 좋을 것 같다^^!...
 
-        // -------------------------------------------------------------------
-        // [noti]
-        // - 출력은 되는데 map을 사용하지 않았음. 바본가 ㅠ 
+      // #5
+      // -------------------------------------------------------------------
 
+      // let scoreArr = [];
 
+      // for (let i=0; i<10; i++) {
+      //     let score = Math.floor(Math.random() * 101);
+      //     scoreArr.push(score);
+      // }
+      // document.write(scoreArr + "<br>");
 
+      // let mapArr = scoreArr.map((e) => {
+      //     if (e >= 60) {
+      //         return "합격";
+      //     } else {
+      //         return "불합격";
+      //     }
+      // });
 
+      // for (let i=0; i<scoreArr.length; i++) {
+      //     document.write("<br>" + "점수: " + scoreArr[i] + " 결과: " + mapArr[i]);
+      // }
 
-        // #4
-        // -------------------------------------------------------------------
+      // -------------------------------------------------------------------
 
-        // let scoreArr = [];
+      // #6
+      // -------------------------------------------------------------------
 
-        // for (let i=0; i<10; i++) {
-        //     let score = Math.floor(Math.random() * 101);
-        //     scoreArr.push(score);
-        // }
-        // document.write(scoreArr + "<br>");
+      let scoreArr = [];
+      
+      for (let i = 0; i < 10; i++) {
+        let score = Math.floor(Math.random() * 101);
+        scoreArr.push(score);
+      }
 
-        // let mapArr = scoreArr.map((e) => {
-        //     if (e >= 60) {
-        //         return "합격";
-        //     } else {
-        //         return "불합격";
-        //     }
-        // });
-                   
+      document.write(scoreArr + "<hr>");
+      // 랜덤 점수 출력 end
 
-        // document.write(mapArr);
-
-        // -------------------------------------------------------------------
-        // [noti]
-        // - map은 순회하는 기능을 가지고 있다. 반복문이 아니더라도 scoreArr가 가진 수만큼 순회함. 
-        // - map은 자바에도 있으니... 알아두면 좋을 것 같다^^!...
-        
-
-
-
-
-        // #5
-        // -------------------------------------------------------------------
-
-        // let scoreArr = [];
-
-        // for (let i=0; i<10; i++) {
-        //     let score = Math.floor(Math.random() * 101);
-        //     scoreArr.push(score);
-        // }
-        // document.write(scoreArr + "<br>");
-
-        // let mapArr = scoreArr.map((e) => {
-        //     if (e >= 60) {
-        //         return "합격";
-        //     } else {
-        //         return "불합격";
-        //     }
-        // });
-
-        // for (let i=0; i<scoreArr.length; i++) {
-        //     document.write("<br>" + "점수: " + scoreArr[i] + " 결과: " + mapArr[i]);
-        // }
-
-        // -------------------------------------------------------------------
-
-
-
-
-
-        // #6
-        // -------------------------------------------------------------------
-
-        let scoreArr = [];
-
-        for (let i=0; i<10; i++) {
-            let score = Math.floor(Math.random() * 101);
-            scoreArr.push(score);
+      let mapArr = scoreArr.map(e => {
+        if (e >= 60) {
+          return "합격";
+        } else {
+          return "불합격";
         }
+      });
 
-        document.write(scoreArr + "<hr>");
-        // 랜덤 점수 출력 end
+      for (let i = 0; i < scoreArr.length; i++) {
+        document.write("점수: " + scoreArr[i] + " 결과: " + mapArr[i] + "<br>");
+      }
+      // 점수 및 결과 출력 end
 
+      let filterArr = scoreArr.filter(e => e >= 60);
+      document.write("<hr>60점 이상: " + filterArr);
+      // 60점 이상 출력 end
 
-        let mapArr = scoreArr.map((e) => {
-            if (e >= 60) {
-                return "합격";
-            } else {
-                return "불합격";
-            }
-        });
+      let gradeArr = filterArr.map(e => {
+        let result = Math.floor(e / 10);
 
-        for (let i=0; i<scoreArr.length; i++) {
-            document.write("점수: " + scoreArr[i] + " 결과: " + mapArr[i] + "<br>");
+        switch (result) {
+          case 10:
+          case 9:
+            return " A등급";
+            break;
+          case 8:
+            return " B등급";
+            break;
+          case 7:
+            return " C등급";
+            break;
+          case 6:
+            return " D등급";
         }
-        // 점수 및 결과 출력 end
+      });
 
+      document.write("<br>등급: " + gradeArr);
+      // 등급 출력 end
 
-        let filterArr = scoreArr.filter((e) => e>=60);
-        document.write("<hr>60점 이상: " + filterArr);
-        // 60점 이상 출력 end
+      // -------------------------------------------------------------------
+      // [noti]
+      // -
 
+      // [sort 예제]
 
-        let gradeArr = filterArr.map((e) => {
-            let result = Math.floor(e/10);
+      // #7
+      // -------------------------------------------------------------------
+      document.write("<br><br><br><br>sort 예제<br>");
 
-            switch (result) {
-            case 10:
-            case 9:
-                return " A등급";
-                break;
-            case 8:
-                return " B등급";
-                break;
-            case 7:
-                return " C등급";
-                break;
-            case 6:
-                return " D등급";
-            }
-        });
+      let scoreArr2 = [];
 
-        document.write("<br>등급: " + gradeArr);
-        // 등급 출력 end
+      for (let i = 0; i < 10; i++) {
+        let score = Math.floor(Math.random() * 101);
+        scoreArr2.push(score);
+      }
 
-        // -------------------------------------------------------------------
-        // [noti]
-        // - 
+      let sortArr = scoreArr2.sort((a, b) => a - b);
+      document.write(sortArr);
 
-        
-
-
-
-        // [sort 예제]
-
-        // #7
-        // -------------------------------------------------------------------
-        document.write("<br><br><br><br>sort 예제<br>");
-
-        let scoreArr2 = [];
-
-        for (let i=0; i<10; i++) {
-            let score = Math.floor(Math.random() * 101);
-            scoreArr2.push(score);
-        }
-
-        let sortArr = scoreArr2.sort((a,b) => a-b);
-        document.write(sortArr);
-
-        // -------------------------------------------------------------------
-        // [noti]
-        // **let sortArr = scoreArr.sort((a,b) => a-b) : 배열을 오름차순으로 정렬
-        // - sort() 함수는 배열을 정렬. (a, b) => a - b는 작은 값이 앞으로 오도록 정렬한다. 
-        // - a-b의 결과가 음수면 a가 b보다 앞에 있어야 하고, 양수면 b가 a보다 앞에 있어야 함.
-        // - 이 방법을 배열 전체 적용해서 정렬하게 된다. 
-
+      // -------------------------------------------------------------------
+      // [noti]
+      // **let sortArr = scoreArr.sort((a,b) => a-b) : 배열을 오름차순으로 정렬
+      // - sort() 함수는 배열을 정렬. (a, b) => a - b는 작은 값이 앞으로 오도록 정렬한다.
+      // - a-b의 결과가 음수면 a가 b보다 앞에 있어야 하고, 양수면 b가 a보다 앞에 있어야 함.
+      // - 이 방법을 배열 전체 적용해서 정렬하게 된다.
     </script>
   </body>
 </html>
