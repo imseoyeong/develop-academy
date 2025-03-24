@@ -36,7 +36,7 @@
 
     <form id="lottoListForm">
         <h2>로또 번호 생성기</h2>
-        <button type="submit">로또 번호 생성</button>
+        <button id="lottoBtn" type="submit">로또 번호 생성</button>
         <ul id="lottoList"></ul>
     </form>
 
@@ -44,34 +44,107 @@
         // [로또 번호 생성기]
 
 
-        // #1
+        // #1 내 코드
         // -------------------------------------------------------------------
 
-        lottoListForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            const numbers = [];
+        // lottoListForm.addEventListener("submit", (e) => {
+        //     e.preventDefault();
+        //     const numbers = [];
 
-            document.getElementById("lottoList").innerHTML = ""; //로또 생성 버튼을 눌렀을 때 계속 생성되는게 아니고 새로고침되어야 하기 때문에 빈 문자를 넣어준다. 
+        //     document.getElementById("lottoList").innerHTML = ""; //로또 생성 버튼을 눌렀을 때 계속 생성되는게 아니고 새로고침되어야 하기 때문에 빈 문자를 넣어준다. 
 
-            while (numbers.length < 6) { //for문으로 했을 시에는 중복 번호가 있을 때 6개의 숫자가 생기는게 아니고 6번만 반복돼서 숫자가 적게 나올 수도 있다. 그래서 while문 활용
-                let num = Math.floor(Math.random() * 45) + 1;
+        //     while (numbers.length < 6) { //for문으로 했을 시에는 중복 번호가 있을 때 6개의 숫자가 생기는게 아니고 6번만 반복돼서 숫자가 적게 나올 수도 있다. 그래서 while문 활용
+        //         let num = Math.floor(Math.random() * 45) + 1; //46으로 하면 0도 나올 수 있어서 45 + 1
 
-                if (!numbers.includes(num)) { //numbers 배열에 num이 있는지 확인해라!
-                    numbers.push(num); //그리고 num을 numbers에 넣는다.
-                }
-            }
+        //         if (!numbers.includes(num)) { //numbers 배열에 num이 있는지 확인해라!
+        //             numbers.push(num); //그리고 num을 numbers에 넣는다.
+        //         }
+        //     }
 
-            for (let i = 0; i < numbers.length; i++) {
-                let lottoNumItem = document.createElement("li");
-                lottoNumItem.innerText = numbers[i];
-                document.getElementById("lottoList").appendChild(lottoNumItem);
-            }
-        });
+        //     for (let i = 0; i < numbers.length; i++) {
+        //         let lottoNumItem = document.createElement("li");
+        //         lottoNumItem.innerText = numbers[i];
+        //         document.getElementById("lottoList").appendChild(lottoNumItem);
+        //     }
+        // });
     
         // -------------------------------------------------------------------
         // [과정]
         // 1. 6개의 랜덤 번호 생성
         // 2. 그 랜덤 번호를 li에 넣는다.
+
+
+
+
+
+        // #2 선생님 코드1
+        // -------------------------------------------------------------------
+
+        // document.getElementById("lottoBtn").addEventListener("click", (e) => {
+        //     e.preventDefault(); //type을 submit으로 하지 않았으면 안 넣어도 됨.
+        //     let numbers = [];
+
+        //     for (let i = 1; i <= 45; i++) {
+        //         numbers.push(i);
+        //     }
+
+        //     let lotto = [];
+        //     for (let i = 0; i < 6; i++) {
+        //         const randomIndex = Math.floor(Math.random() * numbers.length);
+        //         lotto.push(numbers[randomIndex]);
+        //         numbers = numbers.filter((n) => n !== numbers[randomIndex]);
+        //     }
+
+        //     lotto.sort((a, b) => a - b); //오름차순 정렬
+
+        //     const lottoList = document.getElementById("lottoList");
+        //     lottoList.innerHTML = lotto.map((num) => `<li>${num}</li>`)
+        //                                .join("");
+        // });
+        
+        // -------------------------------------------------------------------
+         // [noti]
+        // - 리액트에서는 #3보다 이 방식이 더 흔하긴 함.
+        
+
+
+
+
+        // #3 선생님 코드2
+        // -------------------------------------------------------------------
+
+        document.getElementById("lottoBtn").addEventListener("click", (e) => {
+            e.preventDefault();
+            let numbers = [];
+
+            for (let i = 1; i <= 45; i++) {
+                numbers.push(i);
+            }
+
+            let lotto = [];
+            while (true) {
+                let number = Math.floor(Math.random() * 45) + 1;
+
+                if (lotto.find((n) => n === number)) { //번호 중복 체크
+                    continue;
+                }
+                lotto.push(number);
+                if (lotto.length === 6) {
+                    break;
+                }
+            }
+
+            lotto.sort((a, b) => a - b); //오름차순 정렬
+
+            const lottoList = document.getElementById("lottoList");
+            lottoList.innerHTML = lotto.map((num) => `<li>${num}</li>`)
+                                       .join("");
+        });
+        
+        // -------------------------------------------------------------------
+        // [noti]
+        // - 필터는 이 조건에 맞는 애를 다 걸러내는 것. find는 이 조건에 맞는 애를 하나만 걸러내는 것. 뭐라도 리턴을 하면 true. 결과값이 0, undefinded, null이면 flase.
+        // - filter, map 리액트에서 제일 많이 쓰이고 map도 자주 쓰임.
     </script>
 </body>
 </html>

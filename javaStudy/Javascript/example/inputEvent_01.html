@@ -10,46 +10,46 @@
     <div>
         <h2>선수 목록</h2>
         <input id="input" type="text" placeholder="이름을 입력해 주세요.">
-        <ul id="playerList" class="player-list"></ul>
+        <ul id="playerList"></ul>
     </div>
 
     <script>
         // [문제의 조건]
 
 
-        // #1
+        // #1 내 코드
         // -------------------------------------------------------------------
 
-        const players = [
-            { name: "박승욱", position: "유격수" },
-            { name: "전준우", position: "좌익수" },
-            { name: "윤동희", position: "우익수" },
-            { name: "황성빈", position: "중견수" },
-            { name: "손호영", position: "3루수" },
-            { name: "나승엽", position: "1루수" },
-            { name: "고승민", position: "2루수" },
-            { name: "반즈", position: "투수" },
-            { name: "손성빈", position: "포수" }
-        ];
+        // const players = [
+        //     { name: "박승욱", position: "유격수" },
+        //     { name: "전준우", position: "좌익수" },
+        //     { name: "윤동희", position: "우익수" },
+        //     { name: "황성빈", position: "중견수" },
+        //     { name: "손호영", position: "3루수" },
+        //     { name: "나승엽", position: "1루수" },
+        //     { name: "고승민", position: "2루수" },
+        //     { name: "반즈", position: "투수" },
+        //     { name: "손성빈", position: "포수" }
+        // ];
 
-        document.getElementById("input").addEventListener("input", () => {
-            const nameInput = document.getElementById("input").value;
+        // document.getElementById("input").addEventListener("input", () => {
+        //     const nameInput = document.getElementById("input").value;
 
-            const filterArr = players.filter((player) => player.name.includes(nameInput));
-            document.getElementById("playerList").innerHTML = "";
+        //     const filterArr = players.filter((player) => player.name.includes(nameInput));
+        //     document.getElementById("playerList").innerHTML = "";
 
-            for (let nameInput of filterArr) {
-                let li = document.createElement("li");
-                li.innerText = nameInput.name + "(" + nameInput.position + ")";
-                document.getElementById("playerList").appendChild(li);
-            }
+        //     for (let nameInput of filterArr) {
+        //         let li = document.createElement("li");
+        //         li.innerText = nameInput.name + "(" + nameInput.position + ")";
+        //         document.getElementById("playerList").appendChild(li);
+        //     }
 
-            // filterArr.forEach((nameInput) => {
-            //     let li = document.createElement("li");
-            //     li.innerText = nameInput.name + "(" + nameInput.position + ")";
-            //     document.getElementById("playerList").appendChild(li);
-            // });
-        });
+        //     // filterArr.forEach((nameInput) => {
+        //     //     let li = document.createElement("li");
+        //     //     li.innerText = nameInput.name + "(" + nameInput.position + ")";
+        //     //     document.getElementById("playerList").appendChild(li);
+        //     // });
+        // });
 
         // -------------------------------------------------------------------
         // [과정]
@@ -66,9 +66,72 @@
 
 
 
-        // #2 
+        // #2 선생님 코드1
         // -------------------------------------------------------------------
 
+        // const players = [
+        //     { name: "박승욱", position: "유격수" },
+        //     { name: "전준우", position: "좌익수" },
+        //     { name: "윤동희", position: "우익수" },
+        //     { name: "황성빈", position: "중견수" },
+        //     { name: "손호영", position: "3루수" },
+        //     { name: "나승엽", position: "1루수" },
+        //     { name: "고승민", position: "2루수" },
+        //     { name: "반즈", position: "투수" },
+        //     { name: "손성빈", position: "포수" }
+        // ];
+
+        // function renderList(arrList) {
+        //     document.getElementById("playerList").innerHTML = "";
+
+        //     for (let player of arrList) {
+        //         const li = document.createElement("li");
+        //         li.innerText = `${player.name} (${player.position})`;
+        //         document.getElementById("playerList").appendChild(li);
+        //     }
+        // }
+
+        // renderList(players);
+
+        // document.getElementById("input").addEventListener("input", (e) => {
+        //     const searchChar = e.target.value;
+        //     const filterPlayers = players.filter((player) => player.name.includes(searchChar));
+        //     renderList(filterPlayers);
+        // });
+ 
+        // -------------------------------------------------------------------
+        
+
+
+
+
+        // #3 선생님 코드2
+        // -------------------------------------------------------------------
+
+        const players = [
+            { name: "박승욱", position: "유격수" },
+            { name: "전준우", position: "좌익수" },
+            { name: "윤동희", position: "우익수" },
+            { name: "황성빈", position: "중견수" },
+            { name: "손호영", position: "3루수" },
+            { name: "나승엽", position: "1루수" },
+            { name: "고승민", position: "2루수" },
+            { name: "반즈", position: "투수" },
+            { name: "손성빈", position: "포수" }
+        ];
+
+        function renderList(arrList) {
+            const playerList = document.getElementById("playerList");
+            playerList.innerHTML = arrList.map((player) => `<li>${player.name} (${player.position})</li>`) .join(""); //이런 방식으로 리액트에서 자주 쓰임.
+        }
+
+        renderList(players);
+
+        document.getElementById("input").addEventListener("input", (e) => {
+            const searchChar = e.target.value;
+            const filterPlayers = players.filter((player) => player.name.includes(searchChar));
+            renderList(filterPlayers);
+        });
  
         // -------------------------------------------------------------------
     </script>
