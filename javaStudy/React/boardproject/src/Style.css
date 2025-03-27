@@ -13,6 +13,72 @@ a:visited {
     color: inherit;
 }
 
+input {
+    width: 100%;
+    height: 35px;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+input:focus {
+    border-color: #f9dbe3;
+}
+
+textarea {
+    width: 100%;
+    resize: none;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    padding: 10px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+textarea:focus {
+    border-color: #f9dbe3;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #bbb;
+}
+
+.btn-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 5px;
+}
+
+.btn {
+    height: 40px;
+    padding: 0 40px;
+    font-size: 16px;
+    font-weight: 600;
+    background: #ed3f61;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn.btn-bdr {
+    border: 1px solid #ed3f61;
+    background: #fff;
+    color: #ed3f61;
+}
+
+.btn:hover {
+    background: #f14e6f;
+}
+
+.btn.btn-bdr:hover {
+    background: #fff6f8;
+}
+
 /* Menu */
 .menu-list {
     display: flex;
@@ -45,4 +111,14 @@ a:visited {
     display: block;
     width: 100%;
     height: 100%;
+}
+
+/* write */
+.write-form {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.write-form > * {
+    margin-bottom: 10px;
 }

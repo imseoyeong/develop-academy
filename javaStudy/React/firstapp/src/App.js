@@ -77,6 +77,7 @@ function App() {
             }
             setTopics(updateTopics);
             setMode("READ");
+            //setTopics, setMode은 예약만 한거고 함수가 끝난 후 실행된다. 
         }}></Update>
     }
 
