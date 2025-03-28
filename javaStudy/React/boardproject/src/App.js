@@ -51,26 +51,25 @@ function App() {
             break;
 
         case "read":
-            const post = postList.find(post => Number(post.id) === readingId);
+            const post = postList.find(post => Number(post.id) === Number(readingId));
             
             content = <Read 
                 post={post}
-                onDelete = {() => {
-                    const newPostList = postList.filter((p) => p.id !== post.id);
+                onUpdate = {(title, body, writer) => {
+                    const updatePost = {id: Number(readingId), title, body, writer};
+                    for (let i = 0; i < postList.length; i++) {
+                        if (postList[i].id === Number(readingId)) {
+                            postList[i] = updatePost;
+                            break;
+                        }
+                    }
+                    const newPostList = [...postList];
                     setPostList(newPostList);
                     setMode("list");
                 }}
-                onUpdate = {(title, body, writer) => {
-                    const newPostList = {id: readingId, title, body, writer};
-                    const postListArr = [...postList];
-
-                    for (let i = 0; i < postListArr.length; i++) {
-                        if (postListArr[i].id === readingId) {
-                            postListArr[i] = newPostList;
-                        }
-                    }
-
-                    setPostList(postListArr);
+                onDelete = {() => {
+                    const newPostList = postList.filter((p) => p.id !== Number(readingId));
+                    setPostList(newPostList);
                     setMode("list");
                 }}
             />

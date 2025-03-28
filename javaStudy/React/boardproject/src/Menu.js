@@ -2,8 +2,8 @@ export default function Menu(props) { // {menuList=[{id, title, mode}, {}], onSe
     const menuArr = [];
     for (let m of props.menuList) {
         const item =
-            <li>
-                <a key={m.id} href='/' onClick={(e) => {
+            <li key={m.id}>
+                <a href='/' onClick={(e) => {
                     e.preventDefault();
                     props.onSelect(m.mode);
                 }}>{m.title}</a>
