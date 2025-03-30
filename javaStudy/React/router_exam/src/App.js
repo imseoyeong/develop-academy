@@ -55,7 +55,7 @@ function Contact() {
     );
 }
 
-function MaunLayout() {
+function MainLayout() {
     const navigate = useNavigate(); // 네비게이트 함수를 리턴해주는 함수?....콜백함수
 
     return (
@@ -87,7 +87,7 @@ function App() {
   return (
     <>
     <Routes>
-        <Route path='/' element={<MaunLayout/>}>
+        <Route path='/' element={<MainLayout/>}>
             <Route index element={<Welcome/>}></Route>
             <Route path='/home' element={<Home/>}></Route>
             <Route path='/topics' element={<Topics/>}>
@@ -102,5 +102,5 @@ function App() {
 
 // [noti]
 // - Link를 눌렀을 때 밑에 뜨지 않고 페이지 이동? 하는 이유는 경로가 바뀌기 때문
-// - 그래서 MaunLayout Route 자식으로 메뉴들을 넣는다. 하지만 그냥 넣는다고 출력이 되진 않고, MaunLayout 함수 안에 Outlet을 넣어서 자식 컴포넌트(메뉴들)를 넣을 자리를 알려준다. 
+// - 그래서 MainLayout Route 자식으로 메뉴들을 넣는다. 하지만 그냥 넣는다고 출력이 되진 않고, MainLayout 함수 안에 Outlet을 넣어서 자식 컴포넌트(메뉴들)를 넣을 자리를 알려준다. 
 export default App;
