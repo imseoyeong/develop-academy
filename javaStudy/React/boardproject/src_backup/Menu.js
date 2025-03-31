@@ -1,4 +1,4 @@
-export default function Menu(props) {
+export default function Menu(props) { // {menuList=[{id, title, mode}, {}], onSelect={(mode) => {}}
     const menuArr = [];
     for (let m of props.menuList) {
         const item =
