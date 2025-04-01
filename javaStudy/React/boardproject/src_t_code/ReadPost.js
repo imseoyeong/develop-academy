@@ -1,10 +1,13 @@
 import { useState } from "react";
-import { useOutletContext, useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { onUpdate, onDelete } from './postListSlice';
 
 export default function ReadPost(){
-    const {postList, onUpdate, onDelete} = useOutletContext();
-    const {postId} = useParams();   
-    const item = postList.find((p)=>p.id === Number(postId));
+    const {postId} = useParams();
+    const item = useSelector((state) => state.postList.postList.find((p) => p.id === Number(postId)));
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     
     const [title, setTitle] = useState(item? item.title:"");
     const [body, setBody] = useState(item? item.body:"");
@@ -16,7 +19,7 @@ export default function ReadPost(){
 
     return (
         <>
-        <form onSubmit={(e)=>e.preventDefault()}>
+        <form onSubmit={(e) => e.preventDefault()}>
             <p><input type="text" name="title" value={title} onChange={(e)=>{
                 setTitle(e.target.value);
             }}></input></p>
@@ -27,10 +30,12 @@ export default function ReadPost(){
                 setWriter(e.target.value);
             }}></input></p>
             <button onClick={(e)=>{
-                onUpdate(item.id, title, body, writer);
+                dispatch(onUpdate({ id: item.id, title, body, writer }));
+                navigate("/");
             }}>수정</button>
             <button onClick={(e)=>{
-                onDelete(item.id);
+                dispatch(onDelete({ id: item.id }));
+                navigate("/");
             }}>삭제</button>
 
         </form>

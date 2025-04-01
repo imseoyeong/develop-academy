@@ -1,7 +1,9 @@
-import { Link, useOutletContext } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 export default function PostList(){
-    const {postList} = useOutletContext();
+    const postList = useSelector((state) => state.postList.postList);
+
     const list=[];
 
     for(let post of postList){

@@ -1,15 +1,24 @@
-import { useState } from 'react';
-import { useOutletContext } from 'react-router-dom';
+import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { onUpdate, onDelete } from './postListSlice';
 
 export default function Read() {
-    const { post, onUpdate, onDelete } = useOutletContext();
+    const {postId} = useParams();
+    const item = useSelector((state) => state.postList.postList.find((p) => p.id === Number(postId)));
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    
+    const [title, setTitle] = useState(item? item.title:"");
+    const [body, setBody] = useState(item? item.body:"");
+    const [writer, setWriter] = useState(item? item.writer:"");
 
-    const [title, setTitle] = useState(post.title);
-    const [body, setBody] = useState(post.body);
-    const [writer, setWriter] = useState(post.writer);
+    if(!item){
+        return;
+    }
 
     return (
-        <form className='write-form'>
+        <form className='write-form' onSubmit={(e) => e.preventDefault()}>
             <input type='text' name='title' placeholder='제목을 입력하세요' value={title} onChange={(e) => {
                 setTitle(e.target.value)
             }}></input>
@@ -24,10 +33,12 @@ export default function Read() {
 
             <div className='btn-wrap'>
                 <button className='btn' type='button' onClick={() => {
-                    onUpdate(title, body, writer);
+                    dispatch(onUpdate({ id: item.id, title, body, writer }));
+                    navigate("/");
                 }}>수정</button>
                 <button className='btn btn-bdr' type='button' onClick={() => {
-                    onDelete();
+                    dispatch(onDelete({ id: item.id }));
+                    navigate("/");
                 }}>삭제</button>
             </div>
         </form>
