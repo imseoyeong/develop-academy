@@ -1,0 +1,24 @@
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:visited {
+    color: inherit;
+}
+
+img {
+    width: 180px;
+    height: 110px;
+    object-fit: cover;
+}
+
+.img-list {
+    display: flex;
+}
