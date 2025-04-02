@@ -1,21 +1,25 @@
 import { Route, Routes } from 'react-router-dom';
 
 import MainLayout from './MainLayout';
-import ImageList from './ImageList';
-// import ImageContent from './ImageContent';
+import Africa from './Africa';
+import Brazil from './Brazil';
+import Canada from './Canada';
+import Cuba from './Cuba';
+// import ImageList from './components/ImageList';
+import ImageContent from './ImageContent';
 import "./style.css";
 
-// import africaImage from "./img/africa.jpg";
-// import africaImage1 from "./img/africa1.jpg";
-// import africaImage2 from "./img/africa2.jpg";
 
 function App() {
     return (
         <>
             <Routes>
                 <Route path="/" element={<MainLayout/>}>
-                    <Route index element={<ImageList/>}></Route>
-                    {/* <Route path='/list/:imgid' element={<ImageContent/>}></Route> */}
+                    {/* <Route path='/africa' element={<Africa/>}></Route>
+                    <Route path='/brazil' element={<Brazil/>}></Route>
+                    <Route path='/canada' element={<Canada/>}></Route>
+                    <Route path='/cuba' element={<Cuba/>}></Route> */}
+                    <Route path='/imgList/:imgid' element={<ImageContent/>}></Route>
                 </Route>
             </Routes>
         </>
