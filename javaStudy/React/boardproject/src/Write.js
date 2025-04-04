@@ -7,7 +7,7 @@ export default function Write() {
     const navigate = useNavigate();
 
     return (
-        <form className='write-form' onSubmit={(e) => { {}
+        <form className='write-form' onSubmit={(e) => {
             e.preventDefault();
             const title = e.target.title.value;
             const body = e.target.body.value;
