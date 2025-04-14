@@ -1,5 +1,5 @@
 public class Method01 {
-//    메서드 오버로딩
+//    [메서드 오버로딩]
 //    -----------------------------------------------------------
     public static int sum(int x, int y) {
         return (x + y);
