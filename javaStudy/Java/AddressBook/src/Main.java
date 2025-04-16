@@ -15,7 +15,7 @@ public class Main {
         int firstSelect = input.nextInt(); // 로그인, 종료 중에 선택
 
         if (firstSelect == 1) { // 1번 선택 시 로그인 화면으로
-            user = login();
+            user = login(); //찾은 유저의 정보를 user에 넣었다.
         } else {
             System.out.println("종료!");
             return;
@@ -64,7 +64,7 @@ public class Main {
 
     // 로그인 화면
     public static User login() {
-        User userExist = null;
+        User userExist = null; // 초기값은 찾은 유저가 없음.
         while (userExist == null) {
             System.out.print("ID: ");
             String id = input.next();
@@ -75,8 +75,8 @@ public class Main {
             for (int i = 0; i < users.length; i++) {
                 if (id.equals(users[i].ID) && pw == users[i].PW) {
                     System.out.println("로그인 성공");
-                    userExist = users[i];
-                    return userExist; // 로그인 성공
+                    userExist = users[i]; // 유저를 찾았다. users의 객체를 찾았따
+                    return userExist; // 그 객체를 리턴 -> 로그인 성공. null 일때만 반복인데 null이 아니어서 반복문 종료
                 }
             }
             System.out.println("로그인 실패");
