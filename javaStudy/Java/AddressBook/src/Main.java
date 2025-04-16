@@ -106,7 +106,16 @@ public class Main {
 
     // 1. 주소록 검색
     public static void searchAddress() {
-        System.out.println("주소록 검색");
+        System.out.println("검색할 유저의 이름: ");
+        String user = input.nextLine();
+
+        for (int i = 0; i < book.length; i++) {
+            if (user.equals(book[i][2])) {
+                System.out.println(book[i][2] + "님의 주소: " + book[i][3]);
+                System.out.println(book[i][2] + "님의 전화번호: " + book[i][4]);
+                System.out.println();
+            }
+        }
     }
 
     // 2. 전체 주소록 검색
