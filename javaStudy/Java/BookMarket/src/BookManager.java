@@ -149,7 +149,6 @@ public class BookManager {
             if (exit) {
                 break;
             }
-
         }
     }
 
@@ -157,15 +156,14 @@ public class BookManager {
     public void menuCartRemoveItemCount() {
         System.out.println("장바구니에 항목 수량 줄이기");
         mCart.checkCart();
+        mCart.getmCartItemCount();
 
         while (true) {
             boolean exit = false;
-            System.out.print("수량을 줄이실 도서ID를 입력하세요 : ");
+            System.out.print("수량을 줄일 도서ID를 입력하세요 : ");
 
             Scanner input = new Scanner(System.in);
             String bookid = input.nextLine();
-
-     
 
         }
     }

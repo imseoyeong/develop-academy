@@ -27,6 +27,7 @@ public class Cart {
             }
         }
     }
+
     public void checkCart(){
         System.out.println("장바구니 상품 목록 보기: ");
         System.out.println("---------------------------------------------");
@@ -40,5 +41,9 @@ public class Cart {
             );
         }
         System.out.println("---------------------------------------------");
+    }
+
+    public int getmCartItemCount() {
+        return mCartItemCount;
     }
 }
