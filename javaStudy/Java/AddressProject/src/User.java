@@ -18,14 +18,6 @@ public class User {
         this.phone = phone;
     }
 
-    // 정보 변경 함수
-    public void setInfo(String pw, String address, String phone) {
-        this.PW = pw;
-        this.address = address;
-        this.phone = phone;
-        System.out.println(this.name + "님의 정보가 변경되었습니다.");
-    }
-
     // getter 읽기 접근자
     public String getID() {
         return ID;

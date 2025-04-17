@@ -1,17 +1,17 @@
 public class CartItem {
-    private String[] book;
+    private Book book;
     private int count;
     private int totalPrice;
 
     // 생성자 정의
-    public CartItem(String[] book, int count) {
+    public CartItem(Book book, int count) {
         this.book = book;
         this.count = count;
         this.updateTotalPrice();
     }
 
     // 오버로딩
-    public CartItem(String[] book) {
+    public CartItem(Book book) {
         this.book = book;
         this.count = 1;
         this.updateTotalPrice();
@@ -19,12 +19,12 @@ public class CartItem {
 
     // 계산하는 함수
     public void updateTotalPrice() {
-        this.totalPrice = Integer.parseInt(this.book[2]) * this.count;
+        this.totalPrice = this.book.getPrice() * this.count;
     }
 
 
     // 읽기 접근자
-    public String[] getBook() {
+    public Book getBook() {
         return this.book;
     }
 
