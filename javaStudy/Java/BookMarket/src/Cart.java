@@ -12,6 +12,23 @@ public class Cart {
         return false;
     }
 
+    public void clearCart() {
+        this.mCart = new CartItem[3];
+        this.mCartItemCount = 0;
+    }
+
+    public Book removeCartItem(String bookid) {
+        Book book = null;
+        for (int i = 0; i < this.mCartItemCount; i++) {
+            if (this.mCart[i].getBook().getId().equals(bookid)) {
+                book = this.mCart[i].getBook();
+                this.removeCartItem(i);
+                break;
+            }
+        }
+        return book;
+    }
+
     // false 리턴하면 얘가 호출
     public void appendBook(Book book) {
         this.mCart[this.mCartItemCount] = new CartItem(book);
@@ -28,16 +45,16 @@ public class Cart {
         }
     }
 
-    public void checkCart(){
+    public void checkCart() {
         System.out.println("장바구니 상품 목록 보기: ");
         System.out.println("---------------------------------------------");
         System.out.println(" 도서ID  | 수량 | 총 가격");
-        for(int i = 0 ; i < mCartItemCount ; i++){
+        for (int i = 0; i < mCartItemCount; i++) {
 //            System.out.println(mCart[i].getBook().getName());
             System.out.println(
                     mCart[i].getBook().getId() + " | " +
-                    mCart[i].getCount() + " | " +
-                    mCart[i].getBook().getPrice()
+                            mCart[i].getCount() + " | " +
+                            mCart[i].getBook().getPrice()
             );
         }
         System.out.println("---------------------------------------------");
@@ -45,5 +62,33 @@ public class Cart {
 
     public int getmCartItemCount() {
         return mCartItemCount;
+    }
+
+    public Book deCreaseBookCount(String bookid) {
+        Book book = null;
+        for (int i = 0; i < this.mCartItemCount; i++) {
+            if (this.mCart[i].getBook().getId().equals(bookid)) {
+                book = this.mCart[i].getBook();
+                this.mCart[i].setCount(this.mCart[i].getCount() - 1);
+                if (this.mCart[i].getCount() == 0) {
+                    System.out.println("수량이 0이 되어 항목을 장바구니에서 삭제합니다.");
+                    this.removeCartItem(i);
+                    break;
+                }
+            }
+        }
+        return book;
+    }
+
+    private void removeCartItem(int index){
+        CartItem[] newCarItemList = new CartItem[3];
+        int number = 0;
+        for(int i =0; i<this.mCartItemCount; i++){
+            if(i != index){
+                newCarItemList[number++] = this.mCart[i];
+            }
+        }
+        this.mCart=newCarItemList;
+        this.mCartItemCount--;
     }
 }

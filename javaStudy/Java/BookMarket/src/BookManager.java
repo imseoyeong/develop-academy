@@ -93,23 +93,35 @@ public class BookManager {
     // 3. 장바구니 비우기
     public void menuCartClear() {
         System.out.println("장바구니 비우기");
+        this.mCart.clearCart();
+    }
+
+    // 북리스트
+    public void bookList() {
+        for (int i = 0; i < mBook.length; i++) {
+            System.out.print("도서 ID: ");
+            System.out.println(this.mBook[i].getId());
+            System.out.print("도서 이름: ");
+            System.out.println(this.mBook[i].getName());
+            System.out.print("도서 가격: ");
+            System.out.println(this.mBook[i].getPrice());
+            System.out.print("저자 : ");
+            System.out.println(this.mBook[i].getWriter());
+            System.out.print("도서 설명 : ");
+            System.out.println(this.mBook[i].getDes());
+            System.out.print("분류 : ");
+            System.out.println(this.mBook[i].getCategory());
+            System.out.print("출판일 : ");
+            System.out.println(this.mBook[i].getDate());
+            System.out.println("======================================");
+        }
     }
 
     // 4. 장바구니 항목 추가
     public void menuCartAddItem() {
         System.out.println("장바구니 항목 추가하기 ");
 
-        for (int i = 0; i < mBook.length; i++) {
-            System.out.println(
-                    mBook[i].getId() + " | " +
-                            mBook[i].getName() + " | " +
-                            mBook[i].getPrice() + " | " +
-                            mBook[i].getWriter() + " | " +
-                            mBook[i].getDes() + " | " +
-                            mBook[i].getCategory() + " | " +
-                            mBook[i].getDate()
-            );
-        }
+        bookList();
 
         while (true) {
             boolean exit = false;
@@ -155,22 +167,41 @@ public class BookManager {
     // 5. 장바구니 항목 수량 줄이기
     public void menuCartRemoveItemCount() {
         System.out.println("장바구니에 항목 수량 줄이기");
-        mCart.checkCart();
-        mCart.getmCartItemCount();
 
         while (true) {
-            boolean exit = false;
+            mCart.checkCart();
             System.out.print("수량을 줄일 도서ID를 입력하세요 : ");
 
             Scanner input = new Scanner(System.in);
             String bookid = input.nextLine();
 
+            if(!this.mCart.isCartInBook(bookid)){
+                System.out.println("장바구니에 존해하는 도서가 아닙니다.");
+                continue;
+            }
+            System.out.println(bookid + "의 수량을 줄이시겠습니까? Y|N");
+            String yn = input.nextLine();
+            if(yn.toUpperCase().equals("Y")){
+                Book book = this.mCart.deCreaseBookCount(bookid);
+                System.out.println( book.getName() + " 한권이 장바구니에서 삭제되었습니다. ");
+            }
+            break;
         }
     }
 
     // 6. 장바구니 항목 삭제
     public void menuCartRemoveItem() {
         System.out.println("장바구니의 항목 삭제하기");
+        this.mCart.checkCart();
+        System.out.print("삭제할 항목의 도서ID를 입력하세요 : ");
+        Scanner input = new Scanner(System.in);
+        String bookid = input.nextLine();
+        if(this.mCart.isCartInBook(bookid)){
+            Book book = this.mCart.removeCartItem(bookid);
+            System.out.println(book.getName() + "가 장바구니에서 삭제되었습니다.");
+        }else{
+            System.out.println("장바구니에 없는 책입니다.");
+        }
     }
 
     // 7. 영수증 표시
