@@ -4,6 +4,7 @@ public class BookManager {
     // 멤버 변수
     private Book[] mBook = new Book[3];
     private Cart mCart = new Cart();
+    Person mCurrentUser;
 
     // 생성자 (멤버 변수의 초기화가 주목적)
     public BookManager() {
@@ -21,6 +22,7 @@ public class BookManager {
         String phone = input.nextLine();
 
         Person user = new Person(name, phone);
+        Admin admin = new Admin(name, phone);
 
         // 메뉴 선택
         while (true) {
@@ -54,6 +56,10 @@ public class BookManager {
                     endflag = true;
                     System.out.println("종료");
                     break;
+                case 9:
+//                    menuAdminLogin(admin);
+                    menuAdminLogin();
+                    break;
             }
 
             if (endflag) {
@@ -75,6 +81,7 @@ public class BookManager {
         System.out.println("2. 장바구니 상품 목록 보기\t\t5. 장바구니의 항목 수량 줄이기");
         System.out.println("3. 장바구니 비우기\t\t\t\t6. 장바구니의 항목 삭제하기");
         System.out.println("7. 영수증 표시하기\t\t\t\t8. 종료");
+        System.out.println("9. 관리자 로그인");
 
         System.out.println("***********************************************");
     }
@@ -100,7 +107,7 @@ public class BookManager {
     public void bookList() {
         for (int i = 0; i < mBook.length; i++) {
             System.out.print("도서 ID: ");
-            System.out.println(this.mBook[i].getId());
+            System.out.println(this.mBook[i].getItemId());
             System.out.print("도서 이름: ");
             System.out.println(this.mBook[i].getName());
             System.out.print("도서 가격: ");
@@ -133,23 +140,23 @@ public class BookManager {
             int index = -1;
 
             for (int i = 0; i < mBook.length; i++) {
-                if (bookid.equals(mBook[i].getId())) {
+                if (bookid.equals(mBook[i].getItemId())) {
                     index = i;
                     break;
                 }
             }
 
             if (index != -1) {
-                System.out.println("장바구니에 추가하겠습니까? Y|N");
+                System.out.println("장바구니에 추가하겠습니까? Y | N");
                 String yn = input.nextLine();
 
                 if (yn.toUpperCase().equals("Y")) {
-                    if (!mCart.isCartInBook(bookid)) {
-                        mCart.appendBook(mBook[index]);
-                        System.out.println(mBook[index].getId() + "가 장바구니에 추가되었습니다.");
+                    if (!mCart.isCartInItem(bookid)) {
+                        mCart.appendItem(mBook[index]);
+                        System.out.println(mBook[index].getItemId() + "가 장바구니에 추가되었습니다.");
                     }else{
-                        System.out.println(mBook[index].getId() + "가 장바구니에 추가되었습니다.");
-                        mCart.inCreaseBookCount(bookid);
+                        System.out.println(mBook[index].getItemId() + "가 장바구니에 추가되었습니다.");
+                        mCart.inCreaseItemCount(bookid);
                     }
 
                 }
@@ -175,14 +182,22 @@ public class BookManager {
             Scanner input = new Scanner(System.in);
             String bookid = input.nextLine();
 
-            if(!this.mCart.isCartInBook(bookid)){
+            if(!this.mCart.isCartInItem(bookid)){
                 System.out.println("장바구니에 존해하는 도서가 아닙니다.");
                 continue;
             }
-            System.out.println(bookid + "의 수량을 줄이시겠습니까? Y|N");
+            System.out.println(bookid + "의 수량을 줄이시겠습니까? Y | N");
             String yn = input.nextLine();
             if(yn.toUpperCase().equals("Y")){
-                Book book = this.mCart.deCreaseBookCount(bookid);
+                Book book = (Book)this.mCart.deCreaseItemCount(bookid); // 북의 원래 정체를 알고있을 때
+
+                // 북의 정체가 확실하지 않을 때 이런 방법을 쓸 수 있음.
+//                Book book = null;
+//                Item item = this.mCart.deCreaseItemCount(bookid);
+//                if (item instanceof Book) {
+//                    book = (Book)item;
+//                }
+
                 System.out.println( book.getName() + " 한권이 장바구니에서 삭제되었습니다. ");
             }
             break;
@@ -196,8 +211,8 @@ public class BookManager {
         System.out.print("삭제할 항목의 도서ID를 입력하세요 : ");
         Scanner input = new Scanner(System.in);
         String bookid = input.nextLine();
-        if(this.mCart.isCartInBook(bookid)){
-            Book book = this.mCart.removeCartItem(bookid);
+        if(this.mCart.isCartInItem(bookid)){
+            Book book = (Book)this.mCart.removeCartItem(bookid);
             System.out.println(book.getName() + "가 장바구니에서 삭제되었습니다.");
         }else{
             System.out.println("장바구니에 없는 책입니다.");
@@ -209,4 +224,46 @@ public class BookManager {
         System.out.println("영수증 표시하기");
     }
 
+    // 9. 관리자 로그인
+//    public void menuAdminLogin(Admin admin) {
+//        while (true) {
+//            System.out.println("관리자 정보를 입력하세요");
+//            Scanner input = new Scanner(System.in);
+//            System.out.print("아이디 : ");
+//            String adminId = input.nextLine();
+//            System.out.print("비밀번호 : ");
+//            String adminPw = input.nextLine();
+//
+//            if (adminId.equals(admin.getId()) && adminPw.equals(admin.getPw())) {
+//                System.out.println("이름: " + admin.getName() + "\t연락처: " + admin.getPhone());
+//                System.out.println("아이디: " + admin.getId() + "\t비밀번호: " + admin.getPw());
+//                break;
+//            } else {
+//                System.out.println("관리자 계정과 일치하지 않습니다.");
+//            }
+//        }
+//    }
+
+    public void menuAdminLogin() {
+        Admin login = new Admin(this.mCurrentUser.getName(), this.mCurrentUser.getPhone());
+        Scanner input = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("관리자 정보를 입력하세요.");
+            System.out.print("ID: ");
+            String id = input.nextLine();
+            System.out.print("PW: ");
+            String pw = input.nextLine();
+
+            if (login.getId().equals(id) && login.getPw().equals(pw)) {
+                System.out.println("로그인 성공");
+                this.mCurrentUser = login;
+                System.out.println("이름: " + login.getName() + "\n연락처: " + login.getPhone());
+                System.out.println("ID: " + login.getId() + "\nPW: " + login.getPw());
+                break;
+            } else {
+                System.out.println("로그인에 실패하였습니다. 다시 입력해주세요.");
+            }
+        }
+    }
 }

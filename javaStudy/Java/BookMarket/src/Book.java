@@ -1,7 +1,4 @@
-public class Book {
-    private String id;
-    private String name;
-    private int price;
+public class Book extends Item {
     private String writer;
     private String des;
     private String category;
@@ -10,9 +7,7 @@ public class Book {
     // 생성자
     public Book(String id, String name, int price, String
                 writer, String des, String category, String date) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
+        super(id, name, price);
         this.writer = writer;
         this.des = des;
         this.category = category;
@@ -20,18 +15,6 @@ public class Book {
     }
 
     // getter 읽기 접근자
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
     public String getWriter() {
         return writer;
     }
