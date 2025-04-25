@@ -65,3 +65,10 @@ on c.custid = o.custid
 join book b
 on o.bookid = b.bookid
 where b.price > o.saleprice;
+
+
+-- 현재 Development 부서에서 근무하는 직원의 이름과 생년월일을 조회
+-- name이 Christ Muchinsky인 직원의 현재 소속 부서명과 현재 연봉
+-- 현재 title이 Senior Engineer로 일하고 있는 직원의 이름과 연봉
+-- 각 부서별 매니저들의 현재 연봉
+-- 부서별로 매니저가 바뀐 횟수를 조회 (부셔명, 역대 매니저 수)
