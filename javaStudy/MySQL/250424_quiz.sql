@@ -12,12 +12,14 @@ select * from madang.book where publisher not in ('굿스포츠', '대한미디�
 
 -- 5) ‘축구의 역사’를 출간한 출판사를 검색
 select bookname, publisher from madang.book where bookname like '축구의 역사';
+select bookname, publisher from madang.book where bookname = '축구의 역사';
 
 -- 6) 도서이름에 ‘축구’가 포함된 출판사를 검색
 select bookname, publisher from madang.book where bookname like '%축구%';
 
 -- 7) 도서이름이 여섯글자인 도서를 검색
 select * from madang.book where char_length(bookname) = 6;
+select * from madang.book where bookname like '______';
 
 -- 8) 도서이름의 왼쪽 두 번째 위치에 ‘구’라는 문자열을 갖는 도서를 검색
 select * from madang.book where bookname like '_구%';
@@ -29,7 +31,7 @@ select * from madang.book where bookname like '%축구%' and price >= 20000;
 select sum(price) as '야구에 관한 책 총 구매액' from madang.book where bookname like '%야구%';
 
 -- 11) 도서를 가격순으로 검색하고, 가격이 같으면 이름순으로 검색
-select bookname, price from madang.book order by price desc, bookname desc;
+select bookname, price from madang.book order by price desc, bookname;
 
 -- 12) 도서를 가격의 내림차순으로 검색하고 만약 가격이 같다면 출판사의 오름차순으로 검색
 select bookname, publisher, price from madang.book order by price desc, publisher asc; 
