@@ -68,7 +68,44 @@ where b.price > o.saleprice;
 
 
 -- 현재 Development 부서에서 근무하는 직원의 이름과 생년월일을 조회
+select e.first_name, e.last_name, e.birth_date from employees e
+join dept_emp de
+on e.emp_no = de.emp_no
+join departments dpt
+on de.dept_no = dpt.dept_no
+where dpt.dept_name = "Development" and de.to_date = "9999-01-01";
+
 -- name이 Christ Muchinsky인 직원의 현재 소속 부서명과 현재 연봉
+select e.first_name, e.last_name, dpt.dept_name, s.salary from employees e
+join dept_emp de
+on e.emp_no = de.emp_no
+join departments dpt
+on de.dept_no = dpt.dept_no
+join salaries s
+on e.emp_no = s.emp_no
+where e.first_name = "Christ" and e.last_name = "Muchinsky" and s.to_date = "9999-01-01" and de.to_date = "9999-01-01";
+
 -- 현재 title이 Senior Engineer로 일하고 있는 직원의 이름과 연봉
+select e.first_name, e.last_name, s.salary from employees e
+join titles t
+on e.emp_no = t.emp_no
+join salaries s
+on e.emp_no = s.emp_no
+where t.title = "Senior Engineer" and t.to_date = "9999-01-01"
+and s.to_date = "9999-01-01";
+
 -- 각 부서별 매니저들의 현재 연봉
+select dpt.dept_name, e.first_name, e.last_name, s.salary from departments dpt
+join dept_manager dm
+on dpt.dept_no = dm.dept_no
+join salaries s
+on dm.emp_no = s.emp_no
+join employees e
+on e.emp_no = s.emp_no
+where dm.to_date = "9999-01-01" and s.to_date = "9999-01-01";
+
 -- 부서별로 매니저가 바뀐 횟수를 조회 (부셔명, 역대 매니저 수)
+select dpt.dept_name, count(*) as 역대매니저수 from departments dpt
+join dept_manager dm
+on dpt.dept_no = dm.dept_no
+group by dpt.dept_no; 
