@@ -14,7 +14,27 @@ export default function EditProduct() {
 
   const handleSubmit = e=>{
     e.preventDefault();
-    dispatch(productUpdate(state));
+	const p = {id: product.id, price: state.price}; // Number(e.target.price.value)라고 해도 가능
+	fetch("http://localhost:8080/product", {
+		method: "PUT",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(p),
+	})
+	.then(response => {
+		if (!response.ok) {
+			throw new Error("네트워크 오류");
+		}
+		return response.json();
+	})
+	.then(data => {
+		dispatch(productUpdate(data));
+	})
+	.catch(error => {
+		console.log(error);
+	});
+	
     navigate("/");
   }
 

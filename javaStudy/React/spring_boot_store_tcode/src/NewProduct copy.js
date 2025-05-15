@@ -6,30 +6,13 @@ import { useRef} from "react";
 export default function NewProduct(){
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const imgsrc = "https://dummyimage.com/200x200/00f/fff.jpg&text=product";
+    const id = useRef(4);
 
     const handleSubmit = e=>{
         e.preventDefault();
-		const p = {title: e.target.title.value, price: Number(e.target.price.value)};
-		fetch("http://localhost:8080/new-product", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify(p),
-		})
-		.then(response => {
-			if (!response.ok) {
-				throw new Error("네트워크 오류");
-			}
-			return response.json();
-		})
-		.then(data => {
-			dispatch(productAdd(data));
-		})
-		.catch(error => {
-			console.log(error);
-		});
-
+        dispatch(productAdd({id: id.current, title: e.target.title.value, price : Number(e.target.price.value), imagesrc:imgsrc}));
+        id.current++;
         navigate("/");
     }
 
