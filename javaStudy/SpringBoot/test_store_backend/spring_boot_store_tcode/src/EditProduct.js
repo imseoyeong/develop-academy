@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { productUpdate } from "./productSlice";
+import apiClient from "./api/clientInstance";
 
 export default function EditProduct() {
   const { id } = useParams();
@@ -12,28 +13,36 @@ export default function EditProduct() {
   const [state, setState] = useState(product);
   const navigate = useNavigate();
 
-  const handleSubmit = e=>{
+  const handleSubmit = async e=>{
     e.preventDefault();
 	const p = {id: product.id, price: state.price}; // Number(e.target.price.value)라고 해도 가능
-	fetch("http://localhost:8080/product", {
-		method: "PUT",
-		headers: {
-			"Content-Type": "application/json"
-		},
-		body: JSON.stringify(p),
-	})
-	.then(response => {
-		if (!response.ok) {
-			throw new Error("네트워크 오류");
-		}
-		return response.json();
-	})
-	.then(data => {
-		dispatch(productUpdate(data));
-	})
-	.catch(error => {
+
+	try {
+		const response = await apiClient.put("/product", p);
+		dispatch(productUpdate(response.data));
+	} catch(error) {
 		console.log(error);
-	});
+	}
+
+	// fetch("http://localhost:8080/product", {
+	// 	method: "PUT",
+	// 	headers: {
+	// 		"Content-Type": "application/json"
+	// 	},
+	// 	body: JSON.stringify(p),
+	// })
+	// .then(response => {
+	// 	if (!response.ok) {
+	// 		throw new Error("네트워크 오류");
+	// 	}
+	// 	return response.json();
+	// })
+	// .then(data => {
+	// 	dispatch(productUpdate(data));
+	// })
+	// .catch(error => {
+	// 	console.log(error);
+	// });
 	
     navigate("/");
   }

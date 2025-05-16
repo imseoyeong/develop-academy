@@ -1,5 +1,6 @@
-package com.example.test_store_backend.data;
+package com.example.test_store_backend.data.repository;
 
+import com.example.test_store_backend.data.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
