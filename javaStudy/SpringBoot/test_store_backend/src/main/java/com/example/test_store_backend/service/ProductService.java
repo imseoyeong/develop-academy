@@ -6,6 +6,7 @@ import com.example.test_store_backend.data.entity.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +46,8 @@ public class ProductService {
 
     public ProductDTO saveProduct(ProductDTO productDTO) {
         Product product = this.productDAO.saveProduct(productDTO.getTitle(),
-                "https://dummyimage.com/200x200/00f/fff.jpg&text=product", productDTO.getPrice());
+                "https://dummyimage.com/200x200/00f/fff.jpg&text=product",
+                productDTO.getPrice(), LocalDateTime.now(), "생성");
         ProductDTO saveproductDTO = ProductDTO.builder()
                 .id(product.getId())
                 .imagesrc(product.getImagesrc())
@@ -57,7 +59,7 @@ public class ProductService {
 
     public ProductDTO updateProductById(ProductDTO productDTO) {
         Product product = this.productDAO.updateProductById(productDTO.getId(),
-                productDTO.getPrice());
+                productDTO.getPrice(), LocalDateTime.now(), "수정");
         if (product != null) {
             ProductDTO updateproductDTO = ProductDTO.builder()
                     .id(product.getId())
