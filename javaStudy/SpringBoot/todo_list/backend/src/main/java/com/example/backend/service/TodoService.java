@@ -38,6 +38,10 @@ public class TodoService {
         return savetodoDTO;
     }
 
+//    public TodoDTO completeTodo(Integer id) {
+//
+//    }
+
     public boolean deleteTodoById(Integer id) {
         return this.todoDAO.deleteTodoById(id);
     }

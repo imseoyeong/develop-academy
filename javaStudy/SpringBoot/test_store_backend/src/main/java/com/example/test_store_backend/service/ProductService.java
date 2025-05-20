@@ -3,6 +3,8 @@ package com.example.test_store_backend.service;
 import com.example.test_store_backend.data.dao.ProductDAO;
 import com.example.test_store_backend.data.dto.ProductDTO;
 import com.example.test_store_backend.data.entity.Product;
+import com.example.test_store_backend.exception.MyException;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -32,16 +34,16 @@ public class ProductService {
 
     public ProductDTO getProductById(Integer id) {
         Product product = this.productDAO.getProductById(id);
-        if (product != null) {
-            ProductDTO productDTO = ProductDTO.builder()
-                    .id(product.getId())
-                    .imagesrc(product.getImagesrc())
-                    .title(product.getTitle())
-                    .price(product.getPrice())
-                    .build();
-            return productDTO;
+        if (product == null) {
+            throw new MyException("현재 ID의 상품이 존재하지 않습니다.");
         }
-        return null;
+        ProductDTO productDTO = ProductDTO.builder()
+                .id(product.getId())
+                .imagesrc(product.getImagesrc())
+                .title(product.getTitle())
+                .price(product.getPrice())
+                .build();
+        return productDTO;
     }
 
     public ProductDTO saveProduct(ProductDTO productDTO) {
@@ -60,22 +62,22 @@ public class ProductService {
     public ProductDTO updateProductById(ProductDTO productDTO) {
         Product product = this.productDAO.updateProductById(productDTO.getId(),
                 productDTO.getPrice(), LocalDateTime.now(), "수정");
-        if (product != null) {
-            ProductDTO updateproductDTO = ProductDTO.builder()
-                    .id(product.getId())
-                    .imagesrc(product.getImagesrc())
-                    .title(product.getTitle())
-                    .price(product.getPrice())
-                    .build();
-            return updateproductDTO;
+        if (product == null) {
+            throw new EntityNotFoundException("값을 수정하려는 상품이 존재하지 않습니다.");
         }
-        return null;
+        ProductDTO updateproductDTO = ProductDTO.builder()
+                .id(product.getId())
+                .imagesrc(product.getImagesrc())
+                .title(product.getTitle())
+                .price(product.getPrice())
+                .build();
+        return updateproductDTO;
     }
 
-    public boolean deleteProductById(Integer id) {
-        return this.productDAO.deleteProductById(id);
+    public void deleteProductById(Integer id) {
+        boolean result = this.productDAO.deleteProductById(id);
+        if (!result) {
+            throw new EntityNotFoundException("삭제하고자 하는 상품이 존재하지 않습니다.");
+        }
     }
-
-
-
 }
