@@ -10,7 +10,7 @@ a{
 
 /* --------------------------------------- */
 button {
-	height: 30px;
+	height: 25px;
 }
 
 .menu-list {
@@ -29,10 +29,10 @@ button {
 .select-wrap {
 	display: flex;
 	align-items: center;
-	gap: 15px;
+	gap: 10px;
 }
 
 .select-list {
 	display: flex;
-	gap: 10px;
+	gap: 5px;
 }
