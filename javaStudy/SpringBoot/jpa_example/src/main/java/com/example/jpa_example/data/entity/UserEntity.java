@@ -7,6 +7,7 @@ import jakarta.persistence.Table;
 import lombok.*;
 
 import java.time.Instant;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -39,6 +40,6 @@ public class UserEntity {
     private Integer height;
 
     @Column(name = "mdate")
-    private Instant mdate;
+    private Date mdate;
 
 }
