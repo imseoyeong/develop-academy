@@ -7,6 +7,7 @@ import com.example.jpa_example.data.repository.UserEntityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -29,9 +30,26 @@ public class UserController {
         return this.buyEntityRepository.findAll();
     }
 
-    // 특정 주소지인 유저 찾기?
+    // 특정 주소지인 유저 찾기
     @GetMapping(value = "/userinfo/{addr}")
     public List<UserEntity> userInfo(@PathVariable("addr") String addr) {
         return this.userRepository.searchUserInfo(addr);
+    }
+
+    // 특정 태어난 년도 찾기
+//    @GetMapping(value = "/userinfo/{birthyear}")
+//    public List<UserEntity> userInfo(@PathVariable("birthyear") Integer birthyear) {
+//        return this.userRepository.searchUserInfo(birthyear);
+//    }
+
+    @GetMapping(value = "/userinfo")
+    public List<UserEntity> userInfo(@RequestParam Integer birthyear) {
+        return this.userRepository.searchUserInfo(birthyear);
+    }
+
+    @GetMapping(value = "/userinfo/info")
+    public List<UserEntity> userInfo(@RequestParam Integer birthyear,
+                                     @RequestParam String addr) {
+        return this.userRepository.searchUserInfo(addr, birthyear);
     }
 }
