@@ -5,6 +5,7 @@ const searchSlice = createSlice({
     initialState: {
         userList: [],
 		selectedConditions: [],
+		buyList: []
     },
     reducers: {
 		onSelect: (state, action) => {
@@ -12,10 +13,15 @@ const searchSlice = createSlice({
 		},
 		setUserList: (state, action) => {
 			state.userList = action.payload;
+		},
+		setBuyList: (state, action) => {
+			state.buyList = action.payload;
+		},
+		addUser: (state, action) => {
+			state.userList.push(action.payload);
 		}
-		
     },
 });
 
-export const { onSelect, setUserList } = searchSlice.actions;
+export const { onSelect, setUserList, setBuyList, addUser } = searchSlice.actions;
 export default searchSlice;

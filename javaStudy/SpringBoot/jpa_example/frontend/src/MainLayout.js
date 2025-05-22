@@ -4,8 +4,10 @@ import Header from './Header';
 export default function MainLayout() {
 	return (
 		<>
-		<Header/>
-		<Outlet/>
+		<div className='inner'>
+			<Header/>
+			<Outlet/>
+		</div>
 		</>
 	);
 }

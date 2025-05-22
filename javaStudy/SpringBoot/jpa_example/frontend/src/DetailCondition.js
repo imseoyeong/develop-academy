@@ -38,7 +38,7 @@ export default function DetailCondition() {
 	return (
 		<>
 		<div>
-			<ul>
+			<ul className='detail-input-list'>
 				{selected.includes('addr') && (
 				<li>
 					<label for='addr'>지역</label>
@@ -53,7 +53,7 @@ export default function DetailCondition() {
 				</li>
 				)}
 			</ul>
-			<button onClick={handleSearch}>검색</button>
+			<button onClick={handleSearch}>검색하기</button>
 		</div>
 		</>
 	);

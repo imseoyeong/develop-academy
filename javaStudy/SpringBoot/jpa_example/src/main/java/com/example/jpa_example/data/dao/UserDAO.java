@@ -28,4 +28,8 @@ public class UserDAO {
     public List<UserEntity> findUserByAddrAndBirthyear(String addr, Integer birthyear) {
         return this.userEntityRepository.searchUserInfo(addr, birthyear);
     }
+
+    public UserEntity addUser(UserEntity userEntity) {
+        return this.userEntityRepository.save(userEntity);
+    }
 }

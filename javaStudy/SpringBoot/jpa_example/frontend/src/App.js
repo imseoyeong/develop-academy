@@ -7,6 +7,9 @@ import Home from "./Home";
 import ConditionSelect from "./ConditionSelect";
 import DetailCondition from "./DetailCondition";
 import ViewUserInfo from "./ViewUserInfo";
+import ViewBuyHistory from './ViewBuyHistory';
+import AddUserInfo from './AddUserInfo';
+import AddJoinInfo from './AddJoinInfo';
 
 function App() {
     return (
@@ -18,6 +21,10 @@ function App() {
                         <Route path="/search/detail-condition" element={<DetailCondition/>}/>
                     </Route>
                     <Route path="/view-userinfo" element={<ViewUserInfo/>}/>
+                    <Route path="/view-buyhistory/:userid" element={<ViewBuyHistory/>}/>
+					<Route path="/add-userinfo" element={<AddUserInfo/>}>
+						<Route index element={<AddJoinInfo/>}/>
+					</Route>
                 </Route>
             </Routes>
         </BrowserRouter>

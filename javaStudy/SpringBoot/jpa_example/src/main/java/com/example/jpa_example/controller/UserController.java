@@ -41,18 +41,17 @@ public class UserController {
         return this.userService.findUsersByAddrAndBirthyear(addr, birthyear);
     }
 
+    @PostMapping(value = "add-userinfo/add-join")
+    public UserDTO addUserInfo(@RequestBody UserDTO userDTO) {
+        return this.userService.addUser(userDTO);
+    }
+
 
 
 //    // usertbl 정보 다 가져오기
 //    @GetMapping(value = "user-list")
 //    public List<UserEntity> userList() {
 //        return this.userRepository.findAll();
-//    }
-//
-//    // buytbl 정보 다 가져오기
-//    @GetMapping(value = "/buy-list")
-//    public List<BuyEntity> buyList() {
-//        return this.buyEntityRepository.findAll();
 //    }
 //
 //    // 특정 주소지인 유저 찾기

@@ -28,6 +28,7 @@ export default function ConditionSelect() {
 	return (
 		<>
 		<form onSubmit={handleSubmit}>
+			<h2>고객 검색</h2>
 			<div className='select-wrap'>
 				<ul className='select-list'>
 					<li>
