@@ -46,6 +46,9 @@ public class UserController {
         return this.userService.addUser(userDTO);
     }
 
+//    @PostMapping(value = "add-userinfo/add-buyhistory")
+
+
 
 
 //    // usertbl 정보 다 가져오기

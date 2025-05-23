@@ -10,6 +10,7 @@ import ViewUserInfo from "./ViewUserInfo";
 import ViewBuyHistory from './ViewBuyHistory';
 import AddUserInfo from './AddUserInfo';
 import AddJoinInfo from './AddJoinInfo';
+import AddBuyHistory from './AddBuyHistory';
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                     <Route path="/view-buyhistory/:userid" element={<ViewBuyHistory/>}/>
 					<Route path="/add-userinfo" element={<AddUserInfo/>}>
 						<Route index element={<AddJoinInfo/>}/>
+						<Route path="/add-userinfo/add-buyhistory" element={<AddBuyHistory/>}/>
 					</Route>
                 </Route>
             </Routes>
