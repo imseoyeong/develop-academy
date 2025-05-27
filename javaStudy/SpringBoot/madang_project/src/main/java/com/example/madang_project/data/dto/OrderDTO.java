@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -16,7 +16,6 @@ public class OrderDTO {
     private Integer orderid;
     private Integer custid;
     private Integer bookid;
-    @Min(value = 0)
     private Integer saleprice;
-    private Date orderdate;
+    private LocalDate orderdate;
 }

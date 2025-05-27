@@ -3,8 +3,8 @@ package com.example.madang_project.data.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.LocalDate;
@@ -13,25 +13,30 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @Table(name = "orders")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "orderid", nullable = false)
-    private Integer id;
+    private Integer orderid;
 
+    @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "custid", nullable = false)
-//    @JsonBackReference
-    private CustomerEntity custid;
+    private CustomerEntity cust;
 
+    @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "bookid", nullable = false)
-//    @JsonBackReference
-    private BookEntity bookid;
+    private BookEntity book;
 
+    @NotNull
     @Column(name = "saleprice", nullable = false)
     private Integer saleprice;
 
+    @NotNull
     @Column(name = "orderdate", nullable = false)
     private LocalDate orderdate;
 }

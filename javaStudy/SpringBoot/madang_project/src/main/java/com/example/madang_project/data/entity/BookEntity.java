@@ -3,8 +3,9 @@ package com.example.madang_project.data.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.util.ArrayList;
@@ -16,26 +17,28 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "book")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class BookEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bookid", nullable = false)
-    private Integer id;
+    private Integer bookid;
 
+    @Size(max = 255)
     @Column(name = "bookname")
     private String bookname;
 
+    @Size(max = 255)
     @Column(name = "publisher")
     private String publisher;
 
+    @NotNull
     @Column(name = "price", nullable = false)
     private Integer price;
 
-    @ColumnDefault("100")
-    @Column(name = "stock")
-    private Integer stock;
-
-    @OneToMany(mappedBy = "bookid")
-//    @JsonManagedReference
-    private List<OrderEntity> orders = new ArrayList<>();
+    @OneToMany(mappedBy = "book")
+    @JsonManagedReference
+    private Set<OrderEntity> orders = new LinkedHashSet<>();
 }

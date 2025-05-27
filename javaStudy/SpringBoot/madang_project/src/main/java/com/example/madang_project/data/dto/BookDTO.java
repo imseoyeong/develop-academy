@@ -6,16 +6,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookDTO {
-    private Integer id;
-    private String bookName;
+    private Integer bookid;
+    private String bookname;
     private String publisher;
-    @Min(value = 0)
     private Integer price;
-    @Min(value = 0)
-    private Integer stock;
+    private List<OrderInfoDTO> orders;
 }
