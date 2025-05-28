@@ -19,9 +19,9 @@ export default function Login() {
                     withCredentials: true
                 }
             );
-            setMessage(response.data.role[0].authority);
+            // setMessage(response.data.role[0].authority);
             // setMessage(response.data.username);
-            // navigate("/admin");
+            navigate("/admin");
         } catch (error) {
             if (error.response && error.response.status === 401) {
                 setMessage(error.response.data.result);
