@@ -3,14 +3,19 @@ package com.example.authen_session.controller;
 import com.example.authen_session.data.dto.AuthenDTO;
 import com.example.authen_session.data.entity.AuthenEntity;
 import com.example.authen_session.data.repository.AuthenRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,6 +31,14 @@ public class AuthenController {
     @GetMapping(value = "/admin")
     public String admin() {
         return "Hello Admin";
+    }
+
+    @GetMapping(value = "/csrf-token")
+    public ResponseEntity<Map<String, String>> csrfToken(HttpServletRequest request) {
+        CsrfToken csrfToken = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
+        Map<String, String> map = new HashMap<>();
+        map.put("csrf-token", csrfToken.getToken());
+        return ResponseEntity.ok(map);
     }
 
     @PostMapping(value = "/join")

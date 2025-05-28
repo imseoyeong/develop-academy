@@ -1,9 +1,11 @@
 import {useState} from "react";
 import apiClient from "./api/apiinstance";
 import axios from "axios";
+import {useSelector} from "react-redux";
 
 export default function AdminComponent() {
     const [message, setMessage] = useState(null);
+    const csrfToken = useSelector(state => state.token.token);
 
     const handleAdmin = async (e) => {
         try {
@@ -26,6 +28,9 @@ export default function AdminComponent() {
         try {
             const response = await axios.post("http://localhost:8080/logout", {},
                 {
+                    headers: {
+                        "X-CSRF-TOKEN": csrfToken
+                    },
                     withCredentials: true,
                 }
             );

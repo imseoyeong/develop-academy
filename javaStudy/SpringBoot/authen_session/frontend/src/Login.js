@@ -2,12 +2,16 @@ import {useRef, useState} from "react";
 import apiClient from "./api/apiinstance";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {setToken} from "./store";
 
 export default function Login() {
     const usernameRef = useRef();
     const passwordRef = useRef();
     const [message, setMessage] = useState(null);
     const navigate = useNavigate();
+    const csrfToken = useSelector(state => state.token.token);
+    const dispatch = useDispatch();
 
     const handleLogin = async (e) => {
         try {
@@ -16,11 +20,16 @@ export default function Login() {
                     username: usernameRef.current.value,
                     password: passwordRef.current.value
                 }), {
+                    headers: {
+                        "X-CSRF-TOKEN": csrfToken
+                    },
                     withCredentials: true
                 }
             );
             // setMessage(response.data.role[0].authority);
             // setMessage(response.data.username);
+            dispatch(setToken(response.data['csrf-token']));
+            console.log(response.data['csrf-token']);
             navigate("/admin");
         } catch (error) {
             if (error.response && error.response.status === 401) {
@@ -36,6 +45,11 @@ export default function Login() {
             const response = await apiClient.post("/join", {
                 username: usernameRef.current.value,
                 password: passwordRef.current.value
+            }, {
+                headers: {
+                    "X-CSRF-TOKEN": csrfToken
+                },
+                withCredentials: true
             });
             setMessage(response.data);
         } catch (error) {

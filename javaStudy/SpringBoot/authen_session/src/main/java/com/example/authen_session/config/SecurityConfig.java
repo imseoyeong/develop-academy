@@ -17,6 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.cors.CorsConfiguration;
 
 import java.util.Arrays;
@@ -43,6 +44,9 @@ public class SecurityConfig {
             UserDetails userDetails = (UserDetails) auth.getPrincipal();
             responseData.put("username", userDetails.getUsername());
             responseData.put("role", userDetails.getAuthorities());
+
+            CsrfToken token = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
+            responseData.put("csrf-token", token.getToken());
 
             ObjectMapper objectMapper = new ObjectMapper();
             String jsonMessage = objectMapper.writeValueAsString(responseData);
@@ -81,9 +85,9 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(authorize -> {
-                    authorize.requestMatchers("/", "/join", "/login").permitAll();
+//        http.csrf(csrf -> csrf.disable())
+        http.authorizeHttpRequests(authorize -> {
+                    authorize.requestMatchers("/", "/join", "/login", "/csrf-token").permitAll();
                     authorize.requestMatchers("/admin").hasRole("ADMIN");
                     authorize.requestMatchers("/user").hasAnyRole("USER", "ADMIN");
                     authorize.requestMatchers("/user/**").hasAnyRole("USER", "ADMIN");
