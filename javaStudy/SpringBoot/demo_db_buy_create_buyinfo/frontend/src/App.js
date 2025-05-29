@@ -12,30 +12,34 @@ import JoinUser from "./pages/JoinUser";
 import AddBuyInfo from "./pages/AddBuyInfo";
 import JoinUserResult from "./pages/JoinUserResult";
 import AddBuyInfoResult from "./pages/AddBuyInfoResult";
+import AdminLogin from "./pages/AdminLogin";
+import AdminJoin from "./pages/AdminJoin";
 
 
 function App() {
-  return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<MainLayout/>}>
-            <Route index element={<Home/>}/>
-            <Route path="/search" element={<ConditionSelect/>}>
-              <Route path="/search/detail-condition" element={<DetailCondition/>}/>
-            </Route>
-            <Route path="/display-userinfo" element={<DisplayUserInfo/>}></Route>
-            <Route path="/display-buyinfo/:userid" element={<DisplayBuyInfo/>}></Route>
-            <Route path="/create-userinfo" element={<CreateUserInfo/>}>
-                <Route path="/create-userinfo/join" element={<JoinUser/>}></Route>
-                <Route path="/create-userinfo/add-buyinfo" element={<AddBuyInfo/>}></Route>
-                <Route path={"/create-userinfo/join/result"} element={<JoinUserResult/>} ></Route>
-                <Route path={"/create-userinfo/add-buyinfo/result"} element={<AddBuyInfoResult/>}></Route>
-            </Route>
-          </Route>
-        </Routes>
-      </BrowserRouter>
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<MainLayout/>}>
+                    <Route index element={<Home/>}/>
+                    <Route path="/admin-login" element={<AdminLogin/>}/>
+                    <Route path="/admin-join" element={<AdminJoin/>}/>
+                    <Route path="/search" element={<ConditionSelect/>}>
+                        <Route path="/search/detail-condition" element={<DetailCondition/>}/>
+                    </Route>
+                    <Route path="/display-userinfo" element={<DisplayUserInfo/>}></Route>
+                    <Route path="/display-buyinfo/:userid" element={<DisplayBuyInfo/>}></Route>
+                    <Route path="/create-userinfo" element={<CreateUserInfo/>}>
+                        <Route path="/create-userinfo/join" element={<JoinUser/>}></Route>
+                        <Route path="/create-userinfo/add-buyinfo" element={<AddBuyInfo/>}></Route>
+                        <Route path={"/create-userinfo/join/result"} element={<JoinUserResult/>}></Route>
+                        <Route path={"/create-userinfo/add-buyinfo/result"} element={<AddBuyInfoResult/>}></Route>
+                    </Route>
+                </Route>
+            </Routes>
+        </BrowserRouter>
 
-  );
+    );
 }
 
 export default App;

@@ -22,11 +22,31 @@ const userInfoSlice=createSlice({
     }
 });
 
+const authSlice = createSlice({
+    name: "auth",
+    initialState: {
+        isLogin: false,
+        username: null
+    },
+    reducers: {
+        login: (state, action) => {
+            state.isLogin = true;
+            state.username = action.payload;
+        },
+        logout: (state) => {
+            state.isLogin = false;
+            state.username = null;
+        }
+    }
+});
+
 const store=configureStore({
     reducer:{
         userInfo:userInfoSlice.reducer,
+        auth: authSlice.reducer,
     }
 });
 
 export const {addUserInfo,clearUserInfo, setUerInfoList }=userInfoSlice.actions;
+export const {login, logout} = authSlice.actions;
 export default store;
