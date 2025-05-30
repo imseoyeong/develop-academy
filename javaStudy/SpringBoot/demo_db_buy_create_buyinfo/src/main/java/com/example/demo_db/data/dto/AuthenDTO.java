@@ -12,5 +12,6 @@ import lombok.NoArgsConstructor;
 public class AuthenDTO {
     private String username;
     private String password;
+    private String codenum;
 }
 

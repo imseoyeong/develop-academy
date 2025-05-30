@@ -5,7 +5,7 @@ import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {login, setRole, setToken} from "../store";
 
-export default function AdminLogin() {
+export default function UserLogin() {
     const usernameRef = useRef();
     const passwordRef = useRef();
     const [message, setMessage] = useState(null);
@@ -27,8 +27,8 @@ export default function AdminLogin() {
                 }
             );
 
-            if (!response.data.role.includes('ROLE_ADMIN')) {
-                alert("관리자 계정이 아닙니다.");
+            if (!response.data.role.includes('ROLE_USER')) {
+                alert("유저 계정이 아닙니다.");
                 return;
             }
 
@@ -50,17 +50,18 @@ export default function AdminLogin() {
         <>
             <form id={"login"}>
                 <div>
-                    <label htmlFor={"adminid"}>관리자 아이디</label>
-                    <input id={"adminid"} type={"text"} ref={usernameRef} name={"username"} placeholder={"아이디 입력"}/>
+                    <label htmlFor={"userid"}>유저 아이디</label>
+                    <input id={"userid"} type={"text"} ref={usernameRef} name={"username"} placeholder={"아이디 입력"}/>
                 </div>
                 <div>
-                    <label htmlFor={"adminpw"}>관리자 비밀번호</label>
-                    <input id={"adminpw"} type={"password"} ref={passwordRef} name={"password"} placeholder={"패스워드 입력"}/>
+                    <label htmlFor={"userpw"}>유저 비밀번호</label>
+                    <input id={"userpw"} type={"password"} ref={passwordRef} name={"password"} placeholder={"패스워드 입력"}/>
                 </div>
                 <div className={"btn-wrap"}>
-                    <button type={"button"} name={"adminlogin"} onClick={handleLogin}>관리자 로그인</button>
+                    <button type={"button"} name={"userlogin"} onClick={handleLogin}>유저 로그인</button>
                 </div>
             </form>
+            {message}
         </>
     );
 }

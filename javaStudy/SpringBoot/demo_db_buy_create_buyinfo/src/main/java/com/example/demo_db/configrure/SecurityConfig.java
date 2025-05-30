@@ -1,6 +1,9 @@
 package com.example.demo_db.configrure;
 
+import com.example.demo_db.component.CustomAuthenticationEntryPoint;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,7 +24,10 @@ import java.util.Map;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig {
+    private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -37,8 +43,8 @@ public class SecurityConfig {
             responseData.put("username", userDetails.getUsername());
             responseData.put("role", userDetails.getAuthorities());
 
-//            CsrfToken token = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
-//            responseData.put("csrf-token", token.getToken());
+            CsrfToken token = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
+            responseData.put("csrf-token", token.getToken());
 
             ObjectMapper objectMapper = new ObjectMapper();
             String jsonMessage = objectMapper.writeValueAsString(responseData);
@@ -68,26 +74,26 @@ public class SecurityConfig {
 
     @Bean
     public LogoutSuccessHandler logoutSuccessHandler() {
-        return (request, response, authentication) -> {
+        return (request, response, auth) -> {
             response.setStatus(200);
-            response.setCharacterEncoding("UTF-8");
+            response.setCharacterEncoding("UTF-8"); // 한글이 들어가면 유니코드 넣어줘야 함.
             response.getWriter().write("로그아웃 성공");
         };
     }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(authorize -> {
-                    authorize.requestMatchers("/", "/admin-login", "/admin-join", "csrf-token").permitAll();
-                    authorize.requestMatchers( "/buyinfo", "/buyinfo/**").hasRole("ADMIN");
+//        http.csrf(csrf -> csrf.disable())
+        http.authorizeHttpRequests(authorize -> {
+                    authorize.requestMatchers("/", "/login", "/admin-join", "/csrf-token", "/password").permitAll();
+                    authorize.requestMatchers("/buyinfo", "/buyinfo/**").hasRole("ADMIN");
                     authorize.requestMatchers("/userinfo").hasAnyRole("USER", "ADMIN");
                     authorize.requestMatchers("/userinfo/**").hasAnyRole("USER", "ADMIN");
                     authorize.anyRequest().authenticated();
                 })
 
-                .formLogin(formLogin ->
-                        formLogin.loginProcessingUrl("/admin-login")
+                .formLogin(form ->
+                        form.loginProcessingUrl("/login")
                                 .successHandler(authenticationSuccessHandler())
                                 .failureHandler(authenticationFailureHandler())
                 )
@@ -95,12 +101,12 @@ public class SecurityConfig {
                 .logout(logout ->
                         logout.logoutUrl("/logout")
                                 .logoutSuccessHandler(logoutSuccessHandler())
-                                .addLogoutHandler((request, response, authentication) -> {
+                                .addLogoutHandler(((request, response, authentication) -> {
                                     if (request.getSession() != null) {
                                         request.getSession().invalidate();
                                     }
                                     SecurityContextHolder.clearContext();
-                                })
+                                }))
                                 .deleteCookies("JSESSIONID")
                 )
 
@@ -111,7 +117,21 @@ public class SecurityConfig {
                     corsConfiguration.addAllowedMethod("*");
                     corsConfiguration.setAllowCredentials(true);
                     return corsConfiguration;
-                }));
+                }))
+
+                .sessionManagement(session ->
+                        session.maximumSessions(1)
+                                .maxSessionsPreventsLogin(false)
+                                .expiredSessionStrategy(event -> {
+                                    HttpServletResponse response = event.getResponse();
+                                    response.setCharacterEncoding("UTF-8");
+                                    response.getWriter().write("다른 호스트에서 로그인하여 현재 세션이 만료되었습니다.");
+                                })
+                )
+
+                .exceptionHandling(exception ->
+                        exception.authenticationEntryPoint(this.customAuthenticationEntryPoint)
+                );
 
         return http.build();
     }

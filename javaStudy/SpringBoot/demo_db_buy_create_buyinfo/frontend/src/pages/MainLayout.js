@@ -4,46 +4,36 @@ import {useDispatch, useSelector} from "react-redux";
 import {logout} from "../store";
 import axios from "axios";
 
-export default function MainLayout(){
-    const [message, setMessage] = useState(null);
-    const isLogin = useSelector(state => state.auth.isLogin);
-    const dispatch = useDispatch();
-
-    const handleLogout = async (e) => {
-        try {
-            const response = await axios.post("http://localhost:8080/logout", {},
-                {
-                    withCredentials: true,
-                }
-            );
-            dispatch(logout());
-            setMessage(response.data);
-        } catch (error) {
-            console.log(error);
-        }
-    }
+export default function MainLayout() {
+    const isLogin = useSelector(state => state.userInfo.isLogin);
+    const role = useSelector(state => state.userInfo.role);
 
     return (
         <>
-            <h1>&lt;고객 관리&gt;</h1>
+            <div className={"inner"}>
+                <h1>👀USER ADMIN</h1>
 
-            {!isLogin && (
-            <div>
-                <Link to={"/admin-login"}>관리자 로그인</Link>|
-                <Link to={"/admin-join"}>관리자 추가</Link>
+                {!isLogin && (
+                    <ul className={"menu-list"}>
+                        <li><Link to={"/user-login"}>유저 로그인</Link></li>
+                        <li><Link to={"/admin-login"}>관리자 로그인</Link></li>
+                        <li><Link to={"/admin-join"}>관리자 추가</Link></li>
+                    </ul>
+                )}
+
+                {isLogin && (
+                    <ul className={"menu-list"}>
+                        <li><Link to={"/"}>홈</Link></li>
+                        <li><Link to={"/search"}>검색</Link></li>
+                        {role.some(r => r.authority === 'ROLE_ADMIN') && (
+                        <li><Link to={"/create-userinfo"}>고객정보추가</Link></li>
+                        )}
+                        <li><Link to={"/logout"}>로그아웃</Link></li>
+                    </ul>
+                )}
+
+                <Outlet/>
             </div>
-            )}
-
-            {isLogin && (
-            <div>
-                <Link to={"/"}>홈</Link>|
-                <Link to={"/search"}>검색</Link>|
-                <Link to={"/create-userinfo"}>고객정보추가</Link>|
-                <Link onClick={handleLogout}>로그아웃</Link>
-            </div>
-            )}
-
-            <Outlet/>
         </>
     );
 }

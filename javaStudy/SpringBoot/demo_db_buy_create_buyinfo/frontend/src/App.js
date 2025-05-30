@@ -14,16 +14,41 @@ import JoinUserResult from "./pages/JoinUserResult";
 import AddBuyInfoResult from "./pages/AddBuyInfoResult";
 import AdminLogin from "./pages/AdminLogin";
 import AdminJoin from "./pages/AdminJoin";
+import {useDispatch} from "react-redux";
+import {useEffect} from "react";
+import apiClient from "./api/axiosInstance";
+import {setToken} from "./store";
+import AdminLogout from "./pages/AdminLogout";
+import UserLogin from "./pages/UserLogin";
 
 
 function App() {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await apiClient.get("/csrf-token", {
+                   withCredentials: true
+                });
+                dispatch(setToken(response.data['csrf-token']));
+                console.log(response.data['csrf-token']);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        fetchData();
+    }, []);
+
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<MainLayout/>}>
                     <Route index element={<Home/>}/>
+                    <Route path="/user-login" element={<UserLogin/>}/>
                     <Route path="/admin-login" element={<AdminLogin/>}/>
                     <Route path="/admin-join" element={<AdminJoin/>}/>
+                    <Route path="/logout" element={<AdminLogout/>}/>
                     <Route path="/search" element={<ConditionSelect/>}>
                         <Route path="/search/detail-condition" element={<DetailCondition/>}/>
                     </Route>
