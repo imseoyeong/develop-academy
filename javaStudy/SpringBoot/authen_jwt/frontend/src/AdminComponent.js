@@ -1,17 +1,17 @@
 import {useState} from "react";
 import apiClient from "./api/apiinstance";
 import axios from "axios";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {setToken} from "./store";
 
 export default function AdminComponent() {
     const [message, setMessage] = useState(null);
+    const dispatch = useDispatch();
     const csrfToken = useSelector(state => state.token.token);
 
     const handleAdmin = async (e) => {
         try {
-            const response = await apiClient.get("/admin", {
-                withCredentials: true
-            });
+            const response = await apiClient.get("/admin");
             setMessage(response.data);
         } catch (error) {
             if (error.response && error.response.status === 403) {
@@ -25,19 +25,8 @@ export default function AdminComponent() {
     }
 
     const handleLogout = async (e) => {
-        try {
-            const response = await axios.post("http://localhost:8080/logout", {},
-                {
-                    headers: {
-                        "X-CSRF-TOKEN": csrfToken
-                    },
-                    withCredentials: true,
-                }
-            );
-            setMessage(response.data);
-        } catch (error) {
-            console.log(error);
-        }
+        dispatch(setToken(null));
+        setMessage("로그아웃 되었습니다.");
     }
 
     return (

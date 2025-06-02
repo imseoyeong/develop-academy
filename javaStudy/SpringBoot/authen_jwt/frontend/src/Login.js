@@ -15,21 +15,15 @@ export default function Login() {
 
     const handleLogin = async (e) => {
         try {
-            const response = await axios.post("http://localhost:8080/login", // apiClient로 보내면 오류나서 axios로
+            const response = await apiClient.post("/login",
                 new URLSearchParams({ // x-www-form-urlencoded 형식
                     username: usernameRef.current.value,
                     password: passwordRef.current.value
-                }), {
-                    headers: {
-                        "X-CSRF-TOKEN": csrfToken
-                    },
-                    withCredentials: true
-                }
+                })
             );
-            // setMessage(response.data.role[0].authority);
-            // setMessage(response.data.username);
-            dispatch(setToken(response.data['csrf-token']));
-            console.log(response.data['csrf-token']);
+            console.log(response.data.role);
+            dispatch(setToken(response.headers["authorization"]));
+            console.log(response.headers["authorization"]);
             navigate("/admin");
         } catch (error) {
             if (error.response && error.response.status === 401) {
@@ -45,11 +39,6 @@ export default function Login() {
             const response = await apiClient.post("/join", {
                 username: usernameRef.current.value,
                 password: passwordRef.current.value
-            }, {
-                headers: {
-                    "X-CSRF-TOKEN": csrfToken
-                },
-                withCredentials: true
             });
             setMessage(response.data);
         } catch (error) {

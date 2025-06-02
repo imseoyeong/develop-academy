@@ -23,22 +23,9 @@ public class AuthenController {
     private final AuthenRepository authenRepository;
     private final PasswordEncoder passwordEncoder;
 
-    @GetMapping(value = "/")
-    public String index() {
-        return "Hello World";
-    }
-
     @GetMapping(value = "/admin")
     public String admin() {
         return "Hello Admin";
-    }
-
-    @GetMapping(value = "/csrf-token")
-    public ResponseEntity<Map<String, String>> csrfToken(HttpServletRequest request) {
-        CsrfToken csrfToken = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
-        Map<String, String> map = new HashMap<>();
-        map.put("csrf-token", csrfToken.getToken());
-        return ResponseEntity.ok(map);
     }
 
     @PostMapping(value = "/join")

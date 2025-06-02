@@ -11,23 +11,6 @@ import {useDispatch} from "react-redux";
 import {setToken} from "./store";
 
 function App() {
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await apiClient.get("/csrf-token", {
-                    withCredentials: true
-                });
-                dispatch(setToken(response.data['csrf-token']));
-                console.log(response.data['csrf-token']);
-            } catch (error) {
-
-            }
-        }
-        fetchData();
-    }, []);
-
     return (
         <>
             <section className={"inner"}>
