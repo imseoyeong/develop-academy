@@ -61,6 +61,7 @@ export default function AdminLogin() {
                     <button type={"button"} name={"adminlogin"} onClick={handleLogin}>관리자 로그인</button>
                 </div>
             </form>
+            {message}
         </>
     );
 }

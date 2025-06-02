@@ -4,7 +4,7 @@ import axios from "axios";
 import {logout, setToken} from "../store";
 import {useEffect} from "react";
 
-export default function AdminLogout() {
+export default function Logout() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const csrfToken = useSelector(state => state.userInfo.token);

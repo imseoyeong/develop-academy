@@ -28,7 +28,7 @@ export default function UserLogin() {
             );
 
             if (!response.data.role.includes('ROLE_USER')) {
-                alert("유저 계정이 아닙니다.");
+                setMessage("유저 계정이 아닙니다.");
                 return;
             }
 
