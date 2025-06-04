@@ -19,9 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
-public class JwtFilter extends OncePerRequestFilter {
+public class JwtFilter  extends OncePerRequestFilter {
     private final JwtUtil jwtUtil;
-
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String token = request.getHeader("Authorization");
@@ -32,9 +31,9 @@ public class JwtFilter extends OncePerRequestFilter {
 
         token = token.split(" ")[1];
 
-        try {
+        try{
             this.jwtUtil.isExpired(token);
-        } catch (ExpiredJwtException e) {
+        }catch (ExpiredJwtException e){
             response.getWriter().write("token expired");
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             return;

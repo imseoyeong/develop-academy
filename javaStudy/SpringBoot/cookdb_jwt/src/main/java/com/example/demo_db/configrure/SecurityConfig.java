@@ -1,5 +1,7 @@
 package com.example.demo_db.configrure;
 
+import com.example.demo_db.component.CustomAccessDeniedHandler;
+import com.example.demo_db.component.CustomAuthenticationEntryPoint;
 import com.example.demo_db.exception.RoleAuthenticationException;
 import com.example.demo_db.jwt.JwtFilter;
 import com.example.demo_db.jwt.JwtLoginFilter;
@@ -39,6 +41,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class SecurityConfig {
     private final AuthenticationConfiguration authenticationConfiguration;
+    private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
+    private final CustomAccessDeniedHandler customAccessDeniedHandler;
     private final JwtUtil jwtUtil;
 
     @Bean
@@ -51,35 +55,46 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable())
-                .formLogin(formLogin -> formLogin.disable())
-                .httpBasic(httpBasic -> httpBasic.disable())
+        http.csrf(csrf->csrf.disable())
+                .formLogin(formLogin->formLogin.disable())
+                .httpBasic(httpBasic->httpBasic.disable())
 
-                .authorizeHttpRequests(authorize -> {
-                    authorize.requestMatchers("/csrf-token", "/").permitAll()
-                            .requestMatchers("/userinfo/join-userinfo", "/buyinfo/new").hasRole("ADMIN")
-                            .anyRequest().authenticated();
+
+                .authorizeHttpRequests(authorize ->{
+                    authorize.requestMatchers("/", "/admin-join", "/login").permitAll();
+                    authorize.requestMatchers("/create-userinfo/join" ,"/create-userinfo/add-buyinfo").hasRole("ADMIN");
+//                    authorize.requestMatchers("/user").hasAnyRole("USER", "ADMIN");
+//                    authorize.requestMatchers("/user/**").hasAnyRole("USER", "ADMIN");
+                    authorize.anyRequest().authenticated();
                 })
 
-                .cors(cors -> cors.configurationSource(request -> {
-                    CorsConfiguration config = new CorsConfiguration();
-                    config.setAllowCredentials(true);
-                    config.addAllowedOrigin("http://localhost:3000");
-                    config.addAllowedHeader("*");
-                    config.setExposedHeaders(List.of("Authorization"));
-                    config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-                    config.setAllowCredentials(true);
-                    return config;
+                .cors(cors->cors.configurationSource(request -> {
+                    CorsConfiguration corsConfiguration = new CorsConfiguration();
+                    corsConfiguration.addAllowedOrigin("http://localhost:3000");
+//                    corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:3000",
+//                            "http://localhost:3001","http://localhost:3002"));
+                    corsConfiguration.addAllowedHeader("*");
+                    corsConfiguration.setExposedHeaders(List.of("Authorization"));
+                    corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+                    corsConfiguration.setAllowCredentials(true);
+                    return corsConfiguration;
                 }))
 
-                .sessionManagement(sesssion ->
-                        sesssion.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                )
+                .sessionManagement(session->
+                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
                 .addFilterBefore(new JwtFilter(this.jwtUtil), JwtLoginFilter.class)
-                .addFilterAt(new JwtLoginFilter(authenticationManager(authenticationConfiguration), this.jwtUtil), UsernamePasswordAuthenticationFilter.class);
+                .addFilterAt(new JwtLoginFilter(authenticationManager(authenticationConfiguration), this.jwtUtil), UsernamePasswordAuthenticationFilter.class)
+
+
+                .exceptionHandling(exception->{
+                    exception.authenticationEntryPoint(this.customAuthenticationEntryPoint);
+                    exception.accessDeniedHandler(this.customAccessDeniedHandler);
+                });
+
         return http.build();
     }
 }

@@ -20,29 +20,6 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class AdminController {
     private final AdminService adminService;
-//    private final PasswordEncoder passwordEncoder;
-//    private final AuthenEntityRepository authenEntityRepository;
-
-    @GetMapping("/csrf-token")
-    public ResponseEntity<Map<String, String>> getCsrfToken(HttpServletRequest request) {
-        CsrfToken csrfToken = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
-        Map<String, String> tokenMap = new HashMap<>();
-        tokenMap.put("csrf-token", csrfToken.getToken());
-        return ResponseEntity.ok(tokenMap);
-    }
-
-//    @GetMapping(value = "/password")
-//    public String password(){
-//        List<AuthenEntity> list = authenEntityRepository.findAll();
-//        for(AuthenEntity authenEntity : list){
-//            AuthenEntity entity = AuthenEntity.builder()
-//                    .username(authenEntity.getUsername())
-//                    .password(passwordEncoder.encode(authenEntity.getPassword()))
-//                    .role(authenEntity.getRole()).build();
-//            this.authenEntityRepository.save(entity);
-//        }
-//        return "success";
-//    }
 
     @PostMapping(value="/admin-join")
     public ResponseEntity<String> join(@RequestBody AdminAuthenDTO adminAuthenDTO) {
