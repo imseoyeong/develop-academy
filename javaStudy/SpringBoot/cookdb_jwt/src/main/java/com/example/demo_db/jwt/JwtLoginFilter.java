@@ -3,6 +3,7 @@ package com.example.demo_db.jwt;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,14 @@ import java.util.Map;
 public class JwtLoginFilter extends UsernamePasswordAuthenticationFilter {
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
+
+    private Cookie createCookie(String key, String value) {
+        Cookie cookie = new Cookie(key, value);
+        cookie.setPath("/");
+        cookie.setHttpOnly(true);
+        cookie.setMaxAge(60*60*24);
+        return cookie;
+    }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
@@ -53,11 +62,11 @@ public class JwtLoginFilter extends UsernamePasswordAuthenticationFilter {
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonMessage = objectMapper.writeValueAsString(responseData);
 
-        String token = this.jwtUtil.createToken(username, role, 60 * 10 * 1000L);
-        response.addHeader("Authorization", "Bearer " + token);
+        String access_token = this.jwtUtil.createToken("access", username, role, 5 * 1000L);
+        String refresh_token = this.jwtUtil.createToken("refresh", username, role, 60 * 60 * 24 * 1000L);
+        response.addHeader("Authorization", "Bearer " + access_token);
+        response.addCookie(this.createCookie("refresh", refresh_token));
         response.setCharacterEncoding("UTF-8");
-        response.setContentType("application/json");
-        response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().write(jsonMessage);
     }
 

@@ -35,7 +35,16 @@ public class JwtFilter  extends OncePerRequestFilter {
             this.jwtUtil.isExpired(token);
         }catch (ExpiredJwtException e){
             response.getWriter().write("token expired");
+            response.setStatus(456);
+            response.setCharacterEncoding("UTF-8");
+            return;
+        }
+
+        String category = this.jwtUtil.getCategory(token);
+        if (!category.equals("access")) {
+            response.getWriter().write("invalid token");
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.setCharacterEncoding("UTF-8");
             return;
         }
 

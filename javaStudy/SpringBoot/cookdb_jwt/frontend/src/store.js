@@ -8,6 +8,7 @@ const userInfoSlice=createSlice({
         userLoginFlag:false,
         csrfToken:null,
         issuanceToken:null,
+        token:null,
     },
     reducers:{
         addUserInfo:(state, action)=>{
@@ -37,6 +38,9 @@ const userInfoSlice=createSlice({
         },
         setIssuanceToken:(state, action)=>{
             state.issuanceToken = action.payload;
+        },
+        setToken: (state, action) => {
+            state.token = action.payload;
         }
     }
 });
@@ -47,5 +51,5 @@ const store=configureStore({
     }
 });
 
-export const {userLogin, userLogout, addUserInfo,clearUserInfo, setIssuanceToken, setUerInfoList, adminLogin, adminLogout, saveCsrfToken}=userInfoSlice.actions;
+export const {userLogin, userLogout, addUserInfo,clearUserInfo, setIssuanceToken, setUerInfoList, adminLogin, adminLogout, saveCsrfToken, setToken}=userInfoSlice.actions;
 export default store;

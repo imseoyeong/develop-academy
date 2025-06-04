@@ -42,4 +42,5 @@ public class AuthenController {
         this.authenRepository.save(authenEntity);
         return ResponseEntity.status(HttpStatus.CREATED).body("가입성공");
     }
+
 }

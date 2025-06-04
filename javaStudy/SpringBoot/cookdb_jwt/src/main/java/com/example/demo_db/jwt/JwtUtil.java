@@ -16,14 +16,20 @@ public class JwtUtil {
         this.secretKey = new SecretKeySpec(scretKey.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
     }
 
-    public String createToken(String username, String role, Long expiration) {
+    public String createToken(String category, String username, String role, Long expiration) {
         return Jwts.builder()
+                .claim("category", category)
                 .claim("username", username)
                 .claim("role", role)
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + expiration))
                 .signWith(this.secretKey)
                 .compact();
+    }
+
+    public String getCategory(String token) {
+        return Jwts.parser().verifyWith(this.secretKey).build().
+                parseSignedClaims(token).getPayload().get("category").toString();
     }
 
     public String getUsername(String token) {
