@@ -1,22 +1,24 @@
-import {createSlice, configureStore} from "@reduxjs/toolkit";
+import {createSlice, configureStore, combineReducers} from "@reduxjs/toolkit";
+import storage from "redux-persist/lib/storage";
+import {persistReducer, persistStore} from "redux-persist";
 
-const userInfoSlice=createSlice({
-    name:"userInfo",
-    initialState:{
-        userInfoList:[],
-        adminLoginFlag:false,
-        userLoginFlag:false
+const userInfoSlice = createSlice({
+    name: "userInfo",
+    initialState: {
+        userInfoList: [],
+        adminLoginFlag: false,
+        userLoginFlag: false
     },
-    reducers:{
-        addUserInfo:(state, action)=>{
+    reducers: {
+        addUserInfo: (state, action) => {
             state.userInfoList.push(action.payload);
         },
-        setUerInfoList:(state, action)=>{
-          state.userInfoList=action.payload;
-          state.count=action.payload.length;
+        setUerInfoList: (state, action) => {
+            state.userInfoList = action.payload;
+            state.count = action.payload.length;
         },
-        clearUserInfo:(state)=>{
-            state.userInfoList=[];
+        clearUserInfo: (state) => {
+            state.userInfoList = [];
         },
         adminLogin: (state) => {
             state.adminLoginFlag = true;
@@ -24,10 +26,10 @@ const userInfoSlice=createSlice({
         adminLogout: (state) => {
             state.adminLoginFlag = false;
         },
-        userLogin:(state)=>{
+        userLogin: (state) => {
             state.userLoginFlag = true;
         },
-        userLogout:(state)=>{
+        userLogout: (state) => {
             state.userLoginFlag = false;
         },
 
@@ -35,30 +37,49 @@ const userInfoSlice=createSlice({
 });
 
 
-const initState={
-    token:null,
+const initState = {
+    token: null,
 }
 
 const tokenSlice = createSlice({
-    name:"token",
-    initialState:initState,
-    reducers:{
-        setToken:(state, action)=>{
-            state.token= action.payload;
+    name: "token",
+    initialState: initState,
+    reducers: {
+        setToken: (state, action) => {
+            state.token = action.payload;
         }
     }
 });
 
 
+const persistConfig = {
+    key: "root",
+    storage,
+    whitelist: ['userInfo', 'token'],
+};
 
-
-const store=configureStore({
-    reducer:{
-        userInfo:userInfoSlice.reducer,
-        token:tokenSlice.reducer
-    }
+const rootReducer = combineReducers({
+    userInfo: userInfoSlice.reducer,
+    token: tokenSlice.reducer
 });
 
-export const {userLogin, userLogout, addUserInfo,clearUserInfo, setUerInfoList, adminLogin, adminLogout}=userInfoSlice.actions;
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+
+export const store = configureStore({
+   reducer: persistedReducer,
+});
+
+export const persistor = persistStore(store);
+
+
+export const {
+    userLogin,
+    userLogout,
+    addUserInfo,
+    clearUserInfo,
+    setUerInfoList,
+    adminLogin,
+    adminLogout
+} = userInfoSlice.actions;
 export const {setToken} = tokenSlice.actions;
-export default store;
