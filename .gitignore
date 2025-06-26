@@ -6,3 +6,36 @@ javaStudy/SpringBoot/SpringBoot_Test_25-06
 javaStudy/Project/JoinMe_Project/
 
 javaStudy/강의자료/employees/load_salaries.dump
+
+
+
+# Flutter/Dart 관련
+.dart_tool/
+.packages
+.pub-cache/
+build/
+flutter_*.png
+*.lock
+
+# VS Code / IntelliJ / Android Studio 관련
+.idea/
+*.iml
+.vscode/
+
+# iOS 관련
+ios/Pods/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Runner.xcworkspace
+ios/.symlinks/
+ios/Flutter/ephemeral/
+
+# Android 관련
+android/.gradle/
+android/app/build/
+android/local.properties
+
+# 기타
+*.log
+*.psd
+*.ipa
