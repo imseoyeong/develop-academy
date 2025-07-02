@@ -2,12 +2,26 @@
   padding: 10px;
 }
 
+input,
+textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
 button {
   padding: 5px 30px;
   background: cadetblue;
   color: #fff;
   border-radius: 5px;
   margin-top: 20px;
+}
+
+.btn-wrap {
+  display: flex;
+  gap: 5px;
 }
 
 header {
@@ -38,11 +52,3 @@ header nav {
   border-bottom: 1px solid #ddd;
 }
 
-.write-form input,
-.write-form textarea {
-  width: 100%;
-  border: 1px solid #ccc;
-  padding: 5px 10px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}

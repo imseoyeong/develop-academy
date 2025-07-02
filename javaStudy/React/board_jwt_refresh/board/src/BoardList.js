@@ -8,10 +8,10 @@ export default function BoardList() {
         <section>
             <ul className={"board-list"}>
                 {boardList.map((item) => (
-                    <li>
-                        <Link key={item.id}>
-                            <p>{item.title}</p>
-                            <p>{item.writer}</p>
+                    <li key={item.postId}>
+                        <Link to={`/list/${item.postId}`}>
+                            <p>{item.postTitle}</p>
+                            <p>{item.postUserName}</p>
                         </Link>
                     </li>
                 ))}
