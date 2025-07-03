@@ -9,17 +9,11 @@ export default function BoardView() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const boardItem = useSelector((state) => state.boardList.boardItem.find((item) => item.postId === Number(itemId)));
+    const currentUser = useSelector((state) => state.userList.currentUser);
+    const token = useSelector((state) => state.userList.token);
 
-    const [postTitle, setPostTitle] = useState(boardItem? boardItem.postTitle : "");
-    const [postContent, setPostContent] = useState(boardItem? boardItem.postContent : "");
-
-    // boardItem이 준비되고 나서 title과 content를 읽게한다.
-    // useEffect(() => {
-    //     if (boardItem) {
-    //         setPostTitle(boardItem.postTitle);
-    //         setPostContent(boardItem.postContent);
-    //     }
-    // }, [boardItem]); // boardItem이 바뀔 때마다 실행.
+    const [postTitle, setPostTitle] = useState(boardItem ? boardItem.postTitle : "");
+    const [postContent, setPostContent] = useState(boardItem ? boardItem.postContent : "");
 
     const handleUpdate = async () => {
         try {
@@ -28,8 +22,14 @@ export default function BoardView() {
                 postTitle,
                 postContent,
                 postUserName: boardItem.postUserName,
+            }, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "authorization": token,
+                }
             });
 
+            console.log("Token: ", token);
             dispatch(updateItem(response.data));
             navigate("/list");
         } catch (err) {
@@ -39,8 +39,14 @@ export default function BoardView() {
 
     const handleRemove = async () => {
         try {
-            await axios.delete(`http://localhost:8080/post/${itemId}`);
+            await axios.delete(`http://localhost:8080/post/${itemId}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "authorization": token,
+                }
+            });
 
+            console.log("Token: ", token);
             dispatch(removeItem(Number(itemId)));
             navigate("/list");
         } catch (err) {
@@ -48,20 +54,24 @@ export default function BoardView() {
         }
     };
 
-    if(!boardItem) {
+    if (!boardItem) {
         return null;
     }
 
     return (
         <form className={"write-form inner"}>
-            <input name={"postTitle"} value={postTitle} placeholder={"제목을 입력해주세요"} onChange={(e)=> setPostTitle(e.target.value)}/>
-            <textarea name={"postContent"} value={postContent} rows={"10"} placeholder={"내용을 입력해주세요"} onChange={(e)=> setPostContent(e.target.value)}></textarea>
+            <input name={"postTitle"} value={postTitle} placeholder={"제목을 입력해주세요"}
+                   onChange={(e) => setPostTitle(e.target.value)}/>
+            <textarea name={"postContent"} value={postContent} rows={"10"} placeholder={"내용을 입력해주세요"}
+                      onChange={(e) => setPostContent(e.target.value)}></textarea>
             <p>작성자 : {boardItem.postUserName}</p>
 
-            <div className={"btn-wrap"}>
-                <button type={"button"} onClick={handleUpdate}>수정</button>
-                <button type={"button"} onClick={handleRemove}>삭제</button>
-            </div>
+            {currentUser?.username === boardItem.postUserName && (
+                <div className={"btn-wrap"}>
+                    <button className={"btn"} type={"button"} onClick={handleUpdate}>수정</button>
+                    <button className={"btn"} type={"button"} onClick={handleRemove}>삭제</button>
+                </div>
+            )}
         </form>
     );
 }

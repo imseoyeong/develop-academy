@@ -30,6 +30,7 @@ public class JwtLoginFilter extends UsernamePasswordAuthenticationFilter {
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
 //        this.setFilterProcessesUrl("/api/login"); // 원하는 경로로 설정
+//        this.setFilterProcessesUrl("/login");
     }
 
 
@@ -65,7 +66,7 @@ public class JwtLoginFilter extends UsernamePasswordAuthenticationFilter {
         ObjectMapper mapper = new ObjectMapper();
         String jsonMessage = mapper.writeValueAsString(responseData);
 
-        String access_token = this.jwtUtil.createToken("access", username, role, 5 * 1000L);
+        String access_token = this.jwtUtil.createToken("access", username, role, 60*10 * 1000L);
         String refresh_token = this.jwtUtil.createToken("refresh", username, role, 60 * 60 * 24 * 1000L);
         response.addHeader("Authorization", "Bearer " + access_token);
         response.addCookie(this.createCookie("refresh", refresh_token));

@@ -36,3 +36,4 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.OK).body("관리자입니다.");
     }
 }
+

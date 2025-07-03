@@ -1,11 +1,14 @@
-import {Link, Outlet} from "react-router-dom";
+import {Link, Outlet, useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 import axios from "axios";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {setBoardItem} from "./boardListSlice";
+import {userLogout} from "./userListSlice";
 
 export default function MainLayout() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const isLogin = useSelector((state) => state.userList.userLoginFlag);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -20,16 +23,28 @@ export default function MainLayout() {
         fetchData();
     }, []);
 
+    const handleLogout = () => {
+        dispatch(userLogout());
+        navigate("/");
+    }
+
     return (
         <>
             <header className={"inner"}>
                 <h1 className={"logo"}><Link to={"/"}>게시판</Link></h1>
-                <nav>
-                    <Link to={"/list"}>목록</Link>
-                    <Link to={"/write"}>글쓰기</Link>
-                    <Link to={"/login"}>로그인</Link>
-                    <Link to={"/join"}>회원가입</Link>
-                </nav>
+                {isLogin ? (
+                    <nav>
+                        <Link to={"/list"}>목록</Link>
+                        <Link to={"/write"}>글쓰기</Link>
+                        <button onClick={handleLogout}>로그아웃</button>
+                    </nav>
+                ) : (
+                    <nav>
+                        <Link to={"/list"}>목록</Link>
+                        <Link to={"/login"}>로그인</Link>
+                        <Link to={"/join"}>회원가입</Link>
+                    </nav>
+                )}
             </header>
             <Outlet/>
         </>

@@ -33,7 +33,7 @@ export default function Join() {
             <input name={"userFullName"} type={"text"} placeholder={"이름"}/>
             <input name={"username"} type={"text"} placeholder={"아이디"}/>
             <input name={"password"} type={"password"} placeholder={"비밀번호"}/>
-            <button type={"submit"}>회원가입</button>
+            <button className={"btn"} type={"submit"}>회원가입</button>
         </form>
     );
 }
