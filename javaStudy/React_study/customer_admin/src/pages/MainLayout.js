@@ -5,9 +5,11 @@ export default function MainLayout() {
         <>
             <header>
                 <h1>고객 관리</h1>
-                <Link to={"/"}>홈</Link>
-                <Link to={"/search"}>검색</Link>
-                <Link to={"/add-userinfo"}>고객정보추가</Link>
+                <nav>
+                    <Link to={"/"}>홈</Link>
+                    <Link to={"/search"}>검색</Link>
+                    <Link to={"/add-userinfo"}>고객정보추가</Link>
+                </nav>
             </header>
 
             <Outlet/>

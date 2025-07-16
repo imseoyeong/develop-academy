@@ -3,10 +3,10 @@ import axios from "axios";
 import store, {setToken} from "../store";
 
 const apiClient=axios.create({
-    baseURL:"/api",
+    // baseURL:"/api",
+    baseURL:"http://localhost:8080",
     headers:{
         "Content-Type" : "application/json",
-
     },
     withCredentials: true,
 // timeout:3000,

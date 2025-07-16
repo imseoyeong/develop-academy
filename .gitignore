@@ -6,6 +6,7 @@ javaStudy/Project/MiniGame/
 javaStudy/SpringBoot/SpringBoot_Test_25-06
 javaStudy/Project/JoinMe_Project/
 javaStudy/강의자료/employees/load_salaries.dump
+javaStudy/Project/Flutter_Dice_Project/
 
 # Flutter 전용 파일들은 개별 Flutter 폴더 안 .gitignore로 관리
 # (상위에서는 너무 범용적인 무시 규칙 제거)
