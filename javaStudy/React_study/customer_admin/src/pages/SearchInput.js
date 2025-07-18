@@ -2,6 +2,7 @@ import {useNavigate, useOutletContext} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {addUserInfo, clearUserInfo} from "../store";
 import apiClient from "../api/axiosInstance";
+import errorDisplay from "../errorDisplay";
 
 export default function SearchInput() {
     const {addr, birthyear} = useOutletContext();
@@ -37,7 +38,7 @@ export default function SearchInput() {
 
             navigate("/view-userinfo");
         } catch (error) {
-            console.log(error);
+            errorDisplay(error);
         }
     }
 

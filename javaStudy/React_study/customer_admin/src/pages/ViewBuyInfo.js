@@ -2,6 +2,7 @@ import {Link, useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import apiClient from "../api/axiosInstance";
+import errorDisplay from "../errorDisplay";
 
 export default function ViewBuyInfo() {
     const {userId} = useParams();
@@ -20,7 +21,7 @@ export default function ViewBuyInfo() {
                     setBuyInfo(response.data);
                 }
             } catch (error) {
-                console.log(error);
+                errorDisplay(error);
             }
         }
         fetchData();

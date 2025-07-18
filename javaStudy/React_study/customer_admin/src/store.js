@@ -5,6 +5,8 @@ const userInfoSlice = createSlice({
     initialState: {
         userInfoList: [],
         token: null,
+        adminLoginFlag: false,
+        userLoginFlag: false,
     },
     reducers: {
         setUserInfoList: (state, action) => {
@@ -16,17 +18,27 @@ const userInfoSlice = createSlice({
         clearUserInfo: (state) => {
             state.userInfoList = [];
         },
+        adminLogin: (state) => {
+            state.adminLoginFlag = true;
+        },
+        userLogin: (state) => {
+            state.userLoginFlag = true;
+        },
+        logout: (state) => {
+            state.adminLoginFlag = false;
+            state.userLoginFlag = false;
+        },
     },
 });
 
 
 const tokenSlice = createSlice({
-    name:"token",
+    name: "token",
     initialState: {
-        token :null,
+        token: null,
     },
-    reducers:{
-        setToken:(state, action)=>{
+    reducers: {
+        setToken: (state, action) => {
             state.token = action.payload;
         }
     }
@@ -39,6 +51,9 @@ const store = configureStore({
     }
 });
 
-export const {setUserInfoList, addUserInfo, clearUserInfo} = userInfoSlice.actions;
+export const {
+    setUserInfoList, addUserInfo, clearUserInfo,
+    adminLogin, userLogin, logout
+} = userInfoSlice.actions;
 export const {setToken} = tokenSlice.actions;
 export default store;
