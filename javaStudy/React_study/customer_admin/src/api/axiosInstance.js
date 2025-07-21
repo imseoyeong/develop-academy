@@ -4,7 +4,7 @@ import store, {setToken} from "../store";
 
 const apiClient=axios.create({
     // baseURL:"/api",
-    baseURL:"http://localhost:8080",
+    baseURL:"http://localhost:8080/api",
     headers:{
         "Content-Type" : "application/json",
     },
@@ -35,7 +35,7 @@ apiClient.interceptors.response.use((response)=> response,
     if(error.response && error.response.status ===456 && ! originalReguest._retry){
         originalReguest._retry = true;
             try{
-                const response = await axios.post("/api/reissue", null , {
+                const response = await axios.post("http://localhost:8080/api/reissue", null , {
                     withCredentials:true,
                 });
 
