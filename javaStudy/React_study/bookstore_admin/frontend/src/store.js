@@ -4,20 +4,24 @@ const madangInfoSlice = createSlice({
     name: "madangInfo",
     initialState: {
         orderList: [],
+        bookInfo: null,
     },
     reducers: {
         setOrderList: (state, action) => {
             state.orderList = action.payload;
+        },
+        setBookInfo: (state, action) => {
+            state.bookInfo = action.payload;
         },
     }
 });
 
 
 const store = configureStore({
-   reducer: {
-       madangInfo: madangInfoSlice.reducer,
-   }
+    reducer: {
+        madangInfo: madangInfoSlice.reducer,
+    }
 });
 
-const {setOrderList,} = madangInfoSlice.actions;
+export const {setOrderList, setBookInfo} = madangInfoSlice.actions;
 export default store;
