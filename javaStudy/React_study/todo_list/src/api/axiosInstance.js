@@ -10,7 +10,7 @@ const apiClient = axios.create({
 
 apiClient.interceptors.request.use((config) => {
     config.headers["Custom-header"] = "hello";
-    console.log("요청: ", Date.now());
+    // console.log("요청: ", Date.now());
     return config;
 }, (error) => {
     return Promise.reject(error);

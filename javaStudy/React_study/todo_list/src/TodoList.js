@@ -1,11 +1,10 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import apiClient from "./api/axiosInstance";
-import {setTodoList} from "./store";
+import {deleteTodo, setTodoList, updateTodoList} from "./store";
 
 export default function TodoList() {
     const todoList = useSelector(state => state.todo.todoList);
-    // const completeTodo = useSelector(state => state.todo.todoList.find( = id))
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -20,8 +19,24 @@ export default function TodoList() {
         fetchData();
     }, []);
 
-    const handleComplete = () => {
+    const handleComplete = async (id) => {
+        try {
+            const response = await apiClient.put(`/todo/${id}`, {
+                completed: true,
+            });
+            dispatch(updateTodoList(response.data));
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
+    const handleDelete = async () => {
+        try {
+            const response = await apiClient.delete("/completed-todo");
+            dispatch(deleteTodo(response.data));
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (
@@ -32,13 +47,13 @@ export default function TodoList() {
             <ul>
                 {todoList.map(t =>
                 <li key={t.id}>
-                    <p>{t.title}</p>
-                    <button type={"button"} onClick={handleComplete}>완료</button>
+                    <span style={{textDecoration: t.completed ? "line-through" : "none"}}>{t.title}</span>
+                    <button type={"button"} onClick={() => {handleComplete(t.id)}}>완료</button>
                 </li>
                 )}
             </ul>
 
-            <button type={"button"}>완료 TODO 삭제</button>
+            <button type={"button"} onClick={handleDelete}>완료 TODO 삭제</button>
         </section>
         </>
     );
