@@ -1,4 +1,6 @@
-import {configureStore, createSlice} from "@reduxjs/toolkit";
+import {combineReducers, configureStore, createSlice} from "@reduxjs/toolkit";
+import {persistReducer, persistStore} from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 const todoSilice = createSlice({
     name: "todo",
@@ -20,11 +22,23 @@ const todoSilice = createSlice({
     },
 });
 
+const persistConfig = {
+    key: "root",
+    storage,
+    whitelist: ["todo"],
+}
+
+const rootReducer = combineReducers({
+    todo: todoSilice.reducer,
+});
+
+const persistedReducer  = persistReducer(persistConfig, rootReducer);
+
 const store = configureStore({
-    reducer: {
-        todo: todoSilice.reducer,
-    }
-})
+    reducer: persistedReducer,
+});
+
+export const persistor = persistStore(store);
 
 export const {setTodoList, updateTodoList, deleteTodo} = todoSilice.actions;
 export default store;

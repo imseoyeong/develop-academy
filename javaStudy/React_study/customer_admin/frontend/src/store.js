@@ -1,4 +1,6 @@
-import {configureStore, createSlice} from "@reduxjs/toolkit";
+import {combineReducers, configureStore, createSlice} from "@reduxjs/toolkit";
+import storage from "redux-persist/lib/storage";
+import {persistReducer, persistStore} from "redux-persist";
 
 const userInfoSlice = createSlice({
     name: "userInfo",
@@ -44,12 +46,24 @@ const tokenSlice = createSlice({
     }
 });
 
+const persistConfig = {
+    key: "root",
+    storage,
+    whitelist: ["userInfo", "token"],
+}
+
+const rootReducer = combineReducers({
+    userInfo: userInfoSlice.reducer,
+    token: tokenSlice.reducer,
+})
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 const store = configureStore({
-    reducer: {
-        userInfo: userInfoSlice.reducer,
-        token: tokenSlice.reducer,
-    }
+    reducer: persistedReducer,
 });
+
+export const persistor = persistStore(store);
 
 export const {
     setUserInfoList, addUserInfo, clearUserInfo,
