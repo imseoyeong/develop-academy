@@ -1,11 +1,12 @@
 import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {removeItem, updateItem} from "./boardListSlice";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import axios from "axios";
 
 export default function BoardView() {
     const {itemId} = useParams();
+    const commentRef = useRef();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const boardItem = useSelector((state) => state.boardList.boardItem.find((item) => item.postId === Number(itemId)));
@@ -61,7 +62,7 @@ export default function BoardView() {
     const handleComment = async () => {
         try {
             const response = await axios.post("/post/comment", {
-
+                comment: commentRef.current,
             });
 
         } catch (error) {
@@ -93,7 +94,7 @@ export default function BoardView() {
                 </ul>
 
                 <div>
-                    <textarea name={"comment"} placeholder={"댓글을 입력해주세요"}></textarea>
+                    <textarea name={"comment"} ref={commentRef} placeholder={"댓글을 입력해주세요"}></textarea>
                     <button className={"btn"} type={"button"} onClick={handleComment}>확인</button>
                 </div>
             </div>
