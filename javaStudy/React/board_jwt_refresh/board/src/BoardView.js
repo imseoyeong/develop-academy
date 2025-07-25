@@ -58,6 +58,17 @@ export default function BoardView() {
         return null;
     }
 
+    const handleComment = async () => {
+        try {
+            const response = await axios.post("/post/comment", {
+
+            });
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <form className={"write-form inner"}>
             <input name={"postTitle"} value={postTitle} placeholder={"제목을 입력해주세요"}
@@ -65,6 +76,27 @@ export default function BoardView() {
             <textarea name={"postContent"} value={postContent} rows={"10"} placeholder={"내용을 입력해주세요"}
                       onChange={(e) => setPostContent(e.target.value)}></textarea>
             <p>작성자 : {boardItem.postUserName}</p>
+
+            {/*TODO: 댓글 기능!!*/}
+            <div>
+                <h3>댓글</h3>
+
+                <ul>
+                    <li>
+                        <p>홍길동</p>
+                        <p>안녕하세요 반갑습니다~~~~</p>
+                    </li>
+                    <li>
+                        <p>길순홍</p>
+                        <p>어서오세요</p>
+                    </li>
+                </ul>
+
+                <div>
+                    <textarea name={"comment"} placeholder={"댓글을 입력해주세요"}></textarea>
+                    <button className={"btn"} type={"button"} onClick={handleComment}>확인</button>
+                </div>
+            </div>
 
             {currentUser?.username === boardItem.postUserName && (
                 <div className={"btn-wrap"}>
