@@ -1,6 +1,6 @@
 import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {removeItem, updateItem} from "./boardListSlice";
+import {addComment, removeItem, updateItem} from "./boardListSlice";
 import {useEffect, useRef, useState} from "react";
 import axios from "axios";
 
@@ -62,9 +62,12 @@ export default function BoardView() {
     const handleComment = async () => {
         try {
             const response = await axios.post("/post/comment", {
-                comment: commentRef.current,
+                comment: commentRef.value,
+                writerId: currentUser.username,
+                writerName: currentUser.userFullName,
             });
 
+            dispatch(addComment(response.data));
         } catch (error) {
             console.log(error);
         }
