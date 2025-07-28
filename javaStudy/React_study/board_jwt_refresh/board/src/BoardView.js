@@ -1,8 +1,9 @@
 import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {addComment, removeItem, updateItem} from "./boardListSlice";
+import {addComment, removeComment, removeItem, updateItem} from "./boardListSlice";
 import {useEffect, useRef, useState} from "react";
 import axios from "axios";
+import apiClient from "./api/axiosInstance";
 
 export default function BoardView() {
     const {itemId} = useParams();
@@ -18,16 +19,11 @@ export default function BoardView() {
 
     const handleUpdate = async () => {
         try {
-            const response = await axios.put("http://localhost:8080/post", {
+            const response = await apiClient.put("/post", {
                 postId: Number(itemId),
                 postTitle,
                 postContent,
                 postUserName: boardItem.postUserName,
-            }, {
-                headers: {
-                    "Content-Type": "application/json",
-                    "authorization": token,
-                }
             });
 
             console.log("Token: ", token);
@@ -40,12 +36,7 @@ export default function BoardView() {
 
     const handleRemove = async () => {
         try {
-            await axios.delete(`http://localhost:8080/post/${itemId}`, {
-                headers: {
-                    "Content-Type": "application/json",
-                    "authorization": token,
-                }
-            });
+            await apiClient.delete(`/post/${itemId}`);
 
             console.log("Token: ", token);
             dispatch(removeItem(Number(itemId)));
@@ -61,13 +52,24 @@ export default function BoardView() {
 
     const handleComment = async () => {
         try {
-            const response = await axios.post("/post/comment", {
-                comment: commentRef.value,
+            const response = await apiClient.post("/post/comment", {
+                postId: boardItem.postId,
+                comment: commentRef.current.value,
                 writerId: currentUser.username,
                 writerName: currentUser.userFullName,
             });
 
-            dispatch(addComment(response.data));
+            dispatch(addComment({postId: boardItem.postId, newComment: response.data}));
+            commentRef.current.value = "";
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const handleCommentRemove = async (commentId) => {
+        try {
+            await apiClient.delete(`/post/comment/${commentId}`);
+            dispatch(removeComment({postId: boardItem.postId, commentId}));
         } catch (error) {
             console.log(error);
         }
@@ -81,19 +83,22 @@ export default function BoardView() {
                       onChange={(e) => setPostContent(e.target.value)}></textarea>
             <p>작성자 : {boardItem.postUserName}</p>
 
-            {/*TODO: 댓글 기능!!*/}
-            <div>
+            <div className={"comment-wrap"}>
                 <h3>댓글</h3>
-
                 <ul>
-                    <li>
-                        <p>홍길동</p>
-                        <p>안녕하세요 반갑습니다~~~~</p>
+                    {boardItem.commentList.map((comment) =>
+                    <li key={comment.id}>
+                        <p>{comment.writerName}</p>
+                        <p>{comment.comment}</p>
+
+                        {currentUser?.username === comment.writerId && (
+                            <div className={"btn-wrap"}>
+                                {/*<button className={"btn"} type={"button"}>수정</button>*/}
+                                <button className={"btn"} type={"button"} onClick={() => handleCommentRemove(comment.id)}>삭제</button>
+                            </div>
+                        )}
                     </li>
-                    <li>
-                        <p>길순홍</p>
-                        <p>어서오세요</p>
-                    </li>
+                    )}
                 </ul>
 
                 <div>

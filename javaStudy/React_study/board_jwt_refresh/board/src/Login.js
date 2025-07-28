@@ -2,6 +2,7 @@ import axios from "axios";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {setToken, userLogin} from "./userListSlice";
+import apiClient from "./api/axiosInstance";
 
 export default function Login() {
     const dispatch = useDispatch();
@@ -13,14 +14,7 @@ export default function Login() {
         const data = {username: e.target.username.value, password: e.target.password.value};
 
         try {
-            const response = await axios.post("http://localhost:8080/login", new URLSearchParams(data), {
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                withCredentials: true,
-            });
-            dispatch(setToken(response.headers['authorization']));
-            console.log(response.headers["authorization"]);
+            const response = await apiClient.post("/login", new URLSearchParams(data));
             dispatch(userLogin(response.data));
             navigate("/");
         } catch (err) {

@@ -4,10 +4,9 @@ const boardListSlice = createSlice({
     name: "boardList",
     initialState: {
         boardItem: [],
-        commentItem: [],
     },
     reducers: {
-        setBoardItem:(state, action)=>{
+        setBoardItem: (state, action) => {
             state.boardItem = action.payload;
         },
         addItem: (state, action) => {
@@ -20,10 +19,23 @@ const boardListSlice = createSlice({
             state.boardItem = state.boardItem.map((item) => item.postId === action.payload.postId ? action.payload : item);
         },
         addComment: (state, action) => {
-            state.commentItem.push(action.payload);
-        }
+            const {postId, newComment} = action.payload;
+            const post = state.boardItem.find(item => item.postId === postId);
+
+            if (post) {
+                post.commentList.push(newComment);
+            }
+        },
+        removeComment: (state, action) => {
+            const {postId, commentId} = action.payload;
+            const post = state.boardItem.find(item => item.postId === postId);
+
+            if (post) {
+                post.commentList = post.commentList.filter(comment => comment.id !== commentId);
+            }
+        },
     }
 });
 
-export const {addItem, removeItem, updateItem, setBoardItem, addComment} = boardListSlice.actions;
+export const {addItem, removeItem, updateItem, setBoardItem, addComment, removeComment} = boardListSlice.actions;
 export default boardListSlice;

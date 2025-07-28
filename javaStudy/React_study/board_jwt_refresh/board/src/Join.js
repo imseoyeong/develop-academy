@@ -2,6 +2,7 @@ import axios from "axios";
 import {useDispatch} from "react-redux";
 import {addUsers} from "./userListSlice";
 import {useNavigate} from "react-router-dom";
+import apiClient from "./api/axiosInstance";
 
 export default function Join() {
     const dispatch = useDispatch();
@@ -15,7 +16,7 @@ export default function Join() {
         const password = e.target.password.value;
 
         try {
-            const response = await axios.post("http://localhost:8080/join", {
+            const response = await apiClient.post("/join", {
                 userFullName,
                 username,
                 password,

@@ -2,6 +2,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {addItem} from "./boardListSlice";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
+import apiClient from "./api/axiosInstance";
 
 export default function BoardWrite() {
     const dispatch = useDispatch();
@@ -16,15 +17,10 @@ export default function BoardWrite() {
         const postContent = e.target.postContent.value;
 
         try {
-            const response = await axios.post("http://localhost:8080/post", {
+            const response = await apiClient.post("/post", {
                 postTitle,
                 postContent,
                 postUserName: currentUser.username,
-            },{
-                headers:{
-                    "Content-Type" : "application/json",
-                    "authorization" : token,
-                }
             });
 
             console.log("Token: ", token);

@@ -4,6 +4,7 @@ import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {setBoardItem} from "./boardListSlice";
 import {userLogout} from "./userListSlice";
+import apiClient from "./api/axiosInstance";
 
 export default function MainLayout() {
     const dispatch = useDispatch();
@@ -13,7 +14,7 @@ export default function MainLayout() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://localhost:8080/postlist");
+                const response = await apiClient.get("/postlist");
                 dispatch(setBoardItem(response.data));
             } catch (e) {
                 console.log(e);

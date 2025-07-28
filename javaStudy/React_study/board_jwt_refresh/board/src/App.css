@@ -52,3 +52,29 @@ header nav {
   border-bottom: 1px solid #ddd;
 }
 
+.comment-wrap {
+  margin-top: 40px;
+}
+
+.comment-wrap h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.comment-wrap > ul {
+  margin-bottom: 20px;
+}
+
+.comment-wrap > ul > li {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+
+.comment-wrap > ul > li .btn {
+  background: #666;
+  font-size: 15px;
+  padding: 3px 10px;
+  margin-top: 10px;
+}
