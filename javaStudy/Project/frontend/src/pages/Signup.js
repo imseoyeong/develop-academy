@@ -4,8 +4,15 @@ export default function Signup() {
             <form>
                 <ul>
                     <li>
-                        <label>아이디</label>
-                        <input type={"text"}/>
+                        <label>프로필 이미지</label>
+                        <input type={"file"}/>
+                    </li>
+                    <li>
+                        <div>
+                            <label>아이디</label>
+                            <input type={"text"}/>
+                        </div>
+                       <button type={"button"}>중복확인</button>
                     </li>
                     <li>
                         <label>비밀번호</label>
@@ -33,6 +40,8 @@ export default function Signup() {
                         </div>
                     </li>
                 </ul>
+
+                <button>회원가입</button>
             </form>
         </section>
     );

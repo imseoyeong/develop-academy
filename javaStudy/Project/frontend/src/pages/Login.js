@@ -20,12 +20,12 @@ export default function Login() {
                 </div>
 
                 <div>
-                    <Link to={""}>카카오로 로그인</Link>
-                    <Link to={""}>네이버로 로그인</Link>
-                    <Link to={""}>구글로 로그인</Link>
+                    <Link to={"#"}>카카오로 로그인</Link>
+                    <Link to={"#"}>네이버로 로그인</Link>
+                    <Link to={"#"}>구글로 로그인</Link>
                 </div>
 
-                <Link to={""}>지금 바로 회원가입</Link>
+                <Link to={"/signup"}>지금 바로 회원가입</Link>
             </form>
         </section>
     );
