@@ -4,7 +4,9 @@ const userSlice = createSlice({
     name: "userInfo",
     initialState: {
         userList: [],
+        coupleInfoList: [],
         userLoginFlag: false,
+        isCoupleMatched: false,
     },
     reducers: {
         addUser: (state, action) => {
@@ -12,9 +14,13 @@ const userSlice = createSlice({
         },
         userLogin: (state) => {
             state.userLoginFlag = true;
-        }
+        },
+        coupleInfo: (state, action) => {
+            state.coupleInfoList = action.payload;
+        },
+
     },
 });
 
-export const { addUser, userLogin } = userSlice.actions;
+export const { addUser, userLogin, coupleInfo } = userSlice.actions;
 export default userSlice;

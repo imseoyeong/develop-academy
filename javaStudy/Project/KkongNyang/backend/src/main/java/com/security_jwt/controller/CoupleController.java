@@ -27,6 +27,7 @@ public class CoupleController {
     private final CoupleService coupleService;
     private final CoupleProfileService coupleProfileService;
 
+    // 커플 코드 생성
     @PostMapping("/generate-code")
     public ResponseEntity<CoupleDTO> generateCoupleCode(@AuthenticationPrincipal UserDetails userDetails) {
         String username = userDetails.getUsername();
@@ -38,7 +39,7 @@ public class CoupleController {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
-
+    // 커플 연결
     @PostMapping("/match")
     public ResponseEntity<CoupleMatchDTO> matchCouple(@AuthenticationPrincipal UserDetails userDetails, @RequestBody CoupleDTO coupleDTO) {
         String username = userDetails.getUsername();
@@ -60,6 +61,7 @@ public class CoupleController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
+    // 커플 프로필 수정
     @PostMapping("/update-profile")
     public ResponseEntity<CoupleProfileDTO> updateCoupleProfile(@AuthenticationPrincipal UserDetails userDetails, @ModelAttribute CoupleProfileDTO coupleProfileDTO) {
         String username = userDetails.getUsername();
@@ -70,6 +72,7 @@ public class CoupleController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
+    // 커플 해제
     @PostMapping("/dissolve")
     public ResponseEntity<Void> dissolveCouple(@RequestBody CoupleDTO coupleDTO) {
         boolean dissolved = coupleProfileService.dissolveCouple(coupleDTO.getCoupleCode());
@@ -79,6 +82,7 @@ public class CoupleController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
+    // 커플 프로필 조회
     @GetMapping("/{coupleCode}")
     public ResponseEntity<CoupleProfileDTO> getCoupleProfile(@PathVariable String coupleCode) {
         CoupleProfileDTO coupleProfile = coupleProfileService.getCoupleProfile(coupleCode);
@@ -88,3 +92,4 @@ public class CoupleController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 }
+

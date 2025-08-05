@@ -1,26 +1,52 @@
 import apiClient from "../api/axiosInstance";
+import {useRef, useState} from "react";
+import {useDispatch} from "react-redux";
+import {coupleInfo} from "../store/userSlice";
+import {useNavigate} from "react-router-dom";
 
 export default function ConnectCouple() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const codeRef = useRef();
+    const [myCode, setMyCode] = useState("");
+    const [show, setShow] = useState(false);
 
-    const handleCode = async (e) => {
-        e.preventDefault();
-
+    const handleCode = async () => {
         try {
-            const response = await apiClient.post("/generate-code");
+            const response = await apiClient.post("/couple/generate-code");
+            setMyCode(response.data.coupleCode);
+            setShow(true);
         } catch (error) {
             console.log(error);
         }
     }
-//뭔가 잘못됨. 커플 코드 생성.... 도 해야하고 입력도 해야하고...
 
+    const handleCopy = () => {
+        if (myCode) {
+            navigator.clipboard.writeText(myCode);
+            alert("복사 완료!")
+        }
+    }
+
+    const handlematch = async () => {
+        try {
+            const response = await apiClient.post("/couple/match", {
+                coupleCode: codeRef.current.value,
+            });
+            dispatch(coupleInfo(response.data));
+            navigate("/couple-profile");
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <section id={"connect"}>
             <h2>서로를 연결해볼까요? </h2>
 
             <p>연결 코드를 입력해주세요.</p>
-            <input type={"text"} name={"coupleCode"}/>
-            <button type={"button"}>연결하기</button>
+            <input type={"text"} name={"coupleCode"} ref={codeRef}/>
+            <button type={"button"} onClick={handlematch}>연결하기</button>
 
             <div>
                 <p>아직 코드가 없어요?</p>
@@ -28,12 +54,13 @@ export default function ConnectCouple() {
                 <p>"서로 같은 코드를 입력해야 연결돼요"</p>
             </div>
 
+            {show && (
             <div>
                 <p>내 연결코드</p>
-                <p>codenumber</p>
-                <button>복사</button>
+                <p>{myCode}</p>
+                <button onClick={handleCopy}>복사</button>
             </div>
-
+            )}
         </section>
     );
 }

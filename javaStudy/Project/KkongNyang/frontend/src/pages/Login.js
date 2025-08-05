@@ -4,8 +4,6 @@ import {useDispatch} from "react-redux";
 import {userLogin} from "../store/userSlice";
 import {setToken} from "../store/tokenSlice";
 
-// 로그인 시 커플코드 입력, 입력 후 커플프로필 작성 페이지로.
-
 export default function Login() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -29,7 +27,9 @@ export default function Login() {
             dispatch(userLogin());
 
 
-            navigate("/home");
+            // navigate("/home");
+            navigate("/connect");
+
         } catch (error) {
             console.log(error);
         }
