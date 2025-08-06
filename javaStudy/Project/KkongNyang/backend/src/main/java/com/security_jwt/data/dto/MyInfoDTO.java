@@ -19,4 +19,5 @@ public class MyInfoDTO {
     private String gender;
     private String birthday;
     private MultipartFile profileImage;
+    private String coupleCode;
 }

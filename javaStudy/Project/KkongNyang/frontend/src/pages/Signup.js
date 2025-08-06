@@ -1,6 +1,5 @@
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {useRef} from "react";
 import {addUser} from "../store/userSlice";
 import axios from "axios";
 
@@ -33,7 +32,7 @@ export default function Signup() {
                     <li>
                         <div>
                             <label>아이디</label>
-                            <input type={"text"} ref={idRef} name={"username"} required/>
+                            <input type={"text"} name={"username"} required/>
                         </div>
                        {/*<button type={"button"} onClick={handleCheck}>중복확인</button>*/}
                     </li>

@@ -26,10 +26,7 @@ export default function Login() {
             dispatch(setToken(response.headers["authorization"]));
             dispatch(userLogin());
 
-
-            // navigate("/home");
-            navigate("/connect");
-
+            navigate("/couple-check");
         } catch (error) {
             console.log(error);
         }

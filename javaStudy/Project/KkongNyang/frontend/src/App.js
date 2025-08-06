@@ -5,11 +5,12 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ConnectCouple from "./pages/ConnectCouple";
-import MainLayout from "./components/MainLayout";
-import AuthLayout from "./components/AuthLayout";
+import MainLayout from "./pages/MainLayout";
+import AuthLayout from "./pages/AuthLayout";
 import CoupleProfile from "./pages/CoupleProfile";
-import MyPageLayout from "./components/MyPageLayout";
+import MyPageLayout from "./pages/MyPageLayout";
 import MyPage from "./pages/MyPage";
+import CheckCoupleStatus from "./pages/CheckCoupleStatus";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                     <Route element={<AuthLayout/>}>
                         <Route path={"/"} element={<StartScreen/>}/>
                         <Route path={"/login"} element={<Login/>}/>
+                        <Route path={"/couple-check"} element={<CheckCoupleStatus/>}/>
                         <Route path={"/signup"} element={<Signup/>}/>
                         <Route path={"/connect"} element={<ConnectCouple/>}/>
                         <Route path={"/couple-profile"} element={<CoupleProfile/>}/>

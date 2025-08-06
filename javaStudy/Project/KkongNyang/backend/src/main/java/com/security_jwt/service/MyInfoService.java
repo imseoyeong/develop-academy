@@ -64,6 +64,7 @@ public class MyInfoService {
                 .gender(authEntity.getGender())
                 .birthday(authEntity.getBirthday().toString())
                 .profileImage(null) // DTO에는 이미지 파일 자체를 담지 않음
+                .coupleCode(profileEntity.getCouplecode())
                 .build();
     }
 }

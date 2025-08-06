@@ -1,5 +1,5 @@
 import apiClient from "../api/axiosInstance";
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {useDispatch} from "react-redux";
 import {coupleInfo} from "../store/userSlice";
 import {useNavigate} from "react-router-dom";

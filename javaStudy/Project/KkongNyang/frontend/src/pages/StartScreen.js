@@ -1,7 +1,9 @@
+import {Link} from "react-router-dom";
+
 export default function StartScreen() {
     return (
         <section id={"start-page"}>
-            첫 페이지~
+            <Link to={"/login"}>시작하기</Link>
         </section>
     );
 }

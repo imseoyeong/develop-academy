@@ -39,7 +39,7 @@ public class MyInfoController {
         }
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<MyInfoDTO> getMyInfo(@AuthenticationPrincipal UserDetails userDetails) {
         MyInfoDTO myInfoDTO = myInfoService.getMyInfo(userDetails.getUsername());
         return ResponseEntity.ok(myInfoDTO);
