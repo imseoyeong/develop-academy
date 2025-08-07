@@ -18,31 +18,31 @@ USE `coupledb`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `profiletbl`
+-- Table structure for table `bucketlisttbl`
 --
 
-DROP TABLE IF EXISTS `profiletbl`;
+DROP TABLE IF EXISTS `bucketlisttbl`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `profiletbl` (
-  `username` varchar(255) NOT NULL,
-  `profileimage` varchar(255) DEFAULT NULL,
-  `nickname` varchar(255) DEFAULT NULL,
-  `couplecode` varchar(255) DEFAULT NULL,
-  `firstday` date DEFAULT NULL,
-  PRIMARY KEY (`username`),
-  CONSTRAINT `fk_username` FOREIGN KEY (`username`) REFERENCES `authentbl` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `bucketlisttbl` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `code` varchar(255) NOT NULL,
+  `todo` varchar(255) NOT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `completed_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_cuplecode_idx` (`code`),
+  CONSTRAINT `fk_cuplecode` FOREIGN KEY (`code`) REFERENCES `couplematchtbl` (`code`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `profiletbl`
+-- Dumping data for table `bucketlisttbl`
 --
 
-LOCK TABLES `profiletbl` WRITE;
-/*!40000 ALTER TABLE `profiletbl` DISABLE KEYS */;
-INSERT INTO `profiletbl` VALUES ('aaa','upload_image\\86af8476-a21f-4df7-9e6b-097ca726531a.jpg','미미미',NULL,NULL),('bbb','upload_image\\5d99553a-01a8-401e-b1a5-5450857a3560.jpg','바다',NULL,NULL),('ccc','upload_image\\b7449c73-8197-4be1-89bd-2c7953972b2b.jpg','창기코인','8ba390ad-2bdc-475b-978c-15ed86893c16',NULL),('ddd','upload_image\\51721d1e-cc1b-4ee2-b5a7-56713dbddd3d.jpg','관우장군','8ba390ad-2bdc-475b-978c-15ed86893c16',NULL);
-/*!40000 ALTER TABLE `profiletbl` ENABLE KEYS */;
+LOCK TABLES `bucketlisttbl` WRITE;
+/*!40000 ALTER TABLE `bucketlisttbl` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bucketlisttbl` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

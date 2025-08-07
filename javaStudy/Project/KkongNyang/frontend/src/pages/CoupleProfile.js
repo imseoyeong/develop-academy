@@ -1,16 +1,19 @@
 import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import app from "../App";
 import apiClient from "../api/axiosInstance";
-import {coupleInfo} from "../store/userSlice";
+import {setCoupleInfo} from "../store/userSlice";
 
 export default function CoupleProfile() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const coupleInfo = useSelector((state) => state.userInfo.coupleInfo);
+    const coupleCode = coupleInfo?.coupleCode;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
+        formData.append("coupleCode", coupleCode);
 
         try {
             const response = await apiClient.post("/couple/update-profile", formData, {
@@ -18,7 +21,7 @@ export default function CoupleProfile() {
                     "Content-Type": "multipart/form-data",
                 },
             });
-            dispatch(coupleInfo(response.data));
+            dispatch(setCoupleInfo(response.data));
             navigate("/home");
         } catch (error) {
             console.log(error);

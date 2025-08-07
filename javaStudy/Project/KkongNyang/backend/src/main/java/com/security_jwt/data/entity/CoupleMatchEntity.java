@@ -4,14 +4,15 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
+@Builder
 @Entity
 @Table(name = "couplematchtbl")
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class CoupleMatchEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,5 +45,8 @@ public class CoupleMatchEntity {
 
     @Column(name = "firstday")
     private LocalDate firstday;
+
+    @OneToMany(mappedBy = "code", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<BucketListEntity> bucketList;
 
 }

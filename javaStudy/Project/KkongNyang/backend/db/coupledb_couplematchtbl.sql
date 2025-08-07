@@ -35,11 +35,12 @@ CREATE TABLE `couplematchtbl` (
   `part2nickname` varchar(255) DEFAULT NULL,
   `firstday` date DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `code_UNIQUE` (`code`),
   KEY `fk_part1_idx` (`part1`),
   KEY `fk_part2_idx` (`part2`,`part1`),
   CONSTRAINT `fk_part1` FOREIGN KEY (`part1`) REFERENCES `authentbl` (`username`),
   CONSTRAINT `fk_part2` FOREIGN KEY (`part2`) REFERENCES `authentbl` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,7 +49,7 @@ CREATE TABLE `couplematchtbl` (
 
 LOCK TABLES `couplematchtbl` WRITE;
 /*!40000 ALTER TABLE `couplematchtbl` DISABLE KEYS */;
-INSERT INTO `couplematchtbl` VALUES (4,'ccc','ddd','37b5763b-0973-4037-a07f-2b344193ee5c','upload_image\\198249be-84db-4c65-868a-15b2d81680a0.jpg','야구잘하는커플','야구의신','야구의여신','2025-03-23');
+INSERT INTO `couplematchtbl` VALUES (5,'ddd','ccc','8ba390ad-2bdc-475b-978c-15ed86893c16','upload_image\\0f97ab6e-710c-4f9d-a019-bada925d2703.jpg','야구잘하는커플','야구의신','야구의여신','2025-03-23');
 /*!40000 ALTER TABLE `couplematchtbl` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -61,4 +62,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-08-01 16:49:15
+-- Dump completed on 2025-08-06 14:37:09

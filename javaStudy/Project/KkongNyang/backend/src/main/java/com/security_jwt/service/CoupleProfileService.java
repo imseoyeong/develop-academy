@@ -99,4 +99,8 @@ public class CoupleProfileService {
         }
         return null;
     }
+
+    public Optional<CoupleMatchEntity> findCoupleMatchByCode(String coupleCode) {
+        return coupleProfileDAO.findCoupleMatchByCode(coupleCode);
+    }
 }

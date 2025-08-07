@@ -1,6 +1,12 @@
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 export default function Header() {
+    const navigate = useNavigate();
+
+    const handleBack = () => {
+        navigate(-1);
+    }
+
     return (
         <>
             <header>
@@ -11,10 +17,12 @@ export default function Header() {
 
             <header>
                 <div className={"header-wrap"}>
-                    <Link to={"#"}>뒤로가기</Link>
+                    <button onClick={handleBack}>뒤로가기</button>
                     <h1>page title</h1>
                 </div>
             </header>
+            <hr/>
+
         </>
     );
 }

@@ -9,7 +9,7 @@ export default function MyPage() {
             <ul>
                 <li><Link to={"#"}>내 정보</Link></li>
                 <li><Link to={"#"}>커플연결</Link></li>
-                <li><Link to={"#"}>로그아웃</Link></li>
+                <li><Link to={"/logout"}>로그아웃</Link></li>
                 <li><Link to={"#"}>테마</Link></li>
             </ul>
         </section>

@@ -11,6 +11,9 @@ import CoupleProfile from "./pages/CoupleProfile";
 import MyPageLayout from "./pages/MyPageLayout";
 import MyPage from "./pages/MyPage";
 import CheckCoupleStatus from "./pages/CheckCoupleStatus";
+import BucketList from "./pages/BucketList";
+import Album from "./pages/Album";
+import Logout from "./pages/Logout";
 
 function App() {
     return (
@@ -24,10 +27,13 @@ function App() {
                         <Route path={"/signup"} element={<Signup/>}/>
                         <Route path={"/connect"} element={<ConnectCouple/>}/>
                         <Route path={"/couple-profile"} element={<CoupleProfile/>}/>
+                        <Route path={"/logout"} element={<Logout/>}/>
                     </Route>
 
                     <Route element={<MainLayout/>}>
                         <Route path={"/home"} element={<Home/>}/>
+                        <Route path={"/bucket"} element={<BucketList/>}/>
+                        <Route path={"/album"} element={<Album/>}/>
                         <Route path={"/mypage"} element={<MyPageLayout/>}>
                             <Route index element={<MyPage/>}/>
                         </Route>

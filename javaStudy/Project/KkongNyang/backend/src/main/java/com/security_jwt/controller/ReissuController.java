@@ -8,10 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -54,5 +51,16 @@ public class ReissuController {
         response.addHeader("Authorization", "Bearer "+newAccessToken);
         return ResponseEntity.status(HttpStatus.OK).body("토큰 발급 성공");
 
+    }
+
+    @DeleteMapping(value = "/logout")
+    public ResponseEntity<String> logout(HttpServletRequest request, HttpServletResponse response) {
+        Cookie cookie = new Cookie("refresh", null);
+        cookie.setHttpOnly(true);
+        cookie.setPath("/");
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
+
+        return ResponseEntity.ok("로그아웃 완료");
     }
 }

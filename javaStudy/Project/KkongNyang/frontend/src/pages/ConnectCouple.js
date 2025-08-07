@@ -1,7 +1,7 @@
 import apiClient from "../api/axiosInstance";
 import {useEffect, useRef, useState} from "react";
 import {useDispatch} from "react-redux";
-import {coupleInfo} from "../store/userSlice";
+import {setCoupleInfo} from "../store/userSlice";
 import {useNavigate} from "react-router-dom";
 
 export default function ConnectCouple() {
@@ -33,7 +33,7 @@ export default function ConnectCouple() {
             const response = await apiClient.post("/couple/match", {
                 coupleCode: codeRef.current.value,
             });
-            dispatch(coupleInfo(response.data));
+            dispatch(setCoupleInfo(response.data));
             navigate("/couple-profile");
         } catch (error) {
             console.log(error);
