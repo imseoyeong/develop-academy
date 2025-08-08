@@ -14,6 +14,7 @@ import CheckCoupleStatus from "./pages/CheckCoupleStatus";
 import BucketList from "./pages/BucketList";
 import Album from "./pages/Album";
 import Logout from "./pages/Logout";
+import AddBucket from "./pages/AddBucket";
 
 function App() {
     return (
